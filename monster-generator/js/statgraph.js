@@ -10,35 +10,22 @@
 function Graph()
 {
 	// Attributes of the graph
-	this.NUM_COLUMNS = 10;
+	this.NUM_COLUMNS = 10,
+	this.maximum = 1, // arbitrary min & max for now
+	this.minimum = 0, 
 
-	this.isMouseDown = false; 
-
+	// The graph, when initialized, should take a div and transform it into an 
+	// editable bar graph. 
 	this.init = function()
 	{
-		console.log("Graph created.");
-	};
+		console.log("Graph initialized"); 
+	},
 
-	// --------------------
-	// Mouse Functions
-	// --------------------
-	$(this).mousedown(function()
-		{
-			// On mousedown, the graph checks for which bar the mouse is over and 
-			// sets the y position of that bar to the next approximate height. 
-			isMouseDown = true; 
-		});
-	$(this).mousemove(function()
-		{
-			// On mousemove, if the mouse is down, do mousedown events for each bar, changing 
-			// height as the mouse is dragged. 
-		});
-	$(this).mouseup(function()
-		{
-			// Reset the graph variable that says the mouse is down. 
-		});
+	this.onclick = function()
+	{
+
+	},
+
 	
-
-
 
 };
