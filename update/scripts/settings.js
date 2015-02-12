@@ -4,12 +4,10 @@
 //  Author: Jake Higgins <jth7036@rit.edu>
 //*************************************************************
 
-function Settings() {
+function settings() {
   console.log("Settings Object Created");
-  
-  this.initialize();
 }
 
-Settings.prototype.initialize = function() {
+settings.prototype.initialize = function() {
   console.log("Settings Initialized");
 }

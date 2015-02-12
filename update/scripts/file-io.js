@@ -4,12 +4,10 @@
 //  Author: Jake Higgins <jth7036@rit.edu>
 //*************************************************************
 
-function FileIO() {
+function fileIO() {
   console.log("File IO Object Created");
-  
-  this.initialize();
 }
 
-FileIO.prototype.initialize = function() {
+fileIO.prototype.initialize = function() {
   console.log("File IO Initialized");
 }

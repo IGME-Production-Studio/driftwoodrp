@@ -18,21 +18,35 @@ var Tools;
 var User;
 
 $(document).ready(function() {
+  construct();
   initialize();
 });
 
-function initialize() {
+function construct() {
   // For later
   //Socket = new io();
 
-  Driftwood = new Driftwood();
+  Driftwood = new driftwood();
 
-  CanvasManager = new CanvasManager();
-  Chat = new Chat();
-  Commands = new Commands();
-  FileIO = new FileIO();
-  ObjectManager = new ObjectManager();
-  Settings = new Settings();
-  Tools = new Tools();
-  User = new User();
+  CanvasManager = new canvasManager();
+  Chat = new chat();
+  Commands = new commands();
+  FileIO = new fileIO();
+  ObjectManager = new objectManager();
+  Settings = new settings();
+  Tools = new tools();
+  User = new user();
+}
+
+function initialize() {
+  Driftwood.initialize();
+
+  CanvasManager.initialize();
+  Chat.initialize();
+  Commands.initialize();
+  FileIO.initialize();
+  ObjectManager.initialize();
+  Settings.initialize();
+  Tools.initialize();
+  User.initialize();
 }

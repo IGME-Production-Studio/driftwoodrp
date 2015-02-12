@@ -4,12 +4,12 @@
 //  Author: Jake Higgins <jth7036@rit.edu>
 //*************************************************************
 
-function ObjectManager() {
+function objectManager() {
   console.log("Object Manager Created");
   
   this.initialize();
 }
 
-ObjectManager.prototype.initialize = function() {
+objectManager.prototype.initialize = function() {
   console.log("Object Manager Initialized");
 }

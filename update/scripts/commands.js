@@ -4,12 +4,10 @@
 //  Author: Jake Higgins <jth7036@rit.edu>
 //*************************************************************
 
-function Commands() {
+function commands() {
   console.log("Commands Object Created");
-  
-  this.initialize();
 }
 
-Commands.prototype.initialize = function() {
+commands.prototype.initialize = function() {
   console.log("Commands Initialized");
 }

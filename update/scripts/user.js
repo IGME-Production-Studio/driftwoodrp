@@ -4,12 +4,10 @@
 //  Author: Jake Higgins <jth7036@rit.edu>
 //*************************************************************
 
-function User() {
+function user() {
   console.log("User Object Created");
-  
-  this.initialize();
 }
 
-User.prototype.initialize = function() {
+user.prototype.initialize = function() {
   console.log("User Initialized");
 }

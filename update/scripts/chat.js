@@ -4,12 +4,10 @@
 //  Author: Jake Higgins <jth7036@rit.edu>
 //*************************************************************
 
-function Chat() {
+function chat() {
   console.log("Chat Object Created");
-  
-  this.initialize();
 }
 
-Chat.prototype.initialize = function() {
+chat.prototype.initialize = function() {
   console.log("Chat Initialized");
 }
