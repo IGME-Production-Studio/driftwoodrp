@@ -16,11 +16,11 @@
 	<h1> Monster Generator </h1> 
 	
 	<div id="columnLeft">
-		<p>Name: <input id =""> </input placeholder = "Name here"> <p> 
+		<p>Name: <input class="userStatInputs"> </input placeholder = "Name here"> <p> 
 		<div id="picture"><img src="imgs/puppy.jpg" alt="puppy"> </div> <!-- picture, perhaps selectable from a dropdown menu of standard monster pictures or NPC pictures. --> 
-		<p>Challenge Rating: <input val="1"></p> <!-- Challenge rating determines stat potential. -->
-		<p>Type: <input val="Abberations"></p> <!-- Type determines what kind of monster they are -->
-		<p>Size Rating:<select> <!-- Size rating determines health and damage potential -->
+		<p>Challenge Rating: <input val="1" class="userStatInputs"></p> <!-- Challenge rating determines stat potential. -->
+		<p>Type: <input val="Abberations" class="userStatInputs"></p> <!-- Type determines what kind of monster they are -->
+		<p>Size Rating:<select class="userStatInputs"> <!-- Size rating determines health and damage potential -->
 			<option>Tiny</option>
 			<option>Small</option>
 			<option>Medium</option>
@@ -28,7 +28,7 @@
 			<option>Huge</option>
 			<option>Gargantuan</option>
 		</select> </p>
-		<p>Alignment:<select> <!-- Classic Alignment System -->
+		<p>Alignment:<select class="userStatInputs"> <!-- Classic Alignment System -->
 			<option>Lawful Good</option>
 			<option>Lawful Neutral</option>
 			<option>Lawful Evil</option>
@@ -40,7 +40,7 @@
 			<option>Chaotic Evil</option>
 			<option>Unaligned</option>
 		</select> </p>
-		<button>GENERATE</button>
+		<button class="userStatInputs">GENERATE</button>
 	</div> 
 	
 	<div id="columnMiddle">
