@@ -1,0 +1,35 @@
+<!doctype HTML>
+
+<head>
+	<title> NPC & Monster Generator </title> 
+	<link rel="stylesheet" type="text/css" href="css/mgen.css" /> 
+</head> 
+
+<body>
+
+	<h1> Monster Generator </h1> 
+	
+	<div id="columnLeft">
+		<p> Name: <input id =""> </input placeholder = "Name here"> <p> 
+		<div id="picture"><img src="imgs/puppy.jpg" alt="puppy"> </div> <!-- picture, perhaps selectable from a dropdown menu of standard monster pictures or NPC pictures. --> 
+		<p>Challenge Rating: <input val="1"></p> <!-- Challenge rating determines stat potential. -->
+		<button>GENERATE</button>
+	</div> 
+	
+	<div id="columnMiddle">
+	<!-- Graphs represent a percentage of maximum potential as determined by challenge rating and in the case of HP, size. 
+		DMs may increase or decrease this maximum MANUALLY by clicking plus and minus buttons next to the graphs. -->
+		<div class='graph' id="sizeGraph"></div> <!-- Size determines HP potential; so does CHALLENGE RATING. --> 
+		<div class='graph' id="HPGraph"></div> <!-- HP initial potential (maximum) determined by SIZE and CHALLENGE RATING -->
+		<div class='graph' id="strGraph"></div> <!-- STR initial maximum determined by CHALLENGE RATING; can be increased / decreased --> 
+	</div> 
+	
+	<div id="columnRight">		
+		<div class='graph' id="chaGraph"></div> <!-- CHA initial maximum determined by CHALLENGE RATING; can be increased / decreased --> 
+		<div class='graph' id="dexGraph"></div> <!-- DEX initial maximum determined by CHALLENGE RATING; can be increased / decreased -->
+		<div class='graph' id="intGraph"></div> <!-- INT initial maximum determined by CHALLENGE RATING; can be increased / decreased -->
+		<div class='graph' id="wisGraph"></div> <!-- WIS initial maximum determined by CHALLENGE RATING; can be increased / decreased -->
+	</div> 
+	
+</body> 
+</html> 
