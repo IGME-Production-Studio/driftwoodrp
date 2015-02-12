@@ -3,6 +3,7 @@
 <head>
 	<title> NPC & Monster Generator </title> 
 	<link rel="stylesheet" type="text/css" href="css/mgen.css" /> 
+	<link href='http://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet' type='text/css'>
 </head> 
 
 <body>
@@ -13,6 +14,14 @@
 		<p> Name: <input id =""> </input placeholder = "Name here"> <p> 
 		<div id="picture"><img src="imgs/puppy.jpg" alt="puppy"> </div> <!-- picture, perhaps selectable from a dropdown menu of standard monster pictures or NPC pictures. --> 
 		<p>Challenge Rating: <input val="1"></p> <!-- Challenge rating determines stat potential. -->
+		<p>Size Rating:<select> <!-- Size rating determines health and damage potential -->
+			<option>Tiny</option>
+			<option>Small</option>
+			<option>Medium</option>
+			<option>Large</option>
+			<option>Huge</option>
+			<option>Gargantuan</option>
+		</select> </p>
 		<button>GENERATE</button>
 	</div> 
 	
