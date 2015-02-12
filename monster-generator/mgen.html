@@ -11,9 +11,10 @@
 	<h1> Monster Generator </h1> 
 	
 	<div id="columnLeft">
-		<p> Name: <input id =""> </input placeholder = "Name here"> <p> 
+		<p>Name: <input id =""> </input placeholder = "Name here"> <p> 
 		<div id="picture"><img src="imgs/puppy.jpg" alt="puppy"> </div> <!-- picture, perhaps selectable from a dropdown menu of standard monster pictures or NPC pictures. --> 
 		<p>Challenge Rating: <input val="1"></p> <!-- Challenge rating determines stat potential. -->
+		<p>Type: <input val="Abberations"></p> <!-- Type determines what kind of monster they are -->
 		<p>Size Rating:<select> <!-- Size rating determines health and damage potential -->
 			<option>Tiny</option>
 			<option>Small</option>
@@ -21,6 +22,18 @@
 			<option>Large</option>
 			<option>Huge</option>
 			<option>Gargantuan</option>
+		</select> </p>
+		<p>Alignment:<select> <!-- Classic Alignment System -->
+			<option>Lawful Good</option>
+			<option>Lawful Neutral</option>
+			<option>Lawful Evil</option>
+			<option>Neutral Good</option>
+			<option>True Neutral</option>
+			<option>Neutral Evil</option>
+			<option>Chaotic Good</option>
+			<option>Chaotic Neutral</option>
+			<option>Chaotic Evil</option>
+			<option>Unaligned</option>
 		</select> </p>
 		<button>GENERATE</button>
 	</div> 
