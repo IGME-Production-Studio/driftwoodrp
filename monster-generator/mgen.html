@@ -16,9 +16,10 @@
 	<h1> Monster Generator </h1> 
 	
 	<div id="columnLeft">
-		<p> Name: <input id =""> </input placeholder = "Name here"> <p> 
+		<p>Name: <input id =""> </input placeholder = "Name here"> <p> 
 		<div id="picture"><img src="imgs/puppy.jpg" alt="puppy"> </div> <!-- picture, perhaps selectable from a dropdown menu of standard monster pictures or NPC pictures. --> 
 		<p>Challenge Rating: <input val="1"></p> <!-- Challenge rating determines stat potential. -->
+		<p>Type: <input val="Abberations"></p> <!-- Type determines what kind of monster they are -->
 		<p>Size Rating:<select> <!-- Size rating determines health and damage potential -->
 			<option>Tiny</option>
 			<option>Small</option>
@@ -26,6 +27,18 @@
 			<option>Large</option>
 			<option>Huge</option>
 			<option>Gargantuan</option>
+		</select> </p>
+		<p>Alignment:<select> <!-- Classic Alignment System -->
+			<option>Lawful Good</option>
+			<option>Lawful Neutral</option>
+			<option>Lawful Evil</option>
+			<option>Neutral Good</option>
+			<option>True Neutral</option>
+			<option>Neutral Evil</option>
+			<option>Chaotic Good</option>
+			<option>Chaotic Neutral</option>
+			<option>Chaotic Evil</option>
+			<option>Unaligned</option>
 		</select> </p>
 		<button>GENERATE</button>
 	</div> 
@@ -35,18 +48,21 @@
 		DMs may increase or decrease this maximum MANUALLY by clicking plus and minus buttons next to the graphs. -->
 		
 		<!-- HP initial potential (maximum) determined by SIZE and CHALLENGE RATING -->
+		<h2>HP</h2>
 		<div class='graph' id="HPGraph">
 			<button class="incrementButton">+</button>
 			<button class="decrementButton">-</button>
 		</div> 
 
 		<!-- STR initial maximum determined by CHALLENGE RATING; can be increased / decreased --> 
+		<h2>Strength</h2>
 		<div class='graph' id="strGraph">
 			<button class="incrementButton">+</button>
 			<button class="decrementButton">-</button>
 		</div>
 		
 		<!-- CHA initial maximum determined by CHALLENGE RATING; can be increased / decreased --> 
+		<h2>Charisma</h2>
 		<div class='graph' id="chaGraph">
 			<button class="incrementButton">+</button>
 			<button class="decrementButton">-</button>
@@ -57,18 +73,21 @@
 		
 
 		<!-- DEX initial maximum determined by CHALLENGE RATING; can be increased / decreased -->
+		<h2>Dexterity</h2>
 		<div class='graph' id="dexGraph">
 			<button class="incrementButton">+</button>
 			<button class="decrementButton">-</button>
 		</div> 
 
 		<!-- INT initial maximum determined by CHALLENGE RATING; can be increased / decreased -->
+		<h2>Intelligence</h2>
 		<div class='graph' id="intGraph">
 			<button class="incrementButton">+</button>
 			<button class="decrementButton">-</button>
 		</div> 
 
 		<!-- WIS initial maximum determined by CHALLENGE RATING; can be increased / decreased -->
+		<h2>Wisdom</h2>
 		<div class='graph' id="wisGraph">
 			<button class="incrementButton">+</button>
 			<button class="decrementButton">-</button>
