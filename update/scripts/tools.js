@@ -9,6 +9,8 @@ function tools() {
   this.mouseDown = false;
   this.drawing = false;
   this.lastPosition = {x:-1, y:-1};
+  this.drawMin = {x:-1, y:-1};
+  this.drawMax = {x:-1, y:-1};
 }
 
 tools.prototype.initialize = function() {
@@ -35,6 +37,8 @@ tools.prototype.onMouseUp = function(event) {
 
 	if(Tools.drawing) {
 		Tools.drawing = false;
+		console.log("Max Pos: (" + Tools.drawMax.x + ", " + Tools.drawMax.y + ")");
+		console.log("Min Pos: (" + Tools.drawMin.x + ", " + Tools.drawMin.y + ")");
 		Tools.lastPosition.x = -1; Tools.lastPosition.y = -1;
 		Tools.convertDrawToObject();
 	}
@@ -45,16 +49,33 @@ tools.prototype.onMouseMove = function(event) {
 		console.log("Tool Mouse Move Event");
 		var startX = Tools.lastPosition.x == -1 ? event.offsetX : Tools.lastPosition.x;
 		var startY = Tools.lastPosition.y == -1 ? event.offsetY : Tools.lastPosition.y;
-		console.log(event);
+
+		var lineStart = {x: startX, y: startY};
+		var lineEnd = {x: event.offsetX, y: event.offsetY};
+
+		if(!Tools.drawing) {
+			Tools.drawMin = lineEnd;
+			Tools.drawMax = lineEnd;
+		}
+		else {
+			if(Tools.drawMin.x > lineStart.x || Tools.drawMin.y > lineStart.y) {
+				Tools.drawMin = lineStart;
+			}
+			if(Tools.drawMax.x < lineEnd.x || Tools.drawMax.y < lineEnd.y) {
+				Tools.drawMax = lineEnd;
+			}
+		}
+
 		var drawData = {
 			color: 'black',
 			width: 5,
-			start: {x: startX, y: startY},
-			end: {x: event.offsetX, y: event.offsetY}
+			start: lineStart,
+			end: lineEnd
 		};
 
 		Tools.draw(drawData);
-		Tools.lastPosition = drawData.end;
+		Tools.lastPosition = lineEnd;
+		console.log(Tools.drawMax);
 	}
 }
 
