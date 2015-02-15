@@ -4,8 +4,10 @@
 	<title> NPC & Monster Generator </title> 
 	<link rel="stylesheet" type="text/css" href="css/mgen.css" /> 
 
+	<!-- Import jQuery --> 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="js/statgraph.js"></script>
+	<!-- Graph library --> 
+	<script src="js/Chart.js/src/Chart.Bar.js"></script>
 
 
 	<link href='http://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet' type='text/css'>
@@ -29,6 +31,7 @@
 			<option>Gargantuan</option>
 		</select> </p>
 		<p>Alignment:<select class="userStatInputs"> <!-- Classic Alignment System -->
+			<option>Unaligned</option>
 			<option>Lawful Good</option>
 			<option>Lawful Neutral</option>
 			<option>Lawful Evil</option>
@@ -38,7 +41,7 @@
 			<option>Chaotic Good</option>
 			<option>Chaotic Neutral</option>
 			<option>Chaotic Evil</option>
-			<option>Unaligned</option>
+
 		</select> </p>
 		<p>Movement Type:<select class="userStatInputs"> <!-- Movement type determines how the monster traverses the environment -->
 			<option>Burrow</option>
@@ -56,24 +59,24 @@
 		
 		<!-- HP initial potential (maximum) determined by SIZE and CHALLENGE RATING -->
 		<h2>HP</h2>
-		<div class='graph' id="HPGraph">
+		<canvas class='graph' id="hpGraph">
 			<button class="incrementButton">+</button>
 			<button class="decrementButton">-</button>
-		</div> 
+		</canvas>
 
 		<!-- STR initial maximum determined by CHALLENGE RATING; can be increased / decreased --> 
 		<h2>Strength</h2>
-		<div class='graph' id="strGraph">
+		<canvas class='graph' id="strGraph">
 			<button class="incrementButton">+</button>
 			<button class="decrementButton">-</button>
-		</div>
+		</canvas>
 		
 		<!-- CHA initial maximum determined by CHALLENGE RATING; can be increased / decreased --> 
 		<h2>Charisma</h2>
-		<div class='graph' id="chaGraph">
+		<canvas class='graph' id="chaGraph">
 			<button class="incrementButton">+</button>
 			<button class="decrementButton">-</button>
-		</div> 
+		</canvas>
 	</div> 
 	
 	<div id="columnRight">		
@@ -81,24 +84,24 @@
 
 		<!-- DEX initial maximum determined by CHALLENGE RATING; can be increased / decreased -->
 		<h2>Dexterity</h2>
-		<div class='graph' id="dexGraph">
+		<canvas class='graph' id="dexGraph">
 			<button class="incrementButton">+</button>
 			<button class="decrementButton">-</button>
-		</div> 
+		</canvas>
 
 		<!-- INT initial maximum determined by CHALLENGE RATING; can be increased / decreased -->
 		<h2>Intelligence</h2>
-		<div class='graph' id="intGraph">
+		<canvas class='graph' id="intGraph">
 			<button class="incrementButton">+</button>
 			<button class="decrementButton">-</button>
-		</div> 
+		</canvas>
 
 		<!-- WIS initial maximum determined by CHALLENGE RATING; can be increased / decreased -->
 		<h2>Wisdom</h2>
-		<div class='graph' id="wisGraph">
+		<canvas class='graph' id="wisGraph">
 			<button class="incrementButton">+</button>
 			<button class="decrementButton">-</button>
-		</div> 
+		</canvas> 
 	</div> 
 	
 </body> 

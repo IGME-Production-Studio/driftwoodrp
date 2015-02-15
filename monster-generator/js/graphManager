@@ -1,0 +1,5 @@
+// Graph Manager
+
+// Store ids of what we need to initialize
+
+var graphids = []; 
