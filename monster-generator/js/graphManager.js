@@ -32,14 +32,24 @@ var data1 =
 // Pass in 2D context of each canas to initialize chart. 
 function initGraphs()
 {
-	console.log("initializing graphs");
-	var ctx = document.getElementById(graphids[0]).getContext('2d'); 
 
-	var myChart = new Chart(ctx).Bar(data1);
+	for(var i =0; i < graphids.length; i++)
+	{
+		var ctx = document.getElementById(graphids[i]).getContext('2d'); 
 
-}
+		var myChart = new Chart(ctx).Line(data1, { scaleShowGridLines: true, pointHitDetectionRadius: 10});
+	}
 
-$(document).ready(
+};
+
+function updateGlobalChartConfigs()
 {
-	initGraphs(); 
-});
+
+};
+
+
+window.onload = function(){
+
+	console.log("initializing graphs");
+	initGraphs();
+};
