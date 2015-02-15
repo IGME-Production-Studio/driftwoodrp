@@ -3,14 +3,23 @@
 // Store ids of what we need to initialize
 var graphids = 
 [
-	'hpGraph', 
-	'strGraph', 
-	'chaGraph', 
-	'dexGraph', 
-	'intGraph', 
-	'wisGraph'
+	{'id': 'hpGraph', 'graph': {}},
+	{'id': 'strGraph', 'graph': {}},
+	{'id': 'chaGraph', 'graph': {}},
+	{'id': 'dexGraph', 'graph': {}},
+	{'id': 'intGraph', 'graph': {}},
+	{'id': 'wisGraph', 'graph': {}}
 ];
 
+function getGraphObj(graphID)
+{
+	for(var i =0;i< graphids.length; i++)
+	{
+		if(graphids[i].id == graphID)
+			return graphids[i].graph;
+		else continue; 
+	}
+}
 
 // Define sample data for graph
 var data1 = 
@@ -35,10 +44,18 @@ function initGraphs()
 
 	for(var i =0; i < graphids.length; i++)
 	{
-		var ctx = document.getElementById(graphids[i]).getContext('2d'); 
+		var ctx = document.getElementById(graphids[i].id).getContext('2d'); 
 
 		var myChart = new Chart(ctx).Line(data1, 
 			{ scaleShowGridLines: true, pointHitDetectionRadius: 10, datasetFill: true});
+		
+		graphids[i].graph = myChart;
+		$('#'+ graphids[i].id).click(function(evt)
+		{
+			console.log("CLICK!");
+			var activePts = getGraphObj( $(this).attr('id') ).getPointsAtEvent(evt);
+			console.log(activePts);
+		});
 	}
 
 };
