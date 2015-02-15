@@ -20,7 +20,7 @@ var data1 =
 	[
 		{
 			label: 'My First Dataset', 
-			fillColor: 'rgba(220, 220,220, 0.5)', 
+			fillColor: 'rgba(250,50,133, 0.5)', 
 			strokeColor: 'rgba(0,0,0)',
 			highlightFill: 'rgba(209,105,214)',
 			highlightStroke: 'rgba(112,11,117)', 
@@ -37,7 +37,8 @@ function initGraphs()
 	{
 		var ctx = document.getElementById(graphids[i]).getContext('2d'); 
 
-		var myChart = new Chart(ctx).Line(data1, { scaleShowGridLines: true, pointHitDetectionRadius: 10});
+		var myChart = new Chart(ctx).Line(data1, 
+			{ scaleShowGridLines: true, pointHitDetectionRadius: 10, datasetFill: true});
 	}
 
 };
