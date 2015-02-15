@@ -10,7 +10,8 @@
 	<script src="js/Chart.js/Chart.js"></script>
 	<script src="js/Chart.js/src/Chart.Bar.js"></script>
 	<script src="js/graphManager.js"></script> 
-
+	<script src="js/generateNPC.js"></script> 
+	<!--Font-->
 	<link href='http://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet' type='text/css'>
 </head> 
 
@@ -23,7 +24,7 @@
 		<div id="picture"><img src="imgs/puppy.jpg" alt="puppy"> </div> <!-- picture, perhaps selectable from a dropdown menu of standard monster pictures or NPC pictures. --> 
 		<p>Challenge Rating: <input val="1" class="userStatInputs"></p> <!-- Challenge rating determines stat potential. -->
 		<p>Type: <input val="Abberations" class="userStatInputs"></p> <!-- Type determines what kind of monster they are -->
-		<p>Size Rating:<select class="userStatInputs"> <!-- Size rating determines health and damage potential -->
+		<p>Size Rating:<select class="userStatInputs" id="sizeStatInput"> <!-- Size rating determines health and damage potential -->
 			<option>Tiny</option>
 			<option>Small</option>
 			<option>Medium</option>
@@ -31,7 +32,7 @@
 			<option>Huge</option>
 			<option>Gargantuan</option>
 		</select> </p>
-		<p>Alignment:<select class="userStatInputs"> <!-- Classic Alignment System -->
+		<p>Alignment:<select class="userStatInputs" id="alignmentStatInput"> <!-- Classic Alignment System -->
 			<option>Unaligned</option>
 			<option>Lawful Good</option>
 			<option>Lawful Neutral</option>
@@ -42,16 +43,15 @@
 			<option>Chaotic Good</option>
 			<option>Chaotic Neutral</option>
 			<option>Chaotic Evil</option>
-
 		</select> </p>
-		<p>Movement Type:<select class="userStatInputs"> <!-- Movement type determines how the monster traverses the environment -->
+		<p>Movement Type:<select class="userStatInputs" id="movementStatInput"> <!-- Movement type determines how the monster traverses the environment -->
 			<option>Burrow</option>
 			<option>Climb</option>
 			<option>Fly</option>
 			<option>Hover</option>
 			<option>Swim</option>
 		</select> </p>
-		<button class="userStatInputs" id="generateButton">GENERATE</button>
+		<button class="userStatInputs noSelect" id="generateButton">GENERATE</button>
 	</div> 
 	
 	<div id="columnMiddle">
@@ -59,16 +59,22 @@
 		DMs may increase or decrease this maximum MANUALLY by clicking plus and minus buttons next to the graphs. -->
 		
 		<!-- HP initial potential (maximum) determined by SIZE and CHALLENGE RATING -->
+<<<<<<< HEAD
 		<h2>HP
 			<button class="incrementButton" id="plusHP">+</button>
 			<button class="decrementButton" id="minusHP">-</button>
+=======
+		<h2 class="noSelect">HP
+			<button class="incrementButton">+</button>
+			<button class="decrementButton">-</button>
+>>>>>>> 846078b1624ee0565bf7ef7b9627c57945bf63d6
 		</h2>
 		<canvas class='graph' id="hpGraph">
 			
 		</canvas>
 
 		<!-- STR initial maximum determined by CHALLENGE RATING; can be increased / decreased --> 
-		<h2>Strength
+		<h2 class="noSelect">Strength
 			<button class="incrementButton">+</button>
 			<button class="decrementButton">-</button>
 		</h2>
@@ -76,12 +82,11 @@
 		</canvas>
 		
 		<!-- CHA initial maximum determined by CHALLENGE RATING; can be increased / decreased --> 
-		<h2>Charisma
+		<h2 class="noSelect">Charisma
 			<button class="incrementButton">+</button>
 			<button class="decrementButton">-</button>
 		</h2>
 		<canvas class='graph' id="chaGraph">
-			
 		</canvas>
 	</div> 
 	
@@ -89,30 +94,27 @@
 		
 
 		<!-- DEX initial maximum determined by CHALLENGE RATING; can be increased / decreased -->
-		<h2>Dexterity
+		<h2 class="noSelect">Dexterity
 			<button class="incrementButton">+</button>
 			<button class="decrementButton">-</button>
 		</h2>
 		<canvas class='graph' id="dexGraph">
-			
 		</canvas>
 
 		<!-- INT initial maximum determined by CHALLENGE RATING; can be increased / decreased -->
-		<h2>Intelligence
+		<h2 class="noSelect">Intelligence
 			<button class="incrementButton">+</button>
 			<button class="decrementButton">-</button>
 		</h2>
 		<canvas class='graph' id="intGraph">
-			
 		</canvas>
 
 		<!-- WIS initial maximum determined by CHALLENGE RATING; can be increased / decreased -->
-		<h2>Wisdom
+		<h2 class="noSelect">Wisdom
 			<button class="incrementButton">+</button>
 			<button class="decrementButton">-</button>
 		</h2>
 		<canvas class='graph' id="wisGraph">
-			
 		</canvas> 
 	</div> 
 	

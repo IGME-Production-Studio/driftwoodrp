@@ -55,3 +55,11 @@ body
 {
 	margin-left: 10%;
 }
+
+.noSelect
+{
+	margin-left: 5%;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
