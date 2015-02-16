@@ -11,6 +11,7 @@ function tools() {
   this.lastPosition = {x:-1, y:-1};
   this.drawMin = {x:-1, y:-1};
   this.drawMax = {x:-1, y:-1};
+  this.currentStroke = [];
 }
 
 tools.prototype.initialize = function() {
@@ -37,10 +38,21 @@ tools.prototype.onMouseUp = function(event) {
 
 	if(Tools.drawing) {
 		Tools.drawing = false;
-		console.log("Max Pos: (" + Tools.drawMax.x + ", " + Tools.drawMax.y + ")");
-		console.log("Min Pos: (" + Tools.drawMin.x + ", " + Tools.drawMin.y + ")");
+
+		var w = Tools.drawMax.x - Tools.drawMin.x;
+		var h = Tools.drawMax.y - Tools.drawMin.y;
+
+		//CanvasManager.context.rect(Tools.drawMin.x, Tools.drawMin.y, w, h);
+		//CanvasManager.context.stroke();
+
+		var obj = new object("stroke");
+		obj.initialize();
+		obj.createStrokeObject(Tools.currentStroke, Tools.drawMin, Tools.drawMax);
+		ObjectManager.addObject(obj);
+
 		Tools.lastPosition.x = -1; Tools.lastPosition.y = -1;
 		Tools.convertDrawToObject();
+		Tools.currentStroke = [];
 	}
 }
 
@@ -54,15 +66,22 @@ tools.prototype.onMouseMove = function(event) {
 		var lineEnd = {x: event.offsetX, y: event.offsetY};
 
 		if(!Tools.drawing) {
-			Tools.drawMin = lineEnd;
+			Tools.drawMin = lineStart;
 			Tools.drawMax = lineEnd;
 		}
 		else {
-			if(Tools.drawMin.x > lineStart.x || Tools.drawMin.y > lineStart.y) {
-				Tools.drawMin = lineStart;
+			if(Tools.drawMin.x > lineStart.x) {
+				Tools.drawMin.x = lineStart.x;
+			} 
+			if(Tools.drawMin.y > lineStart.y) {
+				Tools.drawMin.y = lineStart.y;
 			}
-			if(Tools.drawMax.x < lineEnd.x || Tools.drawMax.y < lineEnd.y) {
-				Tools.drawMax = lineEnd;
+
+			if(Tools.drawMax.x < lineEnd.x) {
+				Tools.drawMax.x = lineEnd.x;
+			}
+			if(Tools.drawMax.y < lineEnd.y) {
+				Tools.drawMax.y = lineEnd.y;
 			}
 		}
 
@@ -74,8 +93,8 @@ tools.prototype.onMouseMove = function(event) {
 		};
 
 		Tools.draw(drawData);
+		Tools.currentStroke.push(drawData);
 		Tools.lastPosition = lineEnd;
-		console.log(Tools.drawMax);
 	}
 }
 

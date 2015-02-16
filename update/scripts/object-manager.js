@@ -6,10 +6,14 @@
 
 function objectManager() {
   console.log("Object Manager Created");
-  
-  this.initialize();
+
+  this.objects = [];
 }
 
 objectManager.prototype.initialize = function() {
   console.log("Object Manager Initialized");
+}
+
+objectManager.prototype.addObject = function(object) {
+	this.objects.push(object);
 }

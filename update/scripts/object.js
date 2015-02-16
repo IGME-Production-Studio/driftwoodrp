@@ -6,8 +6,7 @@
 
 function object(type) {
   console.log("Object Created");
-  
-  this.initialize();
+
   this.type = type;
 }
 
