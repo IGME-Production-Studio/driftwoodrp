@@ -108,7 +108,7 @@ function initGraphs()
 };
 
 window.onload = function(){
-
+	generateStarterEnemy();
 	console.log("initializing graphs");
 	initGraphs();
 

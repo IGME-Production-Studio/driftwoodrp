@@ -1,6 +1,6 @@
 var name, challenge, type, size, alignment, movement;
 
-window.onload = function(){
+function generateStarterEnemy(){
 	name = "undefined";
 	challenge = "undefined";
 	type = "undefined";
