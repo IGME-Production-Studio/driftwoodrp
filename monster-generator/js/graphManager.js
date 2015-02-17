@@ -11,6 +11,11 @@ var graphids =
 	{'id': 'wisGraph', 'graph': {}}
 ];
 
+// "Enum" for presets (used for comparison and passing to setGraphPreset() ) 
+var GRAPH_PRESET_SMALL = 0; 
+var GRAPH_PRESET_MEDIUM = 1; 
+var GRAPH_PRESET_LARGE = 2; 
+
 // Helper function: Takes string of 
 // Graph ID and returns the graph object associated. 
 function getGraphObj(graphID)
@@ -23,10 +28,25 @@ function getGraphObj(graphID)
 	}
 }
 
+// Set a graph to a pre-defined preset, small medium or large (for now) 
+// graphID: id of the graph's element in the document.
+// graphPreset: "enum" of what you would like e.g. GRAPH_PRESET_SMALL, etc. 
+function setGraphPreset(graphID, graphPreset)
+{
+	// Get the graph object
+	var graph = getGraphObj(graphID);
+	
+	for(var i = 0; i < graph.datasets[0].points.length; i++)
+	{
+		graph.datasets[0].points[i].value ++;
+	}
+
+};
+
 // Increment graph as a matter of scale. 
 function incrementGraph(graphID)
 {
-	// easy access to graph obj
+	// Easy access to graph obj
 	var graph = getGraphObj(graphID); 
 	if(graph == undefined){ return; }
 
