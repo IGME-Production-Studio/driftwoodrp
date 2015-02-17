@@ -62,6 +62,7 @@ window.onresize = function()
 	}
 }
 
+// Added this comment
 // Define sample data for graph
 var data1 = 
 {
