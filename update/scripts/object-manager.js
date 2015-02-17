@@ -12,8 +12,21 @@ function objectManager() {
 
 objectManager.prototype.initialize = function() {
   console.log("Object Manager Initialized");
+  this.addEventListeners();
+}
+
+objectManager.prototype.addEventListeners = function() {
+	//console.log(this);
+	window.addEventListener('click', this.checkAABBs)
 }
 
 objectManager.prototype.addObject = function(object) {
 	this.objects.push(object);
+}
+
+objectManager.prototype.checkAABBs = function() {
+	console.log(this);
+	$.each(this.objects, function(key, val) {
+		console.log(val);
+	});
 }

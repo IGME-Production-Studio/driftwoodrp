@@ -17,9 +17,14 @@ var Settings;
 var Tools;
 var User;
 
+var FPS = 60;
+var GameLoop;
+
 $(document).ready(function() {
   construct();
   initialize();
+
+  GameLoop = setInterval(update, 1000 / FPS);
 });
 
 function construct() {
@@ -49,4 +54,8 @@ function initialize() {
   Settings.initialize();
   Tools.initialize();
   User.initialize();
+}
+
+function update() {
+
 }

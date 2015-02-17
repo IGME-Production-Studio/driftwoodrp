@@ -45,13 +45,9 @@ tools.prototype.onMouseUp = function(event) {
 		//CanvasManager.context.rect(Tools.drawMin.x, Tools.drawMin.y, w, h);
 		//CanvasManager.context.stroke();
 
-		var obj = new object("stroke");
-		obj.initialize();
-		obj.createStrokeObject(Tools.currentStroke, Tools.drawMin, Tools.drawMax);
-		ObjectManager.addObject(obj);
+		Tools.convertDrawToObject();
 
 		Tools.lastPosition.x = -1; Tools.lastPosition.y = -1;
-		Tools.convertDrawToObject();
 		Tools.currentStroke = [];
 	}
 }
@@ -112,4 +108,8 @@ tools.prototype.draw = function(drawData) {
 
 tools.prototype.convertDrawToObject = function() {
 	console.log("Convert Drawing to Object");
+	var obj = new object("stroke");
+	obj.initialize();
+	obj.createStrokeObject(Tools.currentStroke, Tools.drawMin, Tools.drawMax);
+	ObjectManager.addObject(obj);
 }

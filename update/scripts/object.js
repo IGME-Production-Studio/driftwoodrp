@@ -19,3 +19,7 @@ object.prototype.createStrokeObject = function(strokes, min, max) {
 	this.min = min;
 	this.max = max;
 }
+
+object.prototype.checkAABB = function(x, y) {
+	console.log(this);
+}
