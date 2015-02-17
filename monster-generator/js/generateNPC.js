@@ -1,7 +1,11 @@
+//NPC generator
+
+//NPC base statistics
 var npc;
 var name, challenge, type, size, alignment, movement;
 
 function generateStarterEnemy(){
+	//NPC class
 	npc = {
 		name: "undefined",
 		challenge: "undefined",
@@ -11,8 +15,10 @@ function generateStarterEnemy(){
 		movement: "Burrow"
 	}
 	
+	//logs the starter NPC
 	console.log(npc);
 	
+	//checks changes to any values
 	checkForChange();
 	generate();
 };
@@ -63,6 +69,7 @@ function checkForChange()
 	};
 }
 
+//generates the NPC
 function generate()
 {
 	document.getElementById("generateButton").onclick = function()
