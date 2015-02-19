@@ -67,6 +67,36 @@ function checkForChange()
 		npc.type = document.getElementById("typeStatInput").value;
 		console.log("New Type is " + npc.type);
 	};
+	
+	/*document.getElementById("fileEdit").onchange = function()
+	{
+		console.log("image changed");
+		previewFile();
+	};*/
+}
+
+function previewFile()
+{
+	var preview = document.querySelector('tempPicture');
+	var file = document.querySelector('input[type=file]').files[0];
+	var reader = new FileReader();
+	console.log(preview.src);
+	console.log(reader.result);
+	reader.onloaded = function()
+	{
+		console.log(preview.src);
+		console.log(reader.result);
+		preview.src = reader.result;
+	}
+	
+	if(file)
+	{
+		reader.readAsDataURL(file);
+	}
+	else
+	{
+		preview.src = "";
+	}
 }
 
 //generates the NPC
