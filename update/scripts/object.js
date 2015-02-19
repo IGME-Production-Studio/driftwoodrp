@@ -21,5 +21,5 @@ object.prototype.createStrokeObject = function(strokes, min, max) {
 }
 
 object.prototype.checkAABB = function(x, y) {
-	console.log(this);
+	console.log("(" + x + ", " + y + ")");
 }

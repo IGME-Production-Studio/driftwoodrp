@@ -16,17 +16,15 @@ objectManager.prototype.initialize = function() {
 }
 
 objectManager.prototype.addEventListeners = function() {
-	//console.log(this);
-	window.addEventListener('click', this.checkAABBs)
+	window.addEventListener('click', this.checkAABBs.bind(this), false);
 }
 
 objectManager.prototype.addObject = function(object) {
 	this.objects.push(object);
 }
 
-objectManager.prototype.checkAABBs = function() {
-	console.log(this);
+objectManager.prototype.checkAABBs = function(event) {
 	$.each(this.objects, function(key, val) {
-		console.log(val);
+		val.checkAABB(event.offsetX, event.offsetY);
 	});
 }

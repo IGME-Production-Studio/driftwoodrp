@@ -11,6 +11,7 @@ var Socket;
 var CanvasManager;
 var Chat;
 var Commands;
+var Drawing;
 var FileIO;
 var ObjectManager;
 var Settings;
@@ -36,6 +37,7 @@ function construct() {
   CanvasManager = new canvasManager();
   Chat = new chat();
   Commands = new commands();
+  Drawing = new drawing();
   FileIO = new fileIO();
   ObjectManager = new objectManager();
   Settings = new settings();
@@ -49,6 +51,7 @@ function initialize() {
   CanvasManager.initialize();
   Chat.initialize();
   Commands.initialize();
+  Drawing.initialize();
   FileIO.initialize();
   ObjectManager.initialize();
   Settings.initialize();
