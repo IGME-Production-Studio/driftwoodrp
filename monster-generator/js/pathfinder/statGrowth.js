@@ -1,9 +1,9 @@
 // Datafile for stat growth presets
 // BAB = Base Ability Bonus
 // "save" - saving throw
-var statgrowth = {}; 
+var statGrowth = {}; 
 
-statgrowth.goodBAB = 
+statGrowth.goodBAB = 
 [
 	1, 1, 1, 1, 1,
 	1, 1, 1, 1, 1,
@@ -53,4 +53,15 @@ statGrowth.PpoorSave =
 [
 	0, 1, 0, 0, 1,
 	0, 0, 1, 0, 0
+];
+
+var raceBonus = 
+[
+	"Dwarf": { "Con": 2, "Wis": 2, "Cha": -2},
+	"Elf": {"Dex": 2, "Int": 2, "Con": -2 },
+	"Gnome": {"Con": 2, "Cha": 2, "Str": -2},
+	"HalfElf": {"Choice": 2},
+	"Halfling": {"Dex": 2, "Cha": 2, "Str": -2},
+	"HalfOrc": {"Choice": 2},
+	"Human": {"Choice": 2}
 ];

@@ -120,7 +120,9 @@ function initGraphs()
 			var activePts = getGraphObj( $(this).attr('id') ).getPointsAtEvent(evt);
 			console.log(activePts);
 			// Test
-			activePts[0].value ++; 
+			try{
+				activePts[0].value ++; 
+			}catch(e){ console.log(e);}
 			getGraphObj( $(this).attr('id') ).update(); 
 			console.log( getGraphObj($(this).attr('id')));
 		});
@@ -142,4 +144,9 @@ window.onload = function(){
 		decrementGraph( 'hpGraph');
 		console.log("decremented?");
 	});
+
+	// Test character structure
+	console.log("Barbarian?");
+	console.log(classes.Barbarian);
+
 };
