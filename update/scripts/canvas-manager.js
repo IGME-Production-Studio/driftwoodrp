@@ -13,10 +13,15 @@ function canvasManager() {
 
 canvasManager.prototype.initialize = function() {
   console.log("Canvas Manager Initialized");
-  CanvasManager.resize();
+  this.resize();
 }
 
 canvasManager.prototype.resize = function() {
-	CanvasManager.canvas.width = $(document).width();
-  	CanvasManager.canvas.height = $(document).height();
+	this.canvas.width = $(document).width();
+  	this.canvas.height = $(document).height();
+}
+
+canvasManager.prototype.render = function() {
+	this.canvas.width = this.canvas.width;
+	ObjectManager.render();
 }

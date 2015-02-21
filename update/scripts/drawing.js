@@ -11,6 +11,7 @@ function drawing() {
   this.lastPosition = {x:-1, y:-1};
   this.drawMin = {x:-1, y:-1};
   this.drawMax = {x:-1, y:-1};
+  this.startPosition = {x:-1, y:-1};
   this.currentStroke = [];
 }
 
@@ -44,16 +45,20 @@ drawing.prototype.onMouseUp = function(event) {
 
 		this.convertDrawToObject();
 
+		this.startPosition.x = -1; this.startPosition.y = -1;
 		this.lastPosition.x = -1; this.lastPosition.y = -1;
 		this.currentStroke = [];
 	}
 }
 
 drawing.prototype.onMouseMove = function(event) {
-	if(this.mouseDown) {
+	if(this.mouseDown && Driftwood.mode == MODE_DRAW) {
 		console.log("Tool Mouse Move Event");
 		var startX = this.lastPosition.x == -1 ? event.offsetX : this.lastPosition.x;
 		var startY = this.lastPosition.y == -1 ? event.offsetY : this.lastPosition.y;
+
+		this.startPosition.x = this.startPosition.x == -1 ? event.offsetX : this.startPosition.x;
+		this.startPosition.y = this.startPosition.y == -1 ? event.offsetY : this.startPosition.y;
 
 		var lineStart = {x: startX, y: startY};
 		var lineEnd = {x: event.offsetX, y: event.offsetY};
@@ -107,6 +112,6 @@ drawing.prototype.convertDrawToObject = function() {
 	console.log("Convert Drawing to Object");
 	var obj = new object("stroke");
 	obj.initialize();
-	obj.createStrokeObject(this.currentStroke, this.drawMin, this.drawMax);
+	obj.createStrokeObject(this.currentStroke, this.drawMin, this.drawMax, this.startPosition);
 	ObjectManager.addObject(obj);
 }

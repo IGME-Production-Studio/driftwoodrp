@@ -6,7 +6,7 @@
 
 function objectManager() {
   console.log("Object Manager Created");
-
+  this.dragTargets = [];
   this.objects = [];
 }
 
@@ -16,7 +16,9 @@ objectManager.prototype.initialize = function() {
 }
 
 objectManager.prototype.addEventListeners = function() {
-	window.addEventListener('click', this.checkAABBs.bind(this), false);
+	window.addEventListener('mousedown', this.checkAABBs.bind(this), false);
+	window.addEventListener('mouseup', this.releaseTargets.bind(this), false);
+	window.addEventListener('mousemove', this.moveTargets.bind(this), false);
 }
 
 objectManager.prototype.addObject = function(object) {
@@ -24,7 +26,34 @@ objectManager.prototype.addObject = function(object) {
 }
 
 objectManager.prototype.checkAABBs = function(event) {
-	$.each(this.objects, function(key, val) {
-		val.checkAABB(event.offsetX, event.offsetY);
-	});
+	if(Driftwood.mode == MODE_MOVE) {
+		$.each(this.objects, function(key, val) {
+			var result = val.checkAABB(event.offsetX, event.offsetY);
+			if(result) {
+				console.log(this);
+				this.dragTargets.push(val);
+			}
+		}.bind(this), false);
+		console.log(this.dragTargets);
+	}	
+}
+
+objectManager.prototype.moveTargets = function(event) {
+	if(Driftwood.mode == MODE_MOVE) {
+		for(var i = 0; i < this.dragTargets.length; i++) {
+			this.dragTargets[i].move({x: event.offsetX, y: event.offsetY});
+		}
+	}
+}
+
+objectManager.prototype.releaseTargets = function(event) {
+	if(Driftwood.mode == MODE_MOVE) {
+		this.dragTargets = [];
+	}
+}
+
+objectManager.prototype.render = function() {
+	for(var i = 0; i < this.objects.length; i++) {
+		this.objects[i].render();
+	}
 }
