@@ -68,59 +68,8 @@ function checkForChange()
 		console.log("New Type is " + npc.type);
 	};
 	
-	/*document.getElementById("fileEdit").onchange = function()
-	{
-		console.log("image changed");
-		previewFile();
-	};*/
-	
+	//calls the imageManipulation function from another js file
 	imageManipulation();
-}
-/*
-//file to upload image temporarily on page
-//currently not working
-function previewFile()
-{
-	var preview = document.querySelector('tempPicture');
-	var file = document.querySelector('input[type=file]').files[0];
-	var reader = new FileReader();
-	//reader doesn't load... why?
-	console.log(reader);
-	reader.onloaded = function()
-	{
-		console.log(preview.src);
-		console.log(reader.result);
-		preview.src = reader.result;
-	}
-	
-	if(file)
-	{
-		reader.readAsDataURL(file);
-	}
-	else
-	{
-		preview.src = "";
-	}
-}*/
-
-function imageHandler(e2)
-{
-	var store = document.getElementById('imgstore');
-	store.innerHTML='<img src="' + e2.target.result + '" height = 187 width = 280>';
-}
-
-function loadimage(e1)
-{
-	var filename = e1.target.files[0];
-	var fr = new FileReader();
-	fr.onload = imageHandler;
-	fr.readAsDataURL(filename);
-}
-
-function imageManipulation()
-{
-	var y = document.getElementById("getimage");
-	y.addEventListener('change',loadimage, false);
 }
 
 //generates the NPC
