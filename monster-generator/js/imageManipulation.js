@@ -16,7 +16,7 @@ function loadimage(e1)
 	//changes the image value of the NPC class
 	//will be updated later
 	npc.image = "new image";
-	console.log(npc.image);
+	//console.log(npc.image);
 	
 	//removes stock image
 	if(document.getElementById('tempPicture'))
@@ -26,6 +26,7 @@ function loadimage(e1)
 	}
 }
 
+//adds event listeners for the upload functionality to work
 function imageManipulation()
 {
 	var y = document.getElementById("getimage");
