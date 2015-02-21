@@ -12,7 +12,8 @@ function generateStarterEnemy(){
 		type: "undefined",
 		size: "Tiny",
 		alignment: "Unaligned",
-		movement: "Burrow"
+		movement: "Burrow",
+		image: "",
 	}
 	
 	//logs the starter NPC
@@ -20,6 +21,10 @@ function generateStarterEnemy(){
 	
 	//checks changes to any values
 	checkForChange();
+	
+	//calls the imageManipulation function from another js file
+	imageManipulation();
+	
 	generate();
 };
 
@@ -68,8 +73,6 @@ function checkForChange()
 		console.log("New Type is " + npc.type);
 	};
 	
-	//calls the imageManipulation function from another js file
-	imageManipulation();
 }
 
 //generates the NPC
