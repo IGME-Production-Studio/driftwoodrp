@@ -56,7 +56,7 @@ statGrowth.PpoorSave =
 ];
 
 var raceBonus = 
-[
+{
 	"Dwarf": { "Con": 2, "Wis": 2, "Cha": -2},
 	"Elf": {"Dex": 2, "Int": 2, "Con": -2 },
 	"Gnome": {"Con": 2, "Cha": 2, "Str": -2},
@@ -64,4 +64,15 @@ var raceBonus =
 	"Halfling": {"Dex": 2, "Cha": 2, "Str": -2},
 	"HalfOrc": {"Choice": 2},
 	"Human": {"Choice": 2}
-];
+};
+
+// Characters have classes, 
+// Monsters don't or they have monster classes, 
+// and hybrids have both. 
+// Monsters will not roll for Ability Scores either
+var characterType = 
+{
+	"Character": 0, 
+	"Monster": 1, 
+	"Hybrid": 2
+};

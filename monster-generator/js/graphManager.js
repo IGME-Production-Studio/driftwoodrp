@@ -149,4 +149,11 @@ window.onload = function(){
 	console.log("Barbarian?");
 	console.log(classes.Barbarian);
 
+	console.log("Alignment?"); 
+	console.log(alignment.NeutralNeutral);
+	
+	initCharacter();
+	console.log("Character?");
+	console.log(character);
+
 };
