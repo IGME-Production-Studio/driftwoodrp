@@ -19,7 +19,10 @@
 .rightCol
 {
 	width: 50%; height: 100%; float: left;
-	background-color: blue;
+}
+.rightCol p
+{
+	margin-left: 1em;
 }
 
 .clearDiv
@@ -44,6 +47,11 @@
 {
 	width: 90%;
 	margin: auto;
-	background-color: pink;
 
+}
+
+#abilityScoreGraphCanvas
+{
+	width: 100%; 
+	height: 100%; 
 }

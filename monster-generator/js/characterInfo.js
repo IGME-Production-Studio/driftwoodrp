@@ -50,6 +50,8 @@ window.onload = function()
 	var cw = $('#abilityScoreGraph').width(); 
 	$('#abilityScoreGraph').css({'height':cw+'px'});
 	$('#tabs').tabs();
+
+	initGraphs();
 };
 
 /*
