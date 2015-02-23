@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head> 
+<title> Generator v2 </title> 
+
+	<!-- Import jQuery --> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="css/gen2.css"/>
+	<!-- jQuery UI --> 
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+
+	<!-- Graph library --> 
+	<script src="js/Chart.js/Chart.js"></script>
+	<script src="js/Chart.js/src/Chart.Radar.js"></script>
+
+	<!-- Dependencies for Pathfinder data --> 
+	<script src="js/pathfinder/modifiers.js"></script>
+	<script src="js/pathfinder/statGrowth.js"></script> 
+	<script src="js/pathfinder/characterPresets.js"></script>
+	<script src="js/characterInfo.js"></script> 
+</head> 
+
+<body> 
+	<h1> v2 Gen </h1>
+
+	<div id="tabs">
+  <ul>
+    <li><a href="#fragment-1">Basic Details & Stats</a></li>
+    <li><a href="#fragment-2">Skills & Feats</a></li>
+    <li><a href="#fragment-3">Inventory & Wealth</a></li>
+  </ul>
+  <div id="fragment-1">
+  	<div class="leftCol">
+    	<p>Name: <input class="lineInput" /> </p>
+    	<p>Character type: <select class="lineSelect">
+    			<option>Character</option>
+    			<option>Monster</option>
+    			<option>Hybrid</option>	
+    		</select></p>
+    	<p>Race:<select class="lineSelect">
+    			<option>Human</option>
+    			<option>Elf</option>
+    			<option>Dwarf</option>
+    			<option>Half-Elf</option>
+    			<option>Half-Orc</option>
+    			<option>Halfling</option>
+    			<option>Gnome</option>
+    	<p>Class:<select>
+
+    		</select></p>
+    </div>
+    <div class="rightCol">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+    	<div id="abilityScoreGraph"></div>
+    </div>
+    <div class="clearDiv"></div>
+  </div>
+  <div id="fragment-2">
+    <h2> Second Tab </h2>
+  </div>
+  <div id="fragment-3">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+  </div>
+</div>
+</body> 
+</html>

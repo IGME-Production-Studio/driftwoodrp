@@ -7,6 +7,7 @@ function initCharacter()
 	character.charName = ""; 
 	character.alignment = alignment.NeutralNeutral;
 	character.level = 1;
+	character.characterType = characterType.Character;
 
 	character.armorClass = 10; // starts at 10 always
 
@@ -36,10 +37,21 @@ function initCharacter()
 	character.cclass = classes.Cleric; 
 
 	character.raceBonus = raceBonus.Elf;
-
-
-
 }; 
+
+
+window.onload = function()
+{
+
+	console.log("Ready"); 
+	initCharacter();
+	console.log(character);
+
+	var cw = $('#abilityScoreGraph').width(); 
+	$('#abilityScoreGraph').css({'height':cw+'px'});
+	$('#tabs').tabs();
+};
+
 /*
 character.setRace = function(raceName, raceDesc, bonuses)
 {

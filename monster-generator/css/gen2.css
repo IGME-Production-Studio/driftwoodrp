@@ -1,0 +1,49 @@
+#tabs
+{
+	 
+	min-height: 300px;
+}
+
+.tabContent
+{
+	min-height: 200px;
+}
+
+
+.leftCol
+{
+	width: 50%; height: 100%; float: left;
+	background-color: red;
+}
+
+.rightCol
+{
+	width: 50%; height: 100%; float: left;
+	background-color: blue;
+}
+
+.clearDiv
+{
+	clear: both;
+}
+
+.lineInput
+{
+	display: inline;
+	float: right;
+	margin-right: 1em;
+}
+
+.lineSelect
+{
+	float:right;
+	margin-right: 1em;
+}
+
+#abilityScoreGraph
+{
+	width: 90%;
+	margin: auto;
+	background-color: pink;
+
+}
