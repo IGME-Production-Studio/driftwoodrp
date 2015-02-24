@@ -55,3 +55,15 @@
 	width: 100%; 
 	height: 100%; 
 }
+
+.upBtn
+{
+	background-color: green;
+	display: inline;
+}
+
+.downBtn
+{
+	background-color: red;
+	display: inline;
+}

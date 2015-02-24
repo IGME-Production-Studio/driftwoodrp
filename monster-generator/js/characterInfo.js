@@ -52,6 +52,7 @@ window.onload = function()
 	$('#tabs').tabs();
 
 	initGraphs();
+	initAbilityScoreBtns();
 };
 
 /*
