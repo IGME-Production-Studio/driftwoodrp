@@ -1,4 +1,12 @@
-//NPC generator
+//*******************************************
+//	NPC Generator
+//
+//	Filename: generateNPC.js
+//
+//	Authors
+//	Mario Chuman	<mxc7819@g.rit.edu>
+//
+//*******************************************
 
 //NPC base statistics
 var npc;
@@ -28,7 +36,20 @@ function generateStarterEnemy(){
 	generate();
 };
 
-//checks changes from each of the entry fields
+//*******************************************
+//	Function:
+//		checkForChange
+//
+//	Parameters:
+//		None
+//
+//	Return:
+//		None
+//
+//	Description
+//		checks changes from each of the entry fields
+//
+//*******************************************
 function checkForChange()
 {
 	//when size changes, update the size of the NPC
@@ -79,7 +100,20 @@ function checkForChange()
 	}
 }
 
-//generates the NPC
+//*******************************************
+//	Function:
+//		generate
+//
+//	Parameters:
+//		None
+//
+//	Return:
+//		None
+//
+//	Description
+//		generates the NPC
+//
+//*******************************************
 function generate()
 {
 	document.getElementById("generateButton").onclick = function()
