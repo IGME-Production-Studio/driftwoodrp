@@ -3,7 +3,7 @@
 //NPC base statistics
 var npc;
 var name, challenge, type, size, alignment, movement;
-
+var npcs = [];
 function generateStarterEnemy(){
 	//NPC class
 	npc = {
@@ -81,5 +81,7 @@ function generate()
 	document.getElementById("generateButton").onclick = function()
 	{
 		console.log(npc);
+		npcs[npcs.length] = npc;
+		console.log("There are " + npcs.length + " NPCs. These are the NPCS: " + npcs);
 	};
 }
