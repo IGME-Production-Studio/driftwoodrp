@@ -46,9 +46,14 @@ function initGraphs()
 // add: integer, negative or positive. Amount to add or subtract. 
 function doAbilityScoreChange(stat, add)
 {
+	// Make sure that we have enough points remaining to do our change. 
+	if(character.abilityPointsRemaining == 0 ) return; 
+
 	switch(stat)
 	{
 		case "Strength":
+			// Make sure it can't go below zero
+			if(character.abilityScores.Strength + add < 0) return;
 			character.abilityScores.Strength += add;
 			abilityScoreChart.datasets[0].points[0].value = abilityScoreChart.datasets[0].points[0].value +add;
 			break;
@@ -74,7 +79,19 @@ function doAbilityScoreChange(stat, add)
 			break;
 	}
 	abilityScoreChart.update();
+	updateRemainingPoints(add);
 };
+
+
+// Updater for points remaining. 
+function updateRemainingPoints(num)
+{
+	$('#pointsRemaining').val( character.abilityPointsRemaining);
+
+	character.abilityPointsRemaining -= num;
+	if(character.abilityPointsRemaining > character.maxAbilityPoints) character.abilityPointsRemaining = character.maxAbilityPoints;
+
+}
 
 // Initialize functionality of plus / minus buttons in the Basic Details / Stats tab. 
 function initAbilityScoreBtns()

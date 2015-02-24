@@ -12,14 +12,18 @@ function initCharacter()
 	character.armorClass = 10; // starts at 10 always
 
 	character.hitPoints = 0; // depends on class and level
+
+	character.abilityPointsRemaining = 15; // hard-coded for now. 
+	character.maxAbilityPoints = 15;
+
 	character.abilityScores = 
 	{
-		"Strength": 0, 
-		"Dexterity": 0, 
-		"Constitution": 0, 
-		"Intelligence": 0, 
-		"Wisdom": 0, 
-		"Charisma": 0
+		"Strength": 10, 
+		"Dexterity": 10, 
+		"Constitution": 10, 
+		"Intelligence": 10, 
+		"Wisdom": 10, 
+		"Charisma": 10
 	}; 
 
 	character.saves = 
