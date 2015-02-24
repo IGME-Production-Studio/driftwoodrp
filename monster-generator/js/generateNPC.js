@@ -73,6 +73,10 @@ function checkForChange()
 		//console.log("New Type is " + npc.type);
 	};
 	
+	document.getElementById("npcList").onchange = function()
+	{
+		console.log(document.getElementById("npcList").value);
+	}
 }
 
 //generates the NPC
@@ -80,8 +84,17 @@ function generate()
 {
 	document.getElementById("generateButton").onclick = function()
 	{
+		//adds to the array of NPCs
+		var npcPos = npcs.length;
+		console.log(npcPos);
 		console.log(npc);
-		npcs[npcs.length] = npc;
-		console.log("There are " + npcs.length + " NPCs. These are the NPCS: " + npcs);
+		npcs[npcPos] = npc;
+		console.log("There are " + npcPos + " NPCs. These are the NPCS: " + npcs);
+		
+		//adds to the NPC List on the page
+		var npcList = document.getElementById("npcList");
+		var option = document.createElement("option");
+		option.text = npcPos + " - " + npcs[npcPos].name;
+		npcList.add(option);
 	};
 }
