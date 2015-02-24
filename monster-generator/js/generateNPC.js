@@ -123,7 +123,7 @@ function generate()
 		console.log(npcPos);
 		console.log(npc);
 		npcs[npcPos] = npc;
-		console.log("There are " + npcPos + " NPCs. These are the NPCS: " + npcs);
+		console.log("There are " + (npcPos+1) + " NPCs. These are the NPCS: " + npcs);
 		
 		//adds to the NPC List on the page
 		var npcList = document.getElementById("npcList");
