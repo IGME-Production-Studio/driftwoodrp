@@ -96,7 +96,11 @@ function checkForChange()
 	
 	document.getElementById("npcList").onchange = function()
 	{
-		console.log(document.getElementById("npcList").value);
+		var npcListVal = document.getElementById("npcList").value;
+		var findChar = npcListVal.substring(0,1);
+		console.log(npcListVal);
+		console.log(findChar);
+		console.log(npcs[findChar].name);
 	}
 }
 
