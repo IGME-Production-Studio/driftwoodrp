@@ -16,25 +16,23 @@ object.prototype.initialize = function() {
 
 object.prototype.createStrokeObject = function(strokes, min, max, start) {
 	this.strokes = strokes;
-	this.min = min;
-	this.max = max;
-	this.start = start;
-	console.log("start");
-	console.log(this.start);
+	this.min = jQuery.extend(true, {}, min);
+	this.max = jQuery.extend(true, {}, max);
+	this.start = jQuery.extend(true, {}, start);
 }
 
 object.prototype.checkAABB = function(x, y) {
 	if((x > this.min.x && x < this.max.x) && (y > this.min.y && y < this.max.y)) {
-		console.log(this + " is clicked");
 		return true;
 	}
 }
 
 object.prototype.move = function(newPos) {
-	var dx = newPos.x - this.start.x;
-	var dy = newPos.y - this.start.y;
-	this.start = newPos;
+	var dx = newPos.x - ((this.min.x + this.max.x)/2);
+	var dy = newPos.y - ((this.min.y + this.max.y)/2);
 
+	//console.log(this);
+	//console.log(this.start);
 	console.log("Offset: " + dx + " - " + dy);
 
 	this.min.x += dx;
@@ -50,6 +48,7 @@ object.prototype.move = function(newPos) {
 	}
 
 	CanvasManager.render();
+	this.start = jQuery.extend(true, {}, newPos);
 }
 
 object.prototype.render = function() {
