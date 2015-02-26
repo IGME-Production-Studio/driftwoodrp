@@ -29,34 +29,46 @@
 	<div id="tabs">
   <ul>
     <li><a href="#fragment-1">Basic Details & Stats</a></li>
-    <li><a href="#fragment-2">Skills & Feats</a></li>
-    <li><a href="#fragment-3">Inventory & Wealth</a></li>
+    <li><a href="#fragment-2">Combat</a></li>
+    <li><a href="#fragment-3">Notes</a></li>
     <li><a href="#fragment-4">Levels</a></li>
+    <li><a href="#fragment-5">Skills, Feats, Abilities</a></li>
   </ul>
-  <div id="fragment-1">
+  <div id="fragment-1" class="tabArea">
   	<div class="leftCol">
     	<p>Name: <input class="lineInput" /> </p>
-    	<p>Character type: <select class="lineSelect">
-    			<option>Character</option>
-    			<option>Monster</option>
-    			<option>Hybrid</option>	
-    		</select></p>
-    	<p>Race:<select class="lineSelect">
-    			<option>Human</option>
-    			<option>Elf</option>
-    			<option>Dwarf</option>
-    			<option>Half-Elf</option>
-    			<option>Half-Orc</option>
-    			<option>Halfling</option>
-    			<option>Gnome</option>
-    	<p>Class:<select>
-
-    		</select></p>
+      <img class="npcProfPic" src="imgs/puppy.jpg" alt="image" />
     </div>
+    
+
+    <div class="midCol">
+    <p> Class 1 [class lvls]/ (Class 2[class lvls])</p>
+    <p>Character type: <select class="lineSelect">
+          <option>Character</option>
+          <option>Monster</option>
+          <option>Hybrid</option> 
+        </select></p>
+      <p>Race:<select class="lineSelect">
+          <option>Human</option>
+          <option>Elf</option>
+          <option>Dwarf</option>
+          <option>Half-Elf</option>
+          <option>Half-Orc</option>
+          <option>Halfling</option>
+          <option>Gnome</option>
+
+
+        </select></p>
+        <p>Alignment: Neutral Good </p>
+        <p>Size: Medium </p>
+    </div>
+    <br>
     <div class="rightCol">
-    <p>Points Remaining: <input value ='15' class="lineInput" id="pointsRemaining"></p>
+        
+   <!-- <p>Points Remaining: <input value ='15' class="lineInput" id="pointsRemaining"></p>-->
 
     <br>
+    <!--
     <button id="strPlus" class="upBtn">STR +</button> <button id="strMinus" class="downBtn">STR -</button><br>
 
     <button id="conPlus" class="upBtn">CON +</button><button id="conMinus" class="downBtn">CON -</button><br>
@@ -67,22 +79,38 @@
 
     <button id="wisPlus" class="upBtn">WIS +</button><button id="wisMinus" class="downBtn">WIS -</button><br>
 
-    <button id="intPlus" class="upBtn">INT +</button><button id="intMinus" class="downBtn">INT -</button><br>
+    <button id="intPlus" class="upBtn">INT +</button><button id="intMinus" class="downBtn">INT -</button><br>-->
 
+    <div id="abilityScoreGraph"><canvas id="abilityScoreGraphCanvas"></canvas></div>
 
-
-    	<div id="abilityScoreGraph"><canvas id="abilityScoreGraphCanvas"></canvas></div>
+    	
     </div>
     <div class="clearDiv"></div>
   </div>
-  <div id="fragment-2">
+  <div id="fragment-2" class="tabArea">
     <h2> Second Tab </h2>
   </div>
-  <div id="fragment-3">
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+  <div id="fragment-3" class="tabArea">
+    <textarea>
+    The GM can put whatever he wants here
+    </textarea>
   </div>
-  <div id="fragment-4">
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+  <!-- Levels --> 
+  <div id="fragment-4" class="tabArea">
+      <div class="upperTabArea">
+        <p>Available levels: "n"</p>
+      </div>
+      <div class="leftCol">
+        <p> Left column 0-10</p>
+      </div>
+        <div class="midCol">
+        <p> Left column 10-20</p>
+      </div>
+        <div class="rightCol">
+        <p> Left column 20+</p>
+      </div>
+  </div>
+  <div id="fragment-5" class="tabArea">
   </div>
 </div>
 </body> 

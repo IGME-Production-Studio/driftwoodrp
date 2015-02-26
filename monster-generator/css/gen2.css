@@ -1,24 +1,42 @@
 #tabs
 {
-	 
-	min-height: 300px;
+	position: absolute; 
+	top: 70%; 
+	height: 30%; 
+	bottom: 0;
+	width:  100%; 
 }
-
-.tabContent
+#tabs p 
 {
-	min-height: 200px;
+	font-size: small;
 }
 
+#tabs textarea
+{
+	width: 100%; 
+	min-height: 5em;
+}
+
+
+.npcProfPic
+{
+	width: 80%;
+	height: auto;
+	text-align: center;
+}
 
 .leftCol
 {
-	width: 50%; height: 100%; float: left;
-	background-color: red;
+	width: 33%; height: 100%; float: left;
 }
 
+.midCol
+{
+	width: 33%; height: 100%; float: left;
+}
 .rightCol
 {
-	width: 50%; height: 100%; float: left;
+	width: 33%; height: 100%; float: left;
 }
 .rightCol p
 {
@@ -45,8 +63,7 @@
 
 #abilityScoreGraph
 {
-	width: 90%;
-	margin: auto;
+	width: 200px;
 
 }
 
@@ -67,3 +84,34 @@
 	background-color: red;
 	display: inline;
 }
+
+.upperTabArea
+{
+	width: 100%;
+	min-height: 1em;
+}
+
+.tabArea
+{
+	overflow-y: scroll;
+	min-height: 100%; 
+}
+
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+	}
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */

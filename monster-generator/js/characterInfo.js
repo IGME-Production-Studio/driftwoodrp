@@ -8,7 +8,10 @@ function initCharacter()
 	character.alignment = alignment.NeutralNeutral;
 	character.level = 1;
 	character.characterType = characterType.Character;
+	character.cclass = classes.Cleric; 
+	character.raceBonus = raceBonus.Elf;
 
+	/* Statistics for combat */
 	character.armorClass = 10; // starts at 10 always
 
 	character.hitPoints = 0; // depends on class and level
@@ -38,9 +41,7 @@ function initCharacter()
 	]; // empty for now, but initialized at least
 
 
-	character.cclass = classes.Cleric; 
 
-	character.raceBonus = raceBonus.Elf;
 }; 
 
 
