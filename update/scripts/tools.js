@@ -5,9 +5,9 @@
 //*************************************************************
 
 function tools() {
-  console.log("Tools Object Created");
+  //console.log("Tools Object Created");
 }
 
 tools.prototype.initialize = function() {
-  console.log("Tools Initialized");
+  //console.log("Tools Initialized");
 }

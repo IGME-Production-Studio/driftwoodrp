@@ -5,9 +5,9 @@
 //*************************************************************
 
 function user() {
-  console.log("User Object Created");
+  //console.log("User Object Created");
 }
 
 user.prototype.initialize = function() {
-  console.log("User Initialized");
+  //console.log("User Initialized");
 }

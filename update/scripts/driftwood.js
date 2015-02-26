@@ -8,11 +8,11 @@ var MODE_DRAW = 0;
 var MODE_MOVE = 1;
 
 function driftwood() {
-  console.log("Driftwood Object Created");
+  //console.log("Driftwood Object Created");
 }
 
 driftwood.prototype.initialize = function() {
-  console.log("Driftwood Initialized");
+  //console.log("Driftwood Initialized");
   this.mode = MODE_DRAW;
   this.addEventListeners();
 }

@@ -5,13 +5,11 @@
 //*************************************************************
 
 function objectManager() {
-  console.log("Object Manager Created");
   this.dragTargets = [];
   this.objects = [];
 }
 
 objectManager.prototype.initialize = function() {
-  console.log("Object Manager Initialized");
   this.addEventListeners();
 }
 
@@ -30,11 +28,9 @@ objectManager.prototype.checkAABBs = function(event) {
 		$.each(this.objects, function(key, val) {
 			var result = val.checkAABB(event.offsetX, event.offsetY);
 			if(result) {
-				console.log(this);
 				this.dragTargets.push(val);
 			}
 		}.bind(this), false);
-		console.log(this.dragTargets);
 	}	
 }
 

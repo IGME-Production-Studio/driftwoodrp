@@ -5,9 +5,9 @@
 //*************************************************************
 
 function chat() {
-  console.log("Chat Object Created");
+  //console.log("Chat Object Created");
 }
 
 chat.prototype.initialize = function() {
-  console.log("Chat Initialized");
+  //console.log("Chat Initialized");
 }

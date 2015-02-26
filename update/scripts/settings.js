@@ -5,9 +5,9 @@
 //*************************************************************
 
 function settings() {
-  console.log("Settings Object Created");
+  //console.log("Settings Object Created");
 }
 
 settings.prototype.initialize = function() {
-  console.log("Settings Initialized");
+  //console.log("Settings Initialized");
 }

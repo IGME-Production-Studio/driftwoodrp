@@ -5,9 +5,9 @@
 //*************************************************************
 
 function fileIO() {
-  console.log("File IO Object Created");
+  //console.log("File IO Object Created");
 }
 
 fileIO.prototype.initialize = function() {
-  console.log("File IO Initialized");
+  //console.log("File IO Initialized");
 }

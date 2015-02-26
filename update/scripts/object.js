@@ -5,13 +5,10 @@
 //*************************************************************
 
 function object(type) {
-  console.log("Object Created");
-
   this.type = type;
 }
 
 object.prototype.initialize = function() {
-  console.log("Object Initialized");
 }
 
 object.prototype.createStrokeObject = function(strokes, min, max, start) {
@@ -31,21 +28,17 @@ object.prototype.move = function(newPos) {
 	var dx = newPos.x - ((this.min.x + this.max.x)/2);
 	var dy = newPos.y - ((this.min.y + this.max.y)/2);
 
-	//console.log(this);
-	//console.log(this.start);
-	console.log("Offset: " + dx + " - " + dy);
-
-	this.min.x += dx;
-	this.min.y += dy;
-	this.max.x += dx;
-	this.max.y += dy;
-
 	for(var i = 0; i < this.strokes.length; i++) {
 		this.strokes[i].start.x += dx;
 		this.strokes[i].start.y += dy;
 		this.strokes[i].end.x += dx;
 		this.strokes[i].end.y += dy;
 	}
+
+	this.min.x += dx;
+	this.min.y += dy;
+	this.max.x += dx;
+	this.max.y += dy;
 
 	CanvasManager.render();
 	this.start = jQuery.extend(true, {}, newPos);
@@ -56,7 +49,4 @@ object.prototype.render = function() {
 		if((this.strokes[i].start.x != -1 && this.strokes[i].start.y != -1 && this.strokes[i].end.x != -1 && this.strokes[i].end.y != -1)) 
 		Drawing.draw(this.strokes[i]);
 	}
-
-	//CanvasManager.context.rect(this.min.x, this.min.y, this.max.x, this.max.y);
-	//CanvasManager.context.stroke();
 }

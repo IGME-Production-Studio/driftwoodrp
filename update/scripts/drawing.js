@@ -5,7 +5,6 @@
 //*************************************************************
 
 function drawing() {
-  console.log("drawing Object Created");
   this.mouseDown = false;
   this.drawing = false;
   this.lastPosition = {x:-1, y:-1};
@@ -16,7 +15,6 @@ function drawing() {
 }
 
 drawing.prototype.initialize = function() {
-  console.log("drawing Initialized");
   this.addEventListeners();
 }
 
@@ -53,7 +51,6 @@ drawing.prototype.onMouseUp = function(event) {
 
 drawing.prototype.onMouseMove = function(event) {
 	if(this.mouseDown && Driftwood.mode == MODE_DRAW) {
-		console.log("Tool Mouse Move Event");
 		var startX = this.lastPosition.x == -1 ? event.offsetX : this.lastPosition.x;
 		var startY = this.lastPosition.y == -1 ? event.offsetY : this.lastPosition.y;
 
@@ -97,7 +94,6 @@ drawing.prototype.onMouseMove = function(event) {
 }
 
 drawing.prototype.draw = function(drawData) {
-	console.log("Draw");
 	CanvasManager.context.beginPath();
 	CanvasManager.context.moveTo(drawData.start.x, drawData.start.y);
 	CanvasManager.context.lineTo(drawData.end.x, drawData.end.y);
@@ -109,7 +105,6 @@ drawing.prototype.draw = function(drawData) {
 }
 
 drawing.prototype.convertDrawToObject = function() {
-	console.log("Convert Drawing to Object");
 	var obj = new object("stroke");
 	obj.initialize();
 	obj.createStrokeObject(this.currentStroke, this.drawMin, this.drawMax, this.startPosition);

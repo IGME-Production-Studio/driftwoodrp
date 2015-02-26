@@ -5,20 +5,20 @@
 //*************************************************************
 
 function canvasManager() {
-  console.log("Canvas Manager Created");
+  //console.log("Canvas Manager Created");
   this.canvas = document.createElement('canvas');
   document.body.appendChild(this.canvas);
   this.context = this.canvas.getContext('2d');
 }
 
 canvasManager.prototype.initialize = function() {
-  console.log("Canvas Manager Initialized");
+  //console.log("Canvas Manager Initialized");
   this.resize();
 }
 
 canvasManager.prototype.resize = function() {
-	this.canvas.width = $(document).width();
-  	this.canvas.height = $(document).height();
+	this.canvas.width = $(document).width() - 25;
+  this.canvas.height = $(document).height() - 25;
 }
 
 canvasManager.prototype.render = function() {

@@ -5,9 +5,9 @@
 //*************************************************************
 
 function commands() {
-  console.log("Commands Object Created");
+  //console.log("Commands Object Created");
 }
 
 commands.prototype.initialize = function() {
-  console.log("Commands Initialized");
+  //console.log("Commands Initialized");
 }
