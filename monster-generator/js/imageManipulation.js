@@ -1,11 +1,48 @@
-//concatenates the new image
+//*******************************************
+//	Image Manipulation
+//
+//	Filename: imageManipulation.js
+//
+//	Authors
+//	Mario Chuman		<mxc7819@g.rit.edu>
+//
+//*******************************************
+
+
+//*******************************************
+//	Function:
+//		imageHandler
+//
+//	Parameters:
+//		None
+//
+//	Return:
+//		None
+//
+//	Description:
+//		Concatenates the new image
+//
+//*******************************************
 function imageHandler(e2)
 {
 	var store = document.getElementById('imgstore');
 	store.innerHTML='<img src="' + e2.target.result + '" height = 187 width = 280>';
 }
 
-//loads the new image on the file
+//*******************************************
+//	Function:
+//		loadimage
+//
+//	Parameters:
+//		None
+//
+//	Return:
+//		None
+//
+//	Description:
+//		Loads the new image on the file
+//
+//*******************************************
 function loadimage(e1)
 {
 	var filename = e1.target.files[0];
@@ -26,7 +63,20 @@ function loadimage(e1)
 	}
 }
 
-//adds event listeners for the upload functionality to work
+//*******************************************
+//	Function:
+//		imageManipulation
+//
+//	Parameters:
+//		None
+//
+//	Return:
+//		None
+//
+//	Description:
+//		Adds event listeners for the upload functionality to work
+//
+//*******************************************
 function imageManipulation()
 {
 	var y = document.getElementById("getimage");

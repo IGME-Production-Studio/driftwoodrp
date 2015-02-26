@@ -4,7 +4,7 @@
 //	Filename: generateNPC.js
 //
 //	Authors
-//	Mario Chuman	<mxc7819@g.rit.edu>
+//	Mario Chuman		<mxc7819@g.rit.edu>
 //
 //*******************************************
 
@@ -12,6 +12,21 @@
 var npc;
 var name, challenge, type, size, alignment, movement;
 var npcs = [];
+
+//*******************************************
+//	Function:
+//		generateStarterEnemy
+//
+//	Parameters:
+//		None
+//
+//	Return:
+//		None
+//
+//	Description:
+//		Starter function, creates an empty NPC object
+//
+//*******************************************
 function generateStarterEnemy(){
 	//NPC class
 	npc = {
@@ -46,8 +61,8 @@ function generateStarterEnemy(){
 //	Return:
 //		None
 //
-//	Description
-//		checks changes from each of the entry fields
+//	Description:
+//		Checks changes from each of the entry fields
 //
 //*******************************************
 function checkForChange()
@@ -114,8 +129,8 @@ function checkForChange()
 //	Return:
 //		None
 //
-//	Description
-//		generates the NPC
+//	Description:
+//		Generates the NPC and saves it on the array
 //
 //*******************************************
 function generate()
