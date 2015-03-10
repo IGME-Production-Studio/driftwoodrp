@@ -138,10 +138,12 @@ function generate()
 	document.getElementById("generateButton").onclick = function()
 	{
 		//adds to the array of NPCs
+		var newNPC = npc;
 		var npcPos = npcs.length;
-		console.log(npcPos);
-		console.log(npc);
-		npcs[npcPos] = npc;
+		console.log("Position: " + npcPos);
+		console.log(newNPC);
+		npcs.push(newNPC);
+		console.log(npcs[0].name);
 		console.log("There are " + (npcPos+1) + " NPCs. These are the NPCS: " + npcs);
 		
 		//adds to the NPC List on the page
