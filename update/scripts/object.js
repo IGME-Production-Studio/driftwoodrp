@@ -51,6 +51,8 @@ object.prototype.render = function() {
 	}
 	var w = this.max.x - this.min.x;
 	var h = this.max.y - this.min.y;
+	CanvasManager.context.strokeStyle = 'rgba(100,100,100,0.5)';
+	CanvasManager.context.lineWidth = 2;
 	CanvasManager.context.rect(this.min.x, this.min.y, w, h);
 	CanvasManager.context.stroke();
 }

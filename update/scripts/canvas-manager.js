@@ -6,7 +6,6 @@
 
 function canvasManager() 
 {
-  //console.log("Canvas Manager Created");
   this.canvas = document.createElement('canvas');
   document.body.appendChild(this.canvas);
   $(this.canvas).css({'position':'absolute'});
@@ -15,15 +14,21 @@ function canvasManager()
 
 canvasManager.prototype.initialize = function() 
 {
-  //console.log("Canvas Manager Initialized");
-  
   this.resize();
+  this.addEventListeners();
+}
+
+canvasManager.prototype.addEventListeners = function()
+{
+  window.addEventListener('resize', this.resize.bind(this), false);
 }
 
 canvasManager.prototype.resize = function() 
 {
 	this.canvas.width = $(document).width() - 25;
   this.canvas.height = $(document).height() - 25;
+
+  this.render();
 }
 
 canvasManager.prototype.render = function() 

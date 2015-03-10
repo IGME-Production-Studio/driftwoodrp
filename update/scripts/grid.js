@@ -17,6 +17,12 @@ function grid()
 grid.prototype.initialize = function() 
 {
   this.resize();
+  this.addEventListeners();
+}
+
+grid.prototype.addEventListeners = function()
+{
+  window.addEventListener('resize', this.resize.bind(this), false);
 }
 
 grid.prototype.resize = function()
@@ -34,10 +40,13 @@ grid.prototype.build = function(size)
   var vertLines = Math.ceil(this.canvas.width/size);
   var horizLines = Math.ceil(this.canvas.height/size);
 
+  var vertMax = (vertLines-1)*size;
+  var horizMax = (horizLines-1)*size;
+
   for(var i = 0; i < vertLines; i++) 
   {
   	var start = {x:i*size, y:0};
-  	var end = {x:i*size, y:this.canvas.height};
+  	var end = {x:i*size, y:horizMax};
 
   	this.drawGridLine(start, end);
   }
@@ -45,7 +54,7 @@ grid.prototype.build = function(size)
   for(var i = 0; i < horizLines; i++)
   {
 		var start = {x:0, y:i*size};
-  	var end = {x:this.canvas.width, y:i*size};
+  	var end = {x:vertMax, y:i*size};
 
   	this.drawGridLine(start, end);
   }
