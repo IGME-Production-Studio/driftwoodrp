@@ -49,13 +49,12 @@ function construct() {
 
 function initialize() {
   Driftwood.initialize();
-
+  Grid.initialize();
   CanvasManager.initialize();
   Chat.initialize();
   Commands.initialize();
   Drawing.initialize();
   FileIO.initialize();
-  Grid.initialize();
   ObjectManager.initialize();
   Settings.initialize();
   Tools.initialize();

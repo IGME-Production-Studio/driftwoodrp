@@ -31,6 +31,7 @@ grid.prototype.resize = function()
   this.canvas.height = $(document).height() - 25;
 
   this.render();
+  CanvasManager.resize();
 }
 
 grid.prototype.build = function(size)
@@ -40,13 +41,13 @@ grid.prototype.build = function(size)
   var vertLines = Math.ceil(this.canvas.width/size);
   var horizLines = Math.ceil(this.canvas.height/size);
 
-  var vertMax = (vertLines-1)*size;
-  var horizMax = (horizLines-1)*size;
+  this.vertMax = (vertLines-1)*size;
+  this.horizMax = (horizLines-1)*size;
 
   for(var i = 0; i < vertLines; i++) 
   {
   	var start = {x:i*size, y:0};
-  	var end = {x:i*size, y:horizMax};
+  	var end = {x:i*size, y:this.horizMax};
 
   	this.drawGridLine(start, end);
   }
@@ -54,7 +55,7 @@ grid.prototype.build = function(size)
   for(var i = 0; i < horizLines; i++)
   {
 		var start = {x:0, y:i*size};
-  	var end = {x:vertMax, y:i*size};
+  	var end = {x:this.vertMax, y:i*size};
 
   	this.drawGridLine(start, end);
   }

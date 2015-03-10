@@ -25,8 +25,8 @@ canvasManager.prototype.addEventListeners = function()
 
 canvasManager.prototype.resize = function() 
 {
-	this.canvas.width = $(document).width() - 25;
-  this.canvas.height = $(document).height() - 25;
+	this.canvas.width = Grid.vertMax;
+  this.canvas.height = Grid.horizMax;
 
   this.render();
 }
