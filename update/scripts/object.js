@@ -49,4 +49,8 @@ object.prototype.render = function() {
 		if((this.strokes[i].start.x != -1 && this.strokes[i].start.y != -1 && this.strokes[i].end.x != -1 && this.strokes[i].end.y != -1)) 
 		Drawing.draw(this.strokes[i]);
 	}
+	var w = this.max.x - this.min.x;
+	var h = this.max.y - this.min.y;
+	CanvasManager.context.rect(this.min.x, this.min.y, w, h);
+	CanvasManager.context.stroke();
 }
