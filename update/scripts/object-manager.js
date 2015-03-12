@@ -48,8 +48,11 @@ objectManager.prototype.releaseTargets = function(event) {
 	}
 }
 
-objectManager.prototype.render = function() {
+objectManager.prototype.render = function(targetLayer) {
 	for(var i = 0; i < this.objects.length; i++) {
-		this.objects[i].render();
+		if(this.objects[i].layer == targetLayer)
+		{
+			this.objects[i].render();
+		}
 	}
 }

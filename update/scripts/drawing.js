@@ -38,8 +38,8 @@ drawing.prototype.onMouseUp = function(event) {
 		var w = this.drawMax.x - this.drawMin.x;
 		var h = this.drawMax.y - this.drawMin.y;
 
-		//CanvasManager.context.rect(this.drawMin.x, this.drawMin.y, w, h);
-		//CanvasManager.context.stroke();
+		//CanvasManager.currentContext.rect(this.drawMin.x, this.drawMin.y, w, h);
+		//CanvasManager.currentContext.stroke();
 
 		this.convertDrawToObject();
 
@@ -94,13 +94,13 @@ drawing.prototype.onMouseMove = function(event) {
 }
 
 drawing.prototype.draw = function(drawData) {
-	CanvasManager.context.beginPath();
-	CanvasManager.context.moveTo(drawData.start.x, drawData.start.y);
-	CanvasManager.context.lineTo(drawData.end.x, drawData.end.y);
-	CanvasManager.context.lineCap = 'round';
-	CanvasManager.context.lineWidth = drawData.width;
-	CanvasManager.context.strokeStyle = drawData.color;
-	CanvasManager.context.stroke();
+	CanvasManager.currentContext.beginPath();
+	CanvasManager.currentContext.moveTo(drawData.start.x, drawData.start.y);
+	CanvasManager.currentContext.lineTo(drawData.end.x, drawData.end.y);
+	CanvasManager.currentContext.lineCap = 'round';
+	CanvasManager.currentContext.lineWidth = drawData.width;
+	CanvasManager.currentContext.strokeStyle = drawData.color;
+	CanvasManager.currentContext.stroke();
 	this.drawing = true;
 }
 

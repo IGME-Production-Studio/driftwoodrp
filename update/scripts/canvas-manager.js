@@ -6,14 +6,29 @@
 
 function canvasManager() 
 {
-  this.canvas = document.createElement('canvas');
+  /*this.canvas = document.createElement('canvas');
+  $(this.canvas).addClass("absolute");
   document.body.appendChild(this.canvas);
-  $(this.canvas).css({'position':'absolute'});
-  this.context = this.canvas.getContext('2d');
+  this.context = this.canvas.getContext('2d');*/
 }
 
 canvasManager.prototype.initialize = function() 
 {
+  var mapLayer = new layer();
+  mapLayer.initialize("map");
+  var gmLayer = new layer();
+  gmLayer.initialize("gm");
+  var objLayer = new layer();
+  objLayer.initialize("object");
+
+  this.layers = [mapLayer, objLayer, gmLayer];
+  this.layerNames = [mapLayer.name, objLayer.name, gmLayer.name];
+
+  this.currentLayer = this.layers[2].name;
+  this.currentCanvas = this.layers[2].canvas;
+  this.currentContext = this.layers[2].context;
+  console.log(this.layers);
+
   this.resize();
   this.addEventListeners();
 }
@@ -25,14 +40,32 @@ canvasManager.prototype.addEventListeners = function()
 
 canvasManager.prototype.resize = function() 
 {
-	this.canvas.width = Grid.vertMax;
-  this.canvas.height = Grid.horizMax;
-
-  this.render();
+  for(var i = 0; i < this.layers.length; i++) 
+  {
+  	this.layers[i].resize();
+  }
 }
 
 canvasManager.prototype.render = function() 
 {
-	this.canvas.width = this.canvas.width;
-	ObjectManager.render();
+	for(var i = 0; i < this.layers.length; i++) 
+  {
+    this.layers[i].render();
+  }
+}
+
+canvasManager.prototype.changeLayer = function(targetLayer) 
+{
+  var index = arrayContains(this.layerNames, targetLayer);
+  if(index > -1)
+  {
+    console.log("change to " + targetLayer);
+
+    this.currentLayer = this.layers[index].name;
+    this.currentCanvas = this.layers[index].canvas;
+    this.currentContext = this.layers[index].context;
+
+    console.log(this.currentLayer);
+    document.getElementById('layer-selected').innerHTML = "Current Layer: " + targetLayer;
+  }
 }

@@ -59,4 +59,17 @@ driftwood.prototype.handleKeyboard = function(event)
 			$('#debug-text').css({'display':'none'});
 		}
 	}
+
+	if(key == '2')
+	{
+		CanvasManager.changeLayer("map");
+	}
+	if(key == '3') 
+	{
+		CanvasManager.changeLayer("object");
+	}
+	if(key == '4')
+	{
+		CanvasManager.changeLayer("gm");
+	}
 }
