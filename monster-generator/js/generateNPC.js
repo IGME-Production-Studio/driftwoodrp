@@ -10,6 +10,7 @@
 
 //NPC base statistics
 var genericNPC;
+var currentNPC;
 var name, challenge, type, size, alignment, movement;
 var npcs = [];
 
@@ -41,8 +42,8 @@ function generateStarterEnemy(){
 	
 	//calls the imageManipulation function from another js file
 	imageManipulation();
-	
 	generate();
+	changeCurrentNPC();
 };
 
 //*******************************************
@@ -65,7 +66,6 @@ function generate()
 	{
 		//adds to the array of NPCs
 		var npcPos = npcs.length;
-		console.log("Position: " + npcPos);
 		
 		var newNPC = {
 		name: document.getElementById("nameStatInput").value,
@@ -76,11 +76,7 @@ function generate()
 		movement: document.getElementById("movementStatInput").value,
 		image: ""
 		}
-		
-		console.log(newNPC);
 		npcs.push(newNPC);
-		console.log(npcs[0].name);
-		console.log("There are " + (npcPos+1) + " NPCs. These are the NPCS: " + npcs);
 		
 		//adds to the NPC List on the page
 		var npcList = document.getElementById("npcList");
@@ -88,4 +84,26 @@ function generate()
 		option.text = npcPos + " - " + npcs[npcPos].name;
 		npcList.add(option);
 	};
+}
+
+
+function changeCurrentNPC()
+{
+	document.getElementById("npcList").onchange = function()
+	{
+		var npcPos = document.getElementById("npcList").value.substring(0,1);
+		currentNPC = npcs[npcPos];
+		console.log(currentNPC);
+		changeValues();
+	};
+}
+
+function changeValues()
+{
+	document.getElementById("nameStatInput").value = currentNPC.name;
+	document.getElementById("challengeStatInput").value = currentNPC.challenge;
+	document.getElementById("typeStatInput").value = currentNPC.type;
+	document.getElementById("sizeStatInput").value = currentNPC.size;
+	document.getElementById("alignmentStatInput").value = currentNPC.alignment;
+	document.getElementById("movementStatInput").value = currentNPC.movement;
 }
