@@ -83,10 +83,24 @@ function generate()
 		var option = document.createElement("option");
 		option.text = npcPos + " - " + npcs[npcPos].name;
 		npcList.add(option);
+		npcList.value = option.text;
 	};
 }
 
-
+//*******************************************
+//	Function:
+//		changeCurrentNPC
+//
+//	Parameters:
+//		None
+//
+//	Return:
+//		None
+//
+//	Description:
+//		Changes the current NPC in the back-end
+//
+//*******************************************
 function changeCurrentNPC()
 {
 	document.getElementById("npcList").onchange = function()
@@ -98,6 +112,20 @@ function changeCurrentNPC()
 	};
 }
 
+//*******************************************
+//	Function:
+//		changeValues
+//
+//	Parameters:
+//		None
+//
+//	Return:
+//		None
+//
+//	Description:
+//		Changes the interface boxes to reflect who the current NPC is
+//
+//*******************************************
 function changeValues()
 {
 	document.getElementById("nameStatInput").value = currentNPC.name;
