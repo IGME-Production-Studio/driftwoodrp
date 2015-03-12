@@ -1,0 +1,26 @@
+html, body, #main
+{
+	height: 100%; 
+
+}
+
+#main
+{
+	background-color: purple;
+}
+
+#monster-tab-bottom
+{
+	position: absolute; 
+	background-color: red;
+	bottom: 0;
+	left: 5%; 
+	width: 70%; 
+	min-height: 200px;
+	max-height: 200px;
+}
+
+.ui-tabs-panel
+{
+	height: auto;
+}
