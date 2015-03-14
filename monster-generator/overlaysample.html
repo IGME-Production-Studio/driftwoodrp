@@ -10,11 +10,14 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 	<script src="js/creatureTemplate.js"></script>
 	<script src="js/creatureLoader.js"></script>
+	<script src="js/pathfinder/bestiary.js"></script>
+	<script src="js/bestParser.js"></script>
 	<script>
 		function init()
 		{
 			$('#monster-bot-tabs').tabs();
 			loadCreature();
+			doTheParse();
 		};
 		window.onload = init; 
 	</script> 
@@ -42,7 +45,7 @@
 					</div>
 				</div>
 				<div id="tabs-2">
-					<p> Second tab </p>
+					<textarea class="notes"></textarea>
 				</div>
 				<div id="tabs-3">
 					<p> Third Tab </p>

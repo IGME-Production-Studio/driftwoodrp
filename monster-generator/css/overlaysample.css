@@ -47,3 +47,9 @@ html, body, #main
 	font-size: 10px; 
 	display: inline;
 }
+
+.notes
+{
+	rows: 10;
+	width: 90%;
+}
