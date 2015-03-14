@@ -61,13 +61,16 @@ object.prototype.move = function(newPos)
 
 object.prototype.render = function() 
 {
+	CanvasManager.currentContext.beginPath();
 	for(var i = 1; i < this.strokes.length - 1; i++) 
 	{
 		if((this.strokes[i].start.x != -1 && this.strokes[i].start.y != -1 && this.strokes[i].end.x != -1 && this.strokes[i].end.y != -1)) 
 		{
-			Drawing.draw(this.strokes[i]);
+			Drawing.redraw(this.strokes[i]);
+			//Drawing.draw(this.strokes[i]);
 		}
 	}
+	CanvasManager.currentContext.stroke();
 }
 
 object.prototype.renderBoundingOutline = function()

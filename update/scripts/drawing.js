@@ -104,6 +104,15 @@ drawing.prototype.draw = function(drawData) {
 	this.drawing = true;
 }
 
+drawing.prototype.redraw = function(drawData) {
+	CanvasManager.currentContext.moveTo(drawData.start.x, drawData.start.y);
+	CanvasManager.currentContext.lineTo(drawData.end.x, drawData.end.y);
+	CanvasManager.currentContext.lineCap = 'round';
+	CanvasManager.currentContext.lineWidth = drawData.width;
+	CanvasManager.currentContext.strokeStyle = drawData.color;
+	this.drawing = true;
+}
+
 drawing.prototype.convertDrawToObject = function() {
 	var obj = new object("stroke");
 	obj.initialize();

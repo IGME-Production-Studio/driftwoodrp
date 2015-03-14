@@ -49,6 +49,7 @@ objectManager.prototype.releaseTargets = function(event) {
 }
 
 objectManager.prototype.render = function(targetLayer) {
+
 	for(var i = 0; i < this.objects.length; i++) {
 		if(this.objects[i].layer == targetLayer)
 		{
