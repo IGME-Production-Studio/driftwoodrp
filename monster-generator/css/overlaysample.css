@@ -12,12 +12,13 @@ html, body, #main
 #monster-tab-bottom
 {
 	position: absolute; 
-	background-color: red;
-	bottom: 0;
+	background: none;
 	left: 5%; 
+	bottom: -25px;
 	width: 70%; 
-	height: 30%; 
+	height: 20%; 
 	overflow: hidden;
+	border-radius:10px;
 }
 
 .ui-tabs-panel
@@ -38,14 +39,15 @@ html, body, #main
 
 .tabContent h1
 {
-	font-size: 10px;
+	font-size: 15px;
 	display: inline;
 }
 
 .tabContent span
 {
-	font-size: 10px; 
+	font-size: 15px; 
 	display: inline;
+	font-family: arial;
 }
 
 .notes
