@@ -8,10 +8,13 @@
 		<!-- jQuery UI --> 
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+	<script src="js/creatureTemplate.js"></script>
+	<script src="js/creatureLoader.js"></script>
 	<script>
 		function init()
 		{
 			$('#monster-bot-tabs').tabs();
+			loadCreature();
 		};
 		window.onload = init; 
 	</script> 
@@ -19,7 +22,7 @@
 
 <body> 
 	<div id="main"> 
-
+	<button id="loadBtn">LOAD</button>
 		<div id="monster-tab-bottom">
 			<div id="monster-bot-tabs">
 				<ul> 
@@ -29,12 +32,14 @@
 					<li><a href="#tabs-4">Feats & Skills</a></li>
 				</ul>
 				<div id="tabs-1">
+					<div class="tabContent">
 					<p> First tab </p>
 					<p> First tab </p>
 					<p> First tab </p>
 					<p> First tab </p>
 					<p> First tab </p>
 					<p> First tab </p>
+					</div>
 				</div>
 				<div id="tabs-2">
 					<p> Second tab </p>
