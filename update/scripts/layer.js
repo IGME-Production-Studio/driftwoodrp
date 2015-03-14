@@ -4,6 +4,13 @@
 //  Author: Jake Higgins <jth7036@rit.edu>
 //*************************************************************
 
+//*************************************************************
+//  Function:
+//      layer
+//
+//  Description:
+//      Creates a prototype object and canvas for the layer
+//*************************************************************
 function layer() 
 {
   this.canvas = document.createElement('canvas');
@@ -12,6 +19,16 @@ function layer()
   this.context = this.canvas.getContext('2d');
 }
 
+//*************************************************************
+//  Function:
+//      layer.initialize
+//
+//  Parameters:
+//    name - the name of the layer to initialize
+//
+//  Description:
+//      Initializes the layer with the given name
+//*************************************************************
 layer.prototype.initialize = function(name) 
 {
   this.name = name;
@@ -19,6 +36,13 @@ layer.prototype.initialize = function(name)
   this.resize();
 }
 
+//*************************************************************
+//  Function:
+//      layer.resize
+//
+//  Description:
+//      Resizes the canvas attached to the layer
+//*************************************************************
 layer.prototype.resize = function() 
 {
   this.canvas.width = Grid.vertMax;
@@ -27,6 +51,14 @@ layer.prototype.resize = function()
   this.render();
 }
 
+//*************************************************************
+//  Function:
+//      layer.render
+//
+//  Description:
+//      Calls to the ObjectManager to render all objects from
+//    the layer
+//*************************************************************
 layer.prototype.render = function() 
 {
 	this.canvas.width = this.canvas.width;
