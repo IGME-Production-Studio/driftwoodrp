@@ -8,16 +8,43 @@ function loadBasics(creature)
 {
 	// This will eventually be a Node function to get things by name
 	// for the purpose of demonstration I will briefly just grab a sample
-	var overviewHTML = "<h1 class='heading'>Name: </h1><span>" + creature.name + "</span>";
+	var overviewHTML = "<h1 class='heading'>Name: </h1><input value=\"" + creature.name + "\"</value>";
 
 	// Alignment
-	overviewHTML += "<br><h1 class='heading'>Alignment: </h1><span>";
-	overviewHTML += getAlignment(creature.alignment) + "</span>";
+	overviewHTML += "<br><h1 class='heading'>Alignment: </h1><input value=\"";
+	overviewHTML += getAlignment(creature.alignment) + "\"></input>";
 	overviewHTML += "<br><h1 class='heading'>Classes: </h1><span>" + getClass(creature.classes) + "</span>";
+
+	overviewHTML += "<br><h1 class='size'>Size: </h1></span><select class=\"userStatInputs\" id=\"sizeStatInput\">";
+	overviewHTML += getSize(creature.spatial.size);
+	overviewHTML += "</select>";
+
 
 	$('#tabs-1').find('.tabContent').html(overviewHTML);
 }
 
+function getSize(siz)
+{
+	console.log(siz);
+	var sizes = [
+		{"name": "Tiny"},
+		{"name": "Small"},
+		{"name": "Medium"},
+		{"name": "Large"},
+		{"name": "Huge"},
+		{"name": "Gargantuan"}
+	];
+	var returnable = "";
+	for(var i = 0; i<sizes.length; i++)
+	{
+		if(siz == sizes[i].name)
+		{
+			returnable += "<option value=\""+sizes[i].name+"\" selected>"+sizes[i].name+"</option>";
+		}
+		else returnable += "<option value=\""+sizes[i].name+"\">"+sizes[i].name+"</option>";
+	}
+	return returnable;
+}
 // take class info garbage and return as formatted
 function getClass(classes)
 {

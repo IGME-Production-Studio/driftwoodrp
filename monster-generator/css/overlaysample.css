@@ -53,3 +53,15 @@ html, body, #main
 	rows: 10;
 	width: 90%;
 }
+
+select
+{
+	-webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   	font-size: 10px; 
+}
+
+option
+{
+}

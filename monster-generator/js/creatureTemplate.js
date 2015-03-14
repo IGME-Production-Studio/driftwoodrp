@@ -31,7 +31,7 @@ var sampleCreature =
 	"isCompanion": false,
 	"savingThrows": {"fort": 0, "ref": 0, "wil": 0 }, 
 	"combatInfo": {"cr": 0, "melee": "", "ranged": "" , "ac": 0, "ac_touch": 0, "ac_flatFooted": 0 },
-	"spatial": {"size": "", "space": 0, "reach": 0}, 
+	"spatial": {"size": "Gargantuan", "space": 0, "reach": 0}, 
 	"abilityScores": {"str": 0, "dex": 0, "con": 0, "int": 0, "wis": 0, "cha": 0},
 	"hitPoints": {"hitDie": "", "hp": 0}, 
 	"feats": [], 
