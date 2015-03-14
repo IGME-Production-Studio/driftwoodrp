@@ -37,6 +37,7 @@ var sampleCreature =
 	"feats": [], 
 	"skills": [],
 	"speed": { "speed": "", "baseSpeed": 0, "flySpeed": "", "maneuverability": "", "climbSpeed": 0, "swimSpeed": 0, "burrowSpeed": 0, "speedSpecial": "", "speedLand": 0, "fly": 0, "climb": 0, "burrow": 0, "swim": 0}
+	"notes": ""
 };
 
 // only flight has maneuverability

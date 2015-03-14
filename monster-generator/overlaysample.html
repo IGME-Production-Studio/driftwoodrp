@@ -8,15 +8,25 @@
 		<!-- jQuery UI --> 
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-	<script src="js/creatureTemplate.js"></script>
+	<!--<script src="js/creatureTemplate.js"></script>-->
 	<script src="js/creatureLoader.js"></script>
-	<script src="js/pathfinder/bestiary.js"></script>
+	<!--<script src="js/pathfinder/bestiary.js"></script>-->
 	<script src="js/bestParser.js"></script>
+	<!--<script src="js/saveObj.js"></script>-->
 	<script>
 		function init()
 		{
+			"use strict";
 			$('#monster-bot-tabs').tabs();
+
+			$('#generateButton').click(function()
+			{
+				generateNPCObj();
+			});
+
 			loadCreature();
+
+
 			//doTheParse();
 		};
 		window.onload = init; 
@@ -25,7 +35,7 @@
 
 <body> 
 	<div id="main"> 
-	<button id="loadBtn">LOAD</button>
+	<button id="generateButton">SAVE</button>
 		<div id="monster-tab-bottom">
 			<div id="monster-bot-tabs">
 				<ul> 
