@@ -19,8 +19,6 @@ function grid()
   document.body.appendChild(this.canvas);
   $(this.canvas).css({'z-index':-50});
   this.context = this.canvas.getContext('2d');
-
-  this.size = 100;
 }
 
 //*************************************************************
@@ -31,8 +29,10 @@ function grid()
 //    Adds event listeners and performs an initial resize on
 //    the grid canvas
 //*************************************************************
-grid.prototype.initialize = function() 
+grid.prototype.initialize = function(size) 
 {
+  this.size = size;
+
   this.resize();
   this.addEventListeners();
 }

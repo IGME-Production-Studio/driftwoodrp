@@ -69,7 +69,7 @@ function construct() {
 //*************************************************************
 function initialize() {
   Driftwood.initialize();
-  Grid.initialize();
+  Grid.initialize(50);
   CanvasManager.initialize();
   Chat.initialize();
   Commands.initialize();
