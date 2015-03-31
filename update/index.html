@@ -6,6 +6,7 @@
     <link rel='stylesheet' href='css/main.css'>
 
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="lib/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
     <script src="https://cdn.socket.io/socket.io-1.3.3.js"></script>
 
 
@@ -30,7 +31,9 @@
     <div id='debug-text'>
       <span class='noselect' id='mode-display'>Current Mode: Draw</span><br>
       <span class='noselect' id='bounding-display'>Bounding Volumes: false</span><br>
-      <span class='noselect' id='layer-selected'>Current Layer: Object</span>
+      <span class='noselect' id='layer-selected'>Current Layer: Object</span><br>
+      <input type='file' id='image-upload'></input>
+      <button id='image-upload-submit' onclick='FileIO.uploadImage()'>Upload Image</button>
     </div>
   </body>
 </html>

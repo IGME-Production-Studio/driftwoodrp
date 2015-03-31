@@ -60,7 +60,8 @@ drawing.prototype.addEventListeners = function() {
 //      Toggles mouseDown bool to true
 //*************************************************************
 drawing.prototype.onMouseDown = function(event) {
-	this.mouseDown = true;
+	if(event.target.nodeName == 'CANVAS')
+		this.mouseDown = true;
 }
 
 //*************************************************************
