@@ -10,9 +10,10 @@ body
 	position: relative;
 	top: 22%;
 	@include box-sizing(border-box);
-	width: 340px;
+	width: 440px;
+	height: 520px;
 	margin: 0 auto;
-	margin-top: 22%;
+	margin-top: 12.6%;
 	padding: 30px;
 	background-color: rgba(241, 241, 245, 0.9);
 	border: 1px solid #aaaacc;
@@ -40,7 +41,14 @@ body
 textarea {
         @include box-sizing(border-box);
         padding: 10px;
-        width: 100%;
+		margin-top:5%;
+        width: 95%;
+		height: 100%;
+		border: 1px solid #aaaacc;
+		border-radius:10px;
+		background-color: rgba(241, 241, 245, 0.9);
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		
         textarea {
           @include box-shadow(none);
           margin-bottom: 0;
