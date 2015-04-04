@@ -44,7 +44,7 @@ function doTheParse()
 			if(bestiary[i].CompanionFlag == 1) subText += "true, "; 
 			else subText += "false, "; 
 
-		subText += "\"savingThrows
+		subText += "\"savingThrows\": \"fort\": \"" + bestiary[i].Fort + "\", \"ref\": \"" + bestiary[i].Ref + "\", \"wil\": \"" + bestiary[i].Will + 
 
 		subText += "}"; // end creature object
 		if(i < bestiary.length-1) subText += ","; // If there is another element after this, add a comma
