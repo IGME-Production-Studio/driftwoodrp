@@ -36,7 +36,7 @@ function doTheParse()
 				subText += "\"" + lang[l] + "\""; 
 				if(l != lang.length-1) subText += ", "; 
 			}
-		subText += ", \"sq\": \"" + bestiary[i].SQ + "\", \"environment\": \""+ bestiary[i].Environment + "\", \"organization\": \"" + bestiary[i].Organization +"\"}, ";
+		subText += "], \"sq\": \"" + bestiary[i].SQ + "\", \"environment\": \""+ bestiary[i].Environment + "\", \"organization\": \"" + bestiary[i].Organization +"\"}, ";
 		subText += "\"isCharacter\": "; 
 			if(bestiary[i].CharacterFlag == 1) subText += "true, ";
 			else subText += "false, ";
@@ -44,12 +44,44 @@ function doTheParse()
 			if(bestiary[i].CompanionFlag == 1) subText += "true, "; 
 			else subText += "false, "; 
 
-		subText += "\"savingThrows\": \"fort\": \"" + bestiary[i].Fort + "\", \"ref\": \"" + bestiary[i].Ref + "\", \"wil\": \"" + bestiary[i].Will + 
+		subText += "\"savingThrows\": { \"fort\": \"" + bestiary[i].Fort + "\", \"ref\": \"" + bestiary[i].Ref + "\", \"wil\": \"" + bestiary[i].Will + "\"},";
+		subText += "\"combatInfo\": {\"cr\": \"" + bestiary[i].CR + "\", \"melee\": \"" + bestiary[i].Melee + "\", \"ranged\": \"" + bestiary[i].Ranged + "\", \"ac\": \"" + bestiary[i].AC + "\", \"ac_touch\": \"" + bestiary[i].AC_Touch + "\", \"ac_flatFooted\": \"" + bestiary[i].AC_Flatfooted + "\"},";
+		subText += "\"spatial\": {\"size\": \"" + bestiary[i].Size + "\", \"space\": \"" + bestiary[i].Space + "\", \"reach\": \"" + bestiary[i].Reach + "\"},"; // space, reach
 
-		subText += "}"; // end creature object
+		subText += "\"abilityScores\": {\"str\": \"" + bestiary[i].Str + "\", \"dex\": \"" + bestiary[i].Dex + "\", \"con\": \"" + bestiary[i].Con + "\", \"int\": \"" + bestiary[i].Int + "\", \"wis\": \""+ bestiary[i].Wis + "\", \"cha\": \"" + bestiary[i].Cha + "\"},";
+		subText += "\"hitPoints\": {\"hitDie\": \"" + bestiary[i].HD + "\", \"hp\": \"" + bestiary[i].HP + "\" },";
+		subText += "\"feats\": [";
+
+		// Get all the feats loaded in 
+			var fs = bestiary[i].Feats; 
+			var fsarray = fs.split(','); // array of all feats
+			for(var z = 0; z < fsarray.length; z ++) 
+			{
+				subText += "\"" + fsarray[z] + "\""; 
+				if( z != fsarray.length-1 ) subText += ",";
+			}
+
+		subText += "],";
+
+		// Skills - here we go
+		subText += "\"skills\":[";
+
+			var sk = bestiary[i].Skills; 
+			var skarray = sk.split(','); 
+			for(var y = 0; y < skarray.length; y ++)
+			{
+				subText += "\"" + skarray[y] + "\""; 
+				if( y != skarray.length-1 ) subText += ","; 
+			}
+		subText += "],"; // end skills
+
+		subText += "\"speed\": { \"speed\": \"" + bestiary[i].Speed + "\", \"baseSpeed\":  \"" + bestiary[i].Base_Speed + "\", \"flySpeed\": \"" + bestiary[i].Fly_Speed + "\", \"maneuverability\": \"" + bestiary[i].Maneuverability + "\", "; 
+		subText += "\"climbSpeed\": \"" + bestiary[i].Climb_Speed + "\", \"swimSpeed\": \"" + bestiary[i].Swim_Speed + "\", \"burrowSpeed\": \"" + bestiary[i].Burrow_Speed + "\", \"speedSpecial\": \"" + bestiary[i].Speed_Special + "\", \"speedLand\": \"" + bestiary[i].Speed_Land + "\", \"fly\": \"" + bestiary[i].Fly + "\", \"climb\": \"" + bestiary[i].Climb + "\", \"burrow\": \"" + bestiary[i].Burrow + "\", \"swim\": \"" + bestiary[i].Swim + "\"},";
+		subText += "\"notes\": \"none\"";
+			subText += "}"; // end creature object
 		if(i < bestiary.length-1) subText += ","; // If there is another element after this, add a comma
 		mainText += subText; 
-	}
+	} // end loop
 
 	mainText+="]"; // end array
 	$('#main').html(mainText);
