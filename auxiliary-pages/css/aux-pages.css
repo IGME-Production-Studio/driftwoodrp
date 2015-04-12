@@ -59,9 +59,24 @@ body
 	background: #0044cc;
 }
 
+#tutorial
+{
+		padding: 10px;
+		margin-top:5%;
+		width: 95%;
+		height: 100%;
+		border: 1px solid #aaaacc;
+		border-radius:10px;
+		background-color: rgba(241, 241, 245, 0.9);
+
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 14px;
+
+		margin-bottom: 0;
+}
+
 textarea 
 {
-        @include box-sizing(border-box);
         padding: 10px;
 		margin-top:5%;
         width: 95%;
@@ -69,15 +84,16 @@ textarea
 		border: 1px solid #aaaacc;
 		border-radius:10px;
 		background-color: rgba(241, 241, 245, 0.9);
-		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 		
-        textarea {
-          @include box-shadow(none);
-          margin-bottom: 0;
-          max-height: 85px;
-          border: none;
-          resize: none; 
-          &:focus {
-
-          }
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 14px;
+		
+		margin-bottom: 0;
+		
+        textarea
+		{
+			@include box-shadow(none);
+			border: none;
+			resize: none;
+		}
 }
