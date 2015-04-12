@@ -1,8 +1,8 @@
 body
-{
-	background-image: url("../../assets/images/driftwoodimage.jpg");
-	background-size: 100%;
-	background-repeat: no-repeat;
+{	
+	background: white url("../../assets/images/driftwoodimage.jpg") no-repeat top left fixed;
+	background-size: cover;
+	transition: background 0.5s ease;
 }
 
 #aboutForm
