@@ -18,6 +18,8 @@ function init()
 	{
 		doExitMgen();
 	});
+
+	doLoadMonster(bestiary[0]);
 }
 
 function doSaveMonster()
@@ -26,11 +28,15 @@ function doSaveMonster()
 }
 
 // load a monster object into the monster generator for editing
-function loadMonster(monsterobj)
+function doLoadMonster(monsterobj)
 {
-
+	console.log(monsterobj.name);
+	// Load values into inputs
+	$('#m_name').val(monsterobj.name);
+	$('#m_class1').val(monsterobj.classes.class1.name); 
+	$('#m_class2').val(monsterobj.classes.class2.name);
 };
-1
+
 function doExitMgen()
 {
  // for now, just close the window

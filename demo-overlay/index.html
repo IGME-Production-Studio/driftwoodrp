@@ -6,6 +6,7 @@
 			<!-- jQuery UI --> 
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+		<script src="../monster-generator/js/pathfinder/bestiary-clean.js"></script>
 		<link rel="stylesheet" type="text/css" href="bootstrap.css" />
 		<link rel="stylesheet" type="text/css" href="tabscss.css" /> 
 
@@ -174,13 +175,15 @@
 		  </ul>
 		  <div id="tabs-1">
 		  	<!-- Name -->
-		  	<input class="monsterstat" id="m_name" placeholder="Name"></input>
+		  	<p>Name: </p><input class="monsterstat" id="m_name" placeholder="Name"></input><br>
 		  	<!-- Classes -->
-		  	<input class="monsterstat" id="m_class1"></input>
+		  	<p>Class 1: </p><input class="monsterstat" id="m_class1" placeholder="Class 1"></input><br> 
+		  	<p> Class 2: </p><input class="monsterstat" id="m_class2" placeholder="Class 2"></input><br> 
 		  	<!-- HP -->
-		  	<input class="monsterstat" id="m_hp"></input>
+		  	<p>HP: </p><input class="monsterstat" id="m_hp" placeholder="HP"></input><br> 
+		  	<p>Hit Die: </p><input class="monsterstat" id="m_hitdie" placeholder="Hit Die"></input><br>
 		  	<!-- Size --> 
-		  	<input class="monsterstat" id="m_size"></input>
+		  	<p>Size: </p><input class="monsterstat" id="m_size" placeholder="Size"></input><br>
 		  </div>
 		  <div id="tabs-2">
 		   

@@ -910,6 +910,15 @@ select {
 	width: calc(100% - 340px);
 }
 
+.monstercontent input
+{
+  display: inline-block;
+}
+
+.monstercontent p
+{
+  display: inline;
+}
 
 #saveicon
 {
