@@ -18,7 +18,10 @@ function init()
 	{
 		doExitMgen();
 	});
-
+	$('#newmonster').click(function()
+	{
+		
+	});
 	doLoadMonster(bestiary[0]);
 }
 
@@ -41,4 +44,9 @@ function doExitMgen()
 {
  // for now, just close the window
  $('#monsteredit').slideUp();
+}
+
+function doNewMgen()
+{
+	$('#monsteredit').slideDown(); 
 }
