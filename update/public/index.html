@@ -1,234 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head> 
-    <title> Driftwood Demo </title> 
-    <!-- jQuery UI --> 
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
-    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="static/css/tabscss.css" /> 
-    <link rel='stylesheet' href='static/css/main.css'>
-
-    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-    <script src="static/lib/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
-    <script src="https://cdn.socket.io/socket.io-1.3.3.js"></script>
-
-    <script src="monster-generator/js/pathfinder/bestiary-clean.js"></script>
-
-    <script src="static/scripts/demoscripts.js"></script> 
-
-    <script type="text/javascript" src="static/scripts/main.js"></script>
-    <script type="text/javascript" src="static/scripts/driftwood.js"></script>
-
-    <script type="text/javascript" src="static/scripts/canvas-manager.js"></script>
-    <script type="text/javascript" src="static/scripts/chat.js"></script>
-    <script type="text/javascript" src="static/scripts/commands.js"></script>
-    <script type="text/javascript" src="static/scripts/drawing.js"></script>
-    <script type="text/javascript" src="static/scripts/file-io.js"></script>
-    <script type="text/javascript" src="static/scripts/grid.js"></script>
-    <script type="text/javascript" src="static/scripts/helper.js"></script>
-    <script type="text/javascript" src="static/scripts/layer.js"></script>
-    <script type="text/javascript" src="static/scripts/object.js"></script>
-    <script type="text/javascript" src="static/scripts/object-manager.js"></script>
-    <script type="text/javascript" src="static/scripts/socket.js"></script>
-    <script type="text/javascript" src="static/scripts/settings.js"></script>
-    <script type="text/javascript" src="static/scripts/tools.js"></script>
-    <script type="text/javascript" src="static/scripts/user.js"></script>
-  </head> 
-
-  <body class='noselect'>
-    <aside class="panel">
-      <div class="nav">
-        <div class="game-info">
-          <div class="game-name">
-            <strong>uigrab</strong><br>
-            <small class="muted">by Giga</small>
-          </div>
-
-          <div class="dropdown menu lobby-return">
-            <div class="dropdown-toggle icon-caret-down" data-toggle="dropdown" style="font-weight: bold"></div>
-              <ul class="dropdown-menu pull-right">
-                <li>
-                  <a href="/">Return to Lobby</a><a href="/logout">Logout</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <ol class="unstyled inline" data-tab-panels=".chat,.objects, .monsters" data-tabs="tabs">
-            <li data-target=".chat" data-toggle="tab"><b class="icon-comment"></b>Chat</li>
-
-            <li data-target=".objects" data-toggle="tab"><b class="icon-pushpin"></b>Objects</li>
-
-            <!--<li data-target=".settings" data-toggle="tab"><b class="icon-cog"></b>Settings</li>-->
-
-            <li data-target=".monsters" data-toggle="tab"><b class="icon-cog"></b>Monsters</li>
-          </ol>
-        </div><!-- Chat-->
-
-        <div class="chat" id="chat">
-           <!--<div class="content">
-             <div class="message-wrapper">
-               <div class="messages" data-spy="scroll"></div>
-             </div>
-
-             <div class="input">
-               <div class="textarea">
-                 <textarea class="input-block-level" data-activate="elastic" data-on="load" placeholder="Chat away..."rows="1"></textarea>
-               </div>
-             </div>
-           </div>
-           <p> CHAT SUPPOSED TO BE HERE </p>-->
-
-           <!-- Click to add new monster --> 
-           <div class="iconarea" id="newmonster"><div class="monstericon plusico"></div><p>Add New...</p></div>
-        </div><!-- Objects-->
-
-        <div class="objects" id="objects">
-          <div class="content">
-            <div class="tr object-list">
-              <div class="object-wrapper">
-                <ol class="unstyled">
-                  <li class="object">
-                    <p class="tmp"><input class="input-block-level" placeholder="http://" type="text"></p>
-                  </li>
-                </ol>
-              </div>
-            </div>
-
-            <div class="tr">
-              <div class="upload">
-                <select name="upload-type">
-                  <option value="token">
-                    Token
-                  </option>
-
-                  <option value="map">
-                    Map
-                  </option>
-
-                  <option value="item">
-                    Item
-                  </option>
-                </select><input name="_csrf" type="hidden" value=
-                        "tvgdMLlj-usw3ePVsnw0j_c7spM6DA4o10Q8"><input name=
-                        "uploadUrl" type="hidden" value=
-                        "/uploadToken/gabzilla/uigrab">
-
-                <div class="file-upload select-file btn btn-primary">
-                            Upload<input accept="image/*" id="object-upload"
-                            name="object" type="file">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div><!-- Settings-->
-
-        <div class="settings">
-            <div class="content">
-                <div class="tr">
-                    <div class="settings-wrapper">
-                        <div class=
-                        "settings-content control-pane form-horizontal"></div>
-                    </div>
-                </div>
-
-                <div class="tr">
-                    <div class="actions">
-                        <input class=
-                        "save-settings btn btn-success input-block-level" type=
-                        "button" value="Save"><input class=
-                        "cancel-settings btn input-block-level" type="button"
-                        value="Cancel">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </aside>
-    <!-- End TABS --> 
-    <!-- area for Jake's drawing stuff / graph -->
-    <div id="grapharea">
-      <div id='debug-text'>
-        <span class='noselect' id='mode-display'>Current Mode: Draw</span><br>
-        <span class='noselect' id='bounding-display'>Bounding Volumes: false</span><br>
-        <span class='noselect' id='layer-selected'>Current Layer: Object</span><br>
-      </div>
-      <div id='tool-container' class='absolute' style='z-index:3'> 
-        <input type='file' id='image-upload'></input>
-        <button id='image-upload-submit' onclick='FileIO.uploadImage()'>Upload Image</button>
-        <button id='clear-room' onclick='CanvasManager.clear()'>Clear Room</button>
-      </div>
-      <div id="monsteredit">
-        <h1><span id="monstertitle"> MONSTERNAME</span><div id="saveicon"></div><div id="xicon"></div></h1>
-        <div class="monstercontent">
-          <!-- tabs and stuff here --> 
-          <div id="mgentabs">
-            <ul>
-              <li><a href="#tabs-1">Basic Details</a></li>
-              <li><a href="#tabs-2">Combat</a></li>
-              <li><a href="#tabs-3">Notes</a></li>
-              <li><a href="#tabs-4">Levels</a></li>
-              <li><a href="#tabs-5">Skills, Feats, Abilities</a></li>
-            </ul>
-            <!-- General Info -->
-            <div id="tabs-1">
-              <!-- Name -->
-              <p>Name: </p><input class="monsterstat" id="m_name" placeholder="Name"></input><br>
-              <!-- Alignment --> 
-              <p>Alignment: </p><input class="monsterstat" id="m_alignment" placeholder="Alignment"></input><br>
+  <head>
+    <title>About Driftwood</title>
+    <link rel="stylesheet" href="static/css/aux-pages.css"/>
+    <link rel="icon" type="image/png" href="static/images/favicon.ico"/>
         
-              <!-- HP -->
-              <p>HP: </p><input class="monsterstat" id="m_hp" placeholder="HP"></input><br> 
-              <p>Hit Die: </p><input class="monsterstat" id="m_hitdie" placeholder="Hit Die"></input><br>
-              <!-- Size --> 
-              <p>Size: </p><input class="monsterstat" id="m_size" placeholder="Size"></input><br>
-  	           <p>Treasure: </p><input class="monsterstat" id="m_treasure" placeholder="Treasure Dropped"></input><br>
-               <p>XP Given: </p><input class="monsterstat" id="m_xp" placeholder="XP Dropped"></input><br
-               <p>Gear Dropped: </p><input class="monsterstat" id="m_gear" placeholder="Gear Dropped"></input><br>        
-               </div>
-      <!-- Combat Info --> 
-	    <div id="tabs-2">
-		    <p>AC: </p><input class="monsterstat" id="m_ac" placeholder="AC"></input><br>
-        <p>CR: </p><input class="monsterstat" id="m_cr" placeholder="Challenge Rating"></input><br>
-        <p>Melee: </p><input class="monsterstat" id="m_melee" placeholder="Melee Weapon +x (ndx + x)"></input><br>
-        <p>Ranged: </p><input class="monsterstat" id="m_ranged" placeholder="Ranged Weapon +x (ndx +x )"></input><br>
-        <p>AC Touch: </p><input class="monsterstat" id="m_actouch" placeholder="AC Touch"></input><br>
-        <p>AC Flatfooted: </p><input class="monsterstat" id="m_acflat" placeholder="AC Flatfooted"></input><br>
-        <p>Fort Save: </p><input class="monsterstat" id="m_forts" placeholder="Fortitude Save"></input><br>
-	     <p>Ref Save: </p><input class="monsterstat" id="m_refs" placeholder="Ref Save"></input><br>
-       <p>Will Save: </p><input class="monsterstat" id="m_wils" placeholder="Will Save"></input><br>
+    <script>
+      function enterDriftwood() {
+        window.location = "http://driftwood.higginsgames.com/main.html";
+      }
+    </script>
+  </head>
 
-       <!-- Ability scores --> 
-       <p>STR: </p><input class="monsterstat" id="m_str" placeholder="STR"></input><br>
-       <p>DEX: </p><input class="monsterstat" id="m_dex" placeholder="DEX"></input><br>
-       <p>CON: </p><input class="monsterstat" id="m_con" placeholder="CON"></input><br>
-       <p>INT: </p><input class="monsterstat" id="m_int" placeholder="INT"></input><br>
-       <p>WIS: </p><input class="monsterstat" id="m_wis" placeholder="WIS"></input><br>
-       <p>CHA: </p><input class="monsterstat" id="m_cha" placeholder="CHA"></input><br>
+  <body>
+    <form id="aboutForm">
+      <img src = "static/images/driftwoodlogo.png"/>
+      <div id="control-group">
+        <textarea readonly="readonly" rows="20">
+Welcome to Driftwood!
+Driftwood is an online roleplaying tool created by roleplayers for roleplayers.
+
+Create your account, gather your friends, and host rooms for you to map out your magic circle and have everyone share a unified vision.
+
+Driftwood is built to be able to be used with many roleplaying games including Dungeons and Dragons, Pathfinder, and many more!
+
+Engineered from an understanding in the feelings of being present in a virtual world, both in local and online environments, we built Driftwood to capture the social immersion that comes with playing roleplaying games with others.
+
+Driftwood 2.0 was created by the following:
+Cody Van De Mark
+David Simkins
+Gabrielle Bennett
+Jake Higgins
+Mario Chuman
+        </textarea>
+        <div id="controls">
+          <a href='http://driftwood.higginsgames.com/main.html'>Enter</a>
+	</div>
       </div>
-
-      <!-- Notes --> 
-	    <div id="tabs-3">
-	       <h1> Notes </h1>
-         <textarea id="notesarea">Notes here</textarea>
-	    </div>
-
-      <!-- Levels --> 
-	    <div id="tabs-4">
-        <!-- Classes -->
-          <p>Class 1: </p><input class="monsterstat" id="m_class1" placeholder="Class 1"></input><br> 
-              <p>Class 1 Levels: </p><input class="monsterstat" id="m_class1levels" placeholder="Class 1 # Levels"></input><br> 
-          <p> Class 2: </p><input class="monsterstat" id="m_class2" placeholder="Class 2"></input><br>
-            <p>Class 2 Levels: </p><input class="monsterstat" id="m_class2levels" placeholder="Class 2 # Levels"></input><br> 
-  </div>
-      <!-- Skills, feats, abilities --> 
-	    <div id="tabs-5">
-		    <p>Skills: </p><input class="monsterstat" id="m_skills" placeholder="Skill1, Skill2"></input><br> 
-        <p>Feats: </p><input class="monsterstat" id="m_feats" placeholder="Feat1, Feat2"></input><br> 
-       </div>
-	  </div> <!-- end tabs --> 
-        </div> <!-- end monster content panel --> 
-      </div> <!-- end monsteredit panel -->
-    </div> <!-- End Jake's drawing area --> 
+    </form>
   </body>
 </html>
