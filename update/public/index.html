@@ -163,7 +163,7 @@
         <button id='clear-room' onclick='CanvasManager.clear()'>Clear Room</button>
       </div>
       <div id="monsteredit">
-        <h1> MONSTERNAME <div id="saveicon"></div><div id="xicon"></div></h1>
+        <h1 id="monstertitle"> MONSTERNAME <div id="saveicon"></div><div id="xicon"></div></h1>
         <div class="monstercontent">
           <!-- tabs and stuff here --> 
           <div id="mgentabs">
@@ -174,30 +174,62 @@
               <li><a href="#tabs-4">Levels</a></li>
               <li><a href="#tabs-5">Skills, Feats, Abilities</a></li>
             </ul>
+            <!-- General Info -->
             <div id="tabs-1">
               <!-- Name -->
               <p>Name: </p><input class="monsterstat" id="m_name" placeholder="Name"></input><br>
-              <!-- Classes -->
-              <p>Class 1: </p><input class="monsterstat" id="m_class1" placeholder="Class 1"></input><br> 
-              <p> Class 2: </p><input class="monsterstat" id="m_class2" placeholder="Class 2"></input><br> 
+              <!-- Alignment --> 
+              <p>Alignment: </p><input class="monsterstat" id="m_alignment" placeholder="Alignment"></input><br>
+        
               <!-- HP -->
               <p>HP: </p><input class="monsterstat" id="m_hp" placeholder="HP"></input><br> 
               <p>Hit Die: </p><input class="monsterstat" id="m_hitdie" placeholder="Hit Die"></input><br>
               <!-- Size --> 
               <p>Size: </p><input class="monsterstat" id="m_size" placeholder="Size"></input><br>
-  	    </div>
+  	           <p>Treasure: </p><input class="monsterstat" id="m_treasure" placeholder="Treasure Dropped"></input><br>
+               <p>XP Given: </p><input class="monsterstat" id="m_xp" placeholder="XP Dropped"></input><br
+               <p>Gear Dropped: </p><input class="monsterstat" id="m_gear" placeholder="Gear Dropped"></input><br>        
+               </div>
+      <!-- Combat Info --> 
 	    <div id="tabs-2">
-		   
-	    </div>
+		    <p>AC: </p><input class="monsterstat" id="m_ac" placeholder="AC"></input><br>
+        <p>CR: </p><input class="monsterstat" id="m_cr" placeholder="Challenge Rating"></input><br>
+        <p>Melee: </p><input class="monsterstat" id="m_melee" placeholder="Melee Weapon +x (ndx + x)"></input><br>
+        <p>Ranged: </p><input class="monsterstat" id="m_ranged" placeholder="Ranged Weapon +x (ndx +x )"></input><br>
+        <p>AC Touch: </p><input class="monsterstat" id="m_actouch" placeholder="AC Touch"></input><br>
+        <p>AC Flatfooted: </p><input class="monsterstat" id="m_acflat" placeholder="AC Flatfooted"></input><br>
+        <p>Fort Save: </p><input class="monsterstat" id="m_forts" placeholder="Fortitude Save"></input><br>
+	     <p>Ref Save: </p><input class="monsterstat" id="m_refs" placeholder="Ref Save"></input><br>
+       <p>Will Save: </p><input class="monsterstat" id="m_wils" placeholder="Will Save"></input><br>
+
+       <!-- Ability scores --> 
+       <p>STR: </p><input class="monsterstat" id="m_str" placeholder="STR"></input><br>
+       <p>DEX: </p><input class="monsterstat" id="m_dex" placeholder="DEX"></input><br>
+       <p>CON: </p><input class="monsterstat" id="m_con" placeholder="CON"></input><br>
+       <p>INT: </p><input class="monsterstat" id="m_int" placeholder="INT"></input><br>
+       <p>WIS: </p><input class="monsterstat" id="m_wis" placeholder="WIS"></input><br>
+       <p>CHA: </p><input class="monsterstat" id="m_cha" placeholder="CHA"></input><br>
+      </div>
+
+      <!-- Notes --> 
 	    <div id="tabs-3">
-	  
+	       <h1> Notes </h1>
+         <textarea id="notesarea">Notes here</textarea>
 	    </div>
+
+      <!-- Levels --> 
 	    <div id="tabs-4">
-		  
-	    </div>
+        <!-- Classes -->
+          <p>Class 1: </p><input class="monsterstat" id="m_class1" placeholder="Class 1"></input><br> 
+              <p>Class 1 Levels: </p><input class="monsterstat" id="m_class1levels" placeholder="Class 1 # Levels"></input><br> 
+          <p> Class 2: </p><input class="monsterstat" id="m_class2" placeholder="Class 2"></input><br>
+            <p>Class 2 Levels: </p><input class="monsterstat" id="m_class2levels" placeholder="Class 2 # Levels"></input><br> 
+  </div>
+      <!-- Skills, feats, abilities --> 
 	    <div id="tabs-5">
-		  
-	    </div>
+		    <p>Skills: </p><input class="monsterstat" id="m_skills" placeholder="Skill1, Skill2"></input><br> 
+        <p>Feats: </p><input class="monsterstat" id="m_feats" placeholder="Feat1, Feat2"></input><br> 
+       </div>
 	  </div> <!-- end tabs --> 
         </div> <!-- end monster content panel --> 
       </div> <!-- end monsteredit panel -->
