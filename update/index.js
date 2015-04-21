@@ -78,6 +78,13 @@ io.on('connection', function(socket) {
     });
   });
 
+  socket.on('clear strokes', function(roomID, caller) {
+    Stroke.remove({room: roomID}, function(err) {
+      if(err) console.log(err);
+      io.emit('clear strokes', roomID, caller);
+    });
+  });
+
   socket.on('draw', function(drawData, roomID, caller) {
     io.emit('draw', drawData, roomID, caller);
   });

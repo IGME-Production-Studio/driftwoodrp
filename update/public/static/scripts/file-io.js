@@ -25,9 +25,9 @@ fileIO.prototype.uploadImage = function() {
 		img.src = e.target.result;
 		img.width = 300;
 		img.height = 300;
-		$(img).css({'position':'absolute'});
+		$(img).css({'position':'absolute', 'z-index': 2});
 		$(img).draggable();
-		document.body.appendChild(img);
+		Container.appendChild(img);
 	};
 	reader.readAsDataURL(file);
 }

@@ -38,6 +38,14 @@ function addSocketListeners() {
     }
   });
 
+  Socket.on('clear strokes', function(room, caller) {
+    console.log('clear');
+    if(CallerID != caller && RoomID == room) {
+      ObjectManager.objects = [];
+      CanvasManager.render();
+    }
+  });
+
   Socket.on('draw', function(drawData, room, caller) {
     if(CallerID != caller && RoomID == room) {
       Drawing.draw(drawData, true);

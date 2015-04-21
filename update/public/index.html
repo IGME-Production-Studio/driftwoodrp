@@ -36,7 +36,7 @@
     <script type="text/javascript" src="static/scripts/user.js"></script>
   </head> 
 
-  <body>
+  <body class='noselect'>
     <aside class="panel">
       <div class="nav">
         <div class="game-info">
@@ -156,8 +156,11 @@
         <span class='noselect' id='mode-display'>Current Mode: Draw</span><br>
         <span class='noselect' id='bounding-display'>Bounding Volumes: false</span><br>
         <span class='noselect' id='layer-selected'>Current Layer: Object</span><br>
+      </div>
+      <div id='tool-container' class='absolute' style='z-index:3'> 
         <input type='file' id='image-upload'></input>
         <button id='image-upload-submit' onclick='FileIO.uploadImage()'>Upload Image</button>
+        <button id='clear-room' onclick='CanvasManager.clear()'>Clear Room</button>
       </div>
       <div id="monsteredit">
         <h1> MONSTERNAME <div id="saveicon"></div><div id="xicon"></div></h1>

@@ -114,3 +114,9 @@ canvasManager.prototype.changeLayer = function(targetLayer)
     document.getElementById('layer-selected').innerHTML = "Current Layer: " + targetLayer;
   }
 }
+
+canvasManager.prototype.clear = function() {
+  ObjectManager.objects = [];
+  this.render();
+  Socket.emit('clear strokes', RoomID, CallerID);
+}

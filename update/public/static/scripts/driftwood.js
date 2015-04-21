@@ -33,6 +33,7 @@ driftwood.prototype.initialize = function()
   this.displayBoundVolumes = false;
   this.displayDebug = true;
   this.addEventListeners();
+  $('#debug-text').css({'display':'none'});
 }
 
 //*************************************************************
