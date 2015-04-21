@@ -161,6 +161,13 @@
     <!-- End TABS --> 
     <!-- area for Jake's drawing stuff / graph -->
     <div id="grapharea">
+      <div id='debug-text'>
+        <span class='noselect' id='mode-display'>Current Mode: Draw</span><br>
+        <span class='noselect' id='bounding-display'>Bounding Volumes: false</span><br>
+        <span class='noselect' id='layer-selected'>Current Layer: Object</span><br>
+        <input type='file' id='image-upload'></input>
+        <button id='image-upload-submit' onclick='FileIO.uploadImage()'>Upload Image</button>
+      </div>
    <div id="monsteredit">
    	<h1> MONSTERNAME <div id="saveicon"></div><div id="xicon"></div></h1>
    		<div class="monstercontent">

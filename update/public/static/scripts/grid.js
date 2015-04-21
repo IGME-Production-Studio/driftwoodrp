@@ -16,7 +16,7 @@ function grid()
 {
   this.canvas = document.createElement('canvas');
   $(this.canvas).addClass("absolute");
-  document.body.appendChild(this.canvas);
+  Container.appendChild(this.canvas);
   $(this.canvas).css({'z-index':-50});
   this.context = this.canvas.getContext('2d');
 }
@@ -58,8 +58,8 @@ grid.prototype.addEventListeners = function()
 //*************************************************************
 grid.prototype.resize = function()
 {
-  this.canvas.width = $(document).width() - 25;
-  this.canvas.height = $(document).height() - 25;
+  this.canvas.width = $(Container).width() - 25;
+  this.canvas.height = $(Container).height() - 25;
 
   this.render();
 }

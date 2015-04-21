@@ -7,6 +7,8 @@
 // Objects to be used globally
 var Driftwood;
 
+var Container;
+
 var CallerID;
 var RoomID;
 
@@ -49,7 +51,8 @@ $(document).ready(function() {
 function construct() {
   CallerID = new Date().getTime();
   RoomID = "default";
-  //console.log(CallerID);
+  Container = document.getElementById('grapharea');
+  console.log(Container);
 
   Driftwood = new driftwood();
 
