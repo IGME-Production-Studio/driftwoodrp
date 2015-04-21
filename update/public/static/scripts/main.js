@@ -7,7 +7,8 @@
 // Objects to be used globally
 var Driftwood;
 
-var Socket;
+var CallerID;
+var RoomID;
 
 var CanvasManager;
 var Chat;
@@ -46,6 +47,10 @@ $(document).ready(function() {
 //      Creates every global object for use
 //*************************************************************
 function construct() {
+  CallerID = new Date().getTime();
+  RoomID = "default";
+  //console.log(CallerID);
+
   Driftwood = new driftwood();
 
   CanvasManager = new canvasManager();
@@ -68,6 +73,8 @@ function construct() {
 //      Initializes every global object for use
 //*************************************************************
 function initialize() {
+  addSocketListeners();
+
   Driftwood.initialize();
   Grid.initialize(50);
   CanvasManager.initialize();
@@ -79,6 +86,8 @@ function initialize() {
   Settings.initialize();
   Tools.initialize();
   User.initialize();
+
+  Socket.emit('sync strokes', RoomID, CallerID);
 }
 
 //*************************************************************

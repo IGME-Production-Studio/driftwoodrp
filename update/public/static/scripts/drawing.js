@@ -147,7 +147,7 @@ drawing.prototype.onMouseMove = function(event) {
 		};
 
 		// Draw and update currentStroke and lastPosition
-		this.draw(drawData);
+		this.draw(drawData, false);
 		this.currentStroke.push(drawData);
 		this.lastPosition = lineEnd;
 	}
@@ -165,7 +165,7 @@ drawing.prototype.onMouseMove = function(event) {
 //      Sends the draw data to the current layer's canvas context
 //		to render to the screen
 //*************************************************************
-drawing.prototype.draw = function(drawData) {
+drawing.prototype.draw = function(drawData, remote) {
 	CanvasManager.currentContext.beginPath();
 	CanvasManager.currentContext.moveTo(drawData.start.x, drawData.start.y);
 	CanvasManager.currentContext.lineTo(drawData.end.x, drawData.end.y);
@@ -174,6 +174,10 @@ drawing.prototype.draw = function(drawData) {
 	CanvasManager.currentContext.strokeStyle = drawData.color;
 	CanvasManager.currentContext.stroke();
 	this.drawing = true;
+
+  if(!remote) {
+    Socket.emit('draw', drawData, RoomID, CallerID);
+  }
 }
 
 //*************************************************************
@@ -208,6 +212,6 @@ drawing.prototype.redraw = function(drawData) {
 drawing.prototype.convertDrawToObject = function() {
 	var obj = new object("stroke");
 	obj.initialize();
-	obj.createStrokeObject(this.currentStroke, this.drawMin, this.drawMax, this.startPosition);
+	obj.createStrokeObject(this.currentStroke, this.drawMin, this.drawMax, this.startPosition, false);
 	ObjectManager.addObject(obj);
 }

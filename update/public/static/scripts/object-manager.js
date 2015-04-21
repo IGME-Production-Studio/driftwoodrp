@@ -105,9 +105,12 @@ objectManager.prototype.moveTargets = function(event) {
 //      Empties the dragTargets array
 //*************************************************************
 objectManager.prototype.releaseTargets = function(event) {
-	if(Driftwood.mode == MODE_MOVE) {
-		this.dragTargets = [];
-	}
+  if(Driftwood.mode == MODE_MOVE) {
+    for(var i = 0; i < this.dragTargets.length; i++) {
+      Socket.emit('move stroke', this.dragTargets[i].strokeData, RoomID, CallerID);
+    }
+    this.dragTargets = [];
+  }
 }
 
 //*************************************************************
@@ -128,4 +131,12 @@ objectManager.prototype.render = function(targetLayer) {
 			this.objects[i].render();
 		}
 	}
+}
+
+objectManager.prototype.findStroke = function(strokeID, index) {
+  for(var i = 0; i < this.objects.length; i++) {
+    if(this.objects[i].strokeID == strokeID)
+      return this.objects[i];
+  }
+  return null;
 }

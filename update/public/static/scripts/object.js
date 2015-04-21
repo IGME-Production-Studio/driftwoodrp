@@ -44,12 +44,26 @@ object.prototype.initialize = function()
 //  Description:
 //      Creates an object based on stroke data
 //*************************************************************
-object.prototype.createStrokeObject = function(strokes, min, max, start) 
+object.prototype.createStrokeObject = function(strokes, min, max, start, remote) 
 {
 	this.strokes = strokes;
 	this.min = jQuery.extend(true, {}, min);
 	this.max = jQuery.extend(true, {}, max);
 	this.start = jQuery.extend(true, {}, start);
+
+  this.strokeID = new Date().getTime();
+
+  this.strokeData = {
+    strokes: this.strokes,
+    min: this.min,
+    max: this.max,
+    start: this.start,
+    layer: this.layer,
+    strokeID: this.strokeID
+  };
+
+  if(!remote) 
+    Socket.emit('add stroke', this.strokeData, RoomID, CallerID);
 }
 
 //*************************************************************
@@ -80,37 +94,37 @@ object.prototype.checkAABB = function(x, y) {
 //  Description:
 //      Moves the object to the new position
 //*************************************************************
-object.prototype.move = function(newPos) 
+object.prototype.move = function(newPos, remote) 
 {
-	if(this.layer == CanvasManager.currentLayer) 
-	{
-		var dx = newPos.x - ((this.min.x + this.max.x)/2);
-		var dy = newPos.y - ((this.min.y + this.max.y)/2);
+  if(this.layer == CanvasManager.currentLayer) 
+  {
+    var dx = newPos.x - ((this.min.x + this.max.x)/2);
+    var dy = newPos.y - ((this.min.y + this.max.y)/2);
 
-		for(var i = 0; i < this.strokes.length; i++) 
-		{
-			this.strokes[i].start.x += dx;
-			this.strokes[i].start.y += dy;
-			this.strokes[i].end.x += dx;
-			this.strokes[i].end.y += dy;
-		}
+    for(var i = 0; i < this.strokes.length; i++) 
+    {
+      this.strokes[i].start.x += dx;
+      this.strokes[i].start.y += dy;
+      this.strokes[i].end.x += dx;
+      this.strokes[i].end.y += dy;
+    }
 
-		this.min.x += dx;
-		this.min.y += dy;
-		this.max.x += dx;
-		this.max.y += dy;
+    this.min.x += dx;
+    this.min.y += dy;
+    this.max.x += dx;
+    this.max.y += dy;
 
-		// Render the canvas
-		// TODO: RENDER EACH LAYER SEPERATELY TO OPTIMIZE
-		CanvasManager.render();
-		this.start = jQuery.extend(true, {}, newPos);
+    // Render the canvas
+    // TODO: RENDER EACH LAYER SEPERATELY TO OPTIMIZE
+    CanvasManager.render();
+    this.start = jQuery.extend(true, {}, newPos);
 
-		// Draw bounding volume
-		if(Driftwood.displayBoundVolumes)
-		{
-			this.renderBoundingOutline();
-		}
-	}
+    // Draw bounding volume
+    if(Driftwood.displayBoundVolumes)
+    {
+      this.renderBoundingOutline();
+    }
+  }
 }
 
 //*************************************************************
@@ -122,6 +136,9 @@ object.prototype.move = function(newPos)
 //*************************************************************
 object.prototype.render = function() 
 {
+  if(Driftwood.mode == MODE_MOVE) {
+    this.renderBoundingOutline();
+  } 
 	CanvasManager.currentContext.beginPath();
 	for(var i = 1; i < this.strokes.length - 1; i++) 
 	{

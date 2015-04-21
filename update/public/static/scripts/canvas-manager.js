@@ -83,7 +83,7 @@ canvasManager.prototype.resize = function()
 //*************************************************************
 canvasManager.prototype.render = function() 
 {
-	for(var i = 0; i < this.layers.length; i++) 
+  for(var i = 0; i < this.layers.length; i++) 
   {
     this.layers[i].render();
   }
