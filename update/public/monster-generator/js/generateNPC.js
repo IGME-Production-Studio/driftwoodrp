@@ -3,12 +3,26 @@
 // Filename: generateNPC.js
 //	
 // Authors:
-//  Mario Chuman	mxc7819@g.rit.edu
+//  Mario Chuman		mxc7819@g.rit.edu
 //
 //*************************************************************
 
+//globals
 var name, challenge, type, size, alignment, movement;
 
+//*************************************************************
+//  Function:
+//      Onload Anyonymous Function
+//
+//  Parameters:
+//      None
+//
+//  Return:
+//      None
+//
+//  Description:
+//      Establishes default values for an NPC and tracks changes 
+//*************************************************************
 window.onload = function(){
   name = "undefined";
   challenge = "undefined";
@@ -23,6 +37,19 @@ window.onload = function(){
   generate();
 };
 
+//*************************************************************
+//  Function:
+//      checkForChange
+//
+//  Parameters:
+//      None
+//
+//  Return:
+//      None
+//
+//  Description:
+//      When a value on the page changes, the appropriate value is updated
+//*************************************************************
 function checkForChange()
 {
   document.getElementById("sizeStatInput").onchange = function()
@@ -45,6 +72,19 @@ function checkForChange()
   };
 }
 
+//*************************************************************
+//  Function:
+//      generate
+//
+//  Parameters:
+//      None
+//
+//  Return:
+//      None
+//
+//  Description:
+//      When called, the values are established and console logged
+//*************************************************************
 function generate()
 {
   document.getElementById("generateButton").onclick = function()
