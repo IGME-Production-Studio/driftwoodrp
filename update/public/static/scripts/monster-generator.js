@@ -181,7 +181,6 @@ function doLoadMonster(monsterobj)
 		x += ", "; 		
 		$('#m_feats').val(x);
 	}
-
 };
 
 //*****************************************
@@ -195,7 +194,7 @@ function doLoadMonster(monsterobj)
 //*****************************************
 function doExitMgen()
 {
- // for now, just close the window
+ // For now, just close the window
  $('#monsteredit').slideUp();
 }
 
