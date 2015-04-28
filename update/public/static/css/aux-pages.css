@@ -59,6 +59,13 @@ body
 	background: #0044cc;
 }
 
+.driftwoodLink
+{
+	color:white;
+	text-decoration:none;
+	font-size: 14px;
+}
+
 #tutorial
 {
 		padding: 10px;
@@ -89,6 +96,8 @@ textarea
 		font-size: 14px;
 		
 		margin-bottom: 0;
+		
+		cursor: not-allowed;
 		
         textarea
 		{
