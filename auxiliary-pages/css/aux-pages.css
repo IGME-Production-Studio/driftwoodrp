@@ -1,0 +1,105 @@
+/*
+  Filename: index.html
+  
+  Authors:
+    Mario Chuman		mxc7819@g.rit.edu
+*/
+
+body
+{	
+  background: white url("../../assets/images/driftwoodimage.jpg") no-repeat top left fixed;
+  background-size: cover;
+  transition: background 0.5s ease;
+}
+
+#aboutForm
+{
+  position: relative;
+  top: 22%;
+  @include box-sizing(border-box);
+  width: 440px;
+  height: 520px;
+  margin: 0 auto;
+  margin-top: 12.6%;
+  padding: 30px;
+  background-color: rgba(241, 241, 245, 0.9);
+  border: 1px solid #aaaacc;
+  border-radius: 10px;
+}
+
+img#logo
+{
+  margin-bottom: 20px;
+}
+
+.control-label
+{
+  font-weight: bold;
+}
+
+a 
+{
+  font-weight: inherit;
+}
+
+input[type="submit"] 
+{
+  margin-right: 10px;
+}
+
+.controls
+{
+  margin-left: 0;
+}
+
+.driftwoodButtons
+{
+  background: -webkit-linear-gradient(#0088cc, #0044cc); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#0088cc, #0044cc); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#0088cc, #0044cc); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#0088cc, #0044cc); /* Standard syntax (must be last) */
+  border-radius: 8px;
+  width: 20%;
+  height: 5%;
+  padding: 8px;
+  margin-top: 2%;
+  color:white;
+}
+
+.driftwoodButtons:hover
+{
+  color: #ffffff;
+  background: #0044cc;
+}
+
+#tutorial
+{
+  padding: 10px;
+  margin-top:5%;
+  width: 95%;
+  height: 100%;
+  border: 1px solid #aaaacc;
+  border-radius:10px;
+  background-color: rgba(241, 241, 245, 0.9);
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+
+  margin-bottom: 0;
+}
+
+textarea 
+{
+  padding: 10px;
+  margin-top:5%;
+  width: 95%;
+  height: 100%;
+  border: 1px solid #aaaacc;
+  border-radius:10px;
+  background-color: rgba(241, 241, 245, 0.9);
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+
+  margin-bottom: 0;
+}

@@ -1,0 +1,72 @@
+/*
+  Filename: mgen.css
+  
+  Authors:
+    Mario Chuman		mxc7819@g.rit.edu
+*/
+body
+{
+  width: 100%; height: 100%;
+  overflow: hidden;
+  font-family: 'Alegreya', serif;
+}
+
+
+#columnLeft
+{
+  background-color: grey;
+  width: calc(100% / 6); 
+  float: left;
+  padding-bottom: 1em; padding-top: 1em; 
+  margin-right: 1em;
+}
+
+#columnMiddle
+{
+  background-color: red;
+  width: calc(100% / 3); 
+  float: left;
+  padding-bottom: 1em; padding-top: 1em;
+  margin-right: 1em;
+}
+
+#columnRight
+{
+  background-color: gray; 
+  width: calc(100% / 3); 
+  float: left;
+  padding-bottom: 1em; padding-top: 1em;
+  margin-right: 1em;
+}
+
+#picture img
+{
+  width: 100%; height: auto;
+}
+
+.userStatInputs
+{
+  width: 60%;
+}
+
+.graph
+{
+  width: 100%; 
+  height: auto;
+  min-height: 300px;
+  background-color: white;
+  margin-bottom: 2px;
+}
+
+.incrementButton
+{
+  margin-left: 10%;
+}
+
+.noSelect
+{
+  margin-left: 5%;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}

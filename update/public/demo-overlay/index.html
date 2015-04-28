@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<head> 
+		<title> Driftwood Demo </title> 
+		<!-- Import jQuery --> 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+			<!-- jQuery UI --> 
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+		<script src="../monster-generator/js/pathfinder/bestiary-clean.js"></script>
+		<link rel="stylesheet" type="text/css" href="bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="tabscss.css" /> 
+
+		<script src="demoscripts.js"></script> 
+</head> 
+
+<body>
+<!--
+<div class="panel">
+		<div class="nav">
+				<div class="game-info">
+				</div>
+		</div> 
+</div>
+-->
+
+<!-- Side Panel-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+
+<body>
+    <aside class="panel">
+        <div class="nav">
+            <div class="game-info">
+                <div class="game-name">
+                    <strong>uigrab</strong><br>
+                    <small class="muted">by Giga</small>
+                </div>
+
+                <div class="dropdown menu lobby-return">
+                    <div class="dropdown-toggle icon-caret-down" data-toggle=
+                    "dropdown" style="font-weight: bold"></div>
+
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <a href="/">Return to Lobby</a><a href=
+                            "/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <ol class="unstyled inline" data-tab-panels=
+            ".chat,.objects, .monsters" data-tabs="tabs">
+                <li data-target=".chat" data-toggle="tab"><b class=
+                "icon-comment"></b>Chat</li>
+
+                <li data-target=".objects" data-toggle="tab"><b class=
+                "icon-pushpin"></b>Objects</li>
+
+                <!--<li data-target=".settings" data-toggle="tab"><b class=
+                "icon-cog"></b>Settings</li>-->
+
+                <li data-target=".monsters" data-toggle="tab"><b class=
+                "icon-cog"></b>Monsters</li>
+            </ol>
+        </div><!-- Chat-->
+
+        <div class="chat" id="chat">
+            <!--<div class="content">
+                <div class="message-wrapper">
+                    <div class="messages" data-spy="scroll"></div>
+                </div>
+
+                <div class="input">
+                    <div class="textarea">
+                        <textarea class="input-block-level" data-activate=
+                        "elastic" data-on="load" placeholder="Chat away..."
+                        rows="1">
+</textarea>
+                    </div>
+                </div>
+            </div>
+            <p> CHAT SUPPOSED TO BE HERE </p>-->
+            <div class="iconarea"><div class="monstericon genericicon"></div><p>Goblin Shaman</p></div> 
+
+        	<div class="iconarea"><div class="monstericon genericicon"></div><p>Goblin Warrior </p></div>
+        	<div class="iconarea"><div class="monstericon genericicon"></div><p>Goblin King</p></div>
+
+        	<!-- Click to add new monster --> 
+        	<div class="iconarea" id="newmonster"><div class="monstericon plusico"></div><p>Add New...</p></div>
+
+
+
+        </div><!-- Objects-->
+
+        <div class="objects" id="objects">
+            <div class="content">
+                <div class="tr object-list">
+                    <div class="object-wrapper">
+                        <ol class="unstyled">
+                            <li class="object">
+                                <p class="tmp"><input class="input-block-level"
+                                placeholder="http://" type="text"></p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="tr">
+                    <div class="upload">
+                        <select name="upload-type">
+                            <option value="token">
+                                Token
+                            </option>
+
+                            <option value="map">
+                                Map
+                            </option>
+
+                            <option value="item">
+                                Item
+                            </option>
+                        </select><input name="_csrf" type="hidden" value=
+                        "tvgdMLlj-usw3ePVsnw0j_c7spM6DA4o10Q8"><input name=
+                        "uploadUrl" type="hidden" value=
+                        "/uploadToken/gabzilla/uigrab">
+
+                        <div class="file-upload select-file btn btn-primary">
+                            Upload<input accept="image/*" id="object-upload"
+                            name="object" type="file">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- Settings-->
+
+        <div class="settings">
+            <div class="content">
+                <div class="tr">
+                    <div class="settings-wrapper">
+                        <div class=
+                        "settings-content control-pane form-horizontal"></div>
+                    </div>
+                </div>
+
+                <div class="tr">
+                    <div class="actions">
+                        <input class=
+                        "save-settings btn btn-success input-block-level" type=
+                        "button" value="Save"><input class=
+                        "cancel-settings btn input-block-level" type="button"
+                        value="Cancel">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <!-- End TABS --> 
+    <!-- area for Jake's drawing stuff / graph -->
+    <div id="grapharea">
+      <div id='debug-text'>
+        <span class='noselect' id='mode-display'>Current Mode: Draw</span><br>
+        <span class='noselect' id='bounding-display'>Bounding Volumes: false</span><br>
+        <span class='noselect' id='layer-selected'>Current Layer: Object</span><br>
+        <input type='file' id='image-upload'></input>
+        <button id='image-upload-submit' onclick='FileIO.uploadImage()'>Upload Image</button>
+      </div>
+   <div id="monsteredit">
+   	<h1> MONSTERNAME <div id="saveicon"></div><div id="xicon"></div></h1>
+   		<div class="monstercontent">
+   		<!-- tabs and stuff here --> 
+   		<div id="mgentabs">
+		  <ul>
+		    <li><a href="#tabs-1">Basic Details</a></li>
+		    <li><a href="#tabs-2">Combat</a></li>
+		    <li><a href="#tabs-3">Notes</a></li>
+		    <li><a href="#tabs-4">Levels</a></li>
+		    <li><a href="#tabs-5">Skills, Feats, Abilities</a></li>
+		  </ul>
+		  <div id="tabs-1">
+		  	<!-- Name -->
+		  	<p>Name: </p><input class="monsterstat" id="m_name" placeholder="Name"></input><br>
+		  	<!-- Classes -->
+		  	<p>Class 1: </p><input class="monsterstat" id="m_class1" placeholder="Class 1"></input><br> 
+		  	<p> Class 2: </p><input class="monsterstat" id="m_class2" placeholder="Class 2"></input><br> 
+		  	<!-- HP -->
+		  	<p>HP: </p><input class="monsterstat" id="m_hp" placeholder="HP"></input><br> 
+		  	<p>Hit Die: </p><input class="monsterstat" id="m_hitdie" placeholder="Hit Die"></input><br>
+		  	<!-- Size --> 
+		  	<p>Size: </p><input class="monsterstat" id="m_size" placeholder="Size"></input><br>
+		  </div>
+		  <div id="tabs-2">
+		   
+		  </div>
+		  <div id="tabs-3">
+		  
+		  </div>
+		  <div id="tabs-4">
+		  
+		  </div>
+		  <div id="tabs-5">
+		  
+		  </div>
+
+
+		</div> <!-- end tabs --> 
+
+   		</div> <!-- end monster content panel --> 
+   </div> <!-- end monsteredit panel -->
+
+   </div> <!-- End Jake's drawing area --> 
+</body>
+</html>
+
+</body>
+</html> 
