@@ -57,18 +57,21 @@
             </div>
           </div>
 
-          <ol class="unstyled inline" data-tab-panels=".chat,.objects, .monsters" data-tabs="tabs">
-            <li data-target=".chat" data-toggle="tab"><b class="icon-comment"></b>Chat</li>
+       <ol class="unstyled inline" data-tab-panels=".chat,.objects, .monsters" data-tabs="tabs">
+            <li id="tab-chat"><b class="icon-comment"></b>Chat</li>
 
-            <li data-target=".objects" data-toggle="tab"><b class="icon-pushpin"></b>Objects</li>
+            <li id="tab-objects"><b class="icon-pushpin"></b>Objects</li>
 
             <!--<li data-target=".settings" data-toggle="tab"><b class="icon-cog"></b>Settings</li>-->
 
-            <li data-target=".monsters" data-toggle="tab"><b class="icon-cog"></b>Monsters</li>
+            <li id="tab-monsters"><b class="icon-cog"></b>Monsters</li>
+
+            <li id="tab-social" <b class="icon-cog"></b>Social</li>
           </ol>
         </div><!-- Chat-->
 
         <div class="chat" id="chat">
+          <h1> This is chat. </h1>
            <!--<div class="content">
              <div class="message-wrapper">
                <div class="messages" data-spy="scroll"></div>
@@ -82,11 +85,12 @@
            </div>
            <p> CHAT SUPPOSED TO BE HERE </p>-->
 
-           <!-- Click to add new monster --> 
-           <div class="iconarea" id="newmonster"><div class="monstericon plusico"></div><p>Add New...</p></div>
-        </div><!-- Objects-->
+
+        </div>
+        <!-- Objects-->
 
         <div class="objects" id="objects">
+          <h1> This is objects. </h1>
           <div class="content">
             <div class="tr object-list">
               <div class="object-wrapper">
@@ -124,9 +128,14 @@
               </div>
             </div>
           </div>
-        </div><!-- Settings-->
+        </div>
+        <!-- Settings-->
 
-        <div class="settings">
+        <div class="monsters" id="monsters">
+          <h1> Monsters </h1>
+                   <!-- Click to add new monster --> 
+           <div class="iconarea" id="newmonster"><div class="monstericon plusico"></div><p>Add New...</p></div>
+           <!--
             <div class="content">
                 <div class="tr">
                     <div class="settings-wrapper">
@@ -144,7 +153,28 @@
                         value="Cancel">
                     </div>
                 </div>
-            </div>
+            </div>-->
+        </div>
+
+        <!-- Social -->
+        <div class="social" id="social">
+        <h2> Room Name by Username </h2>
+        <div class= "profilePic"></div> <!-- #TODO --> 
+        <div class="profile-heading" id="campaign-heading"></div>
+          <ul>
+            <li>Sir Oswick</li>
+            <li>Helena Pierce</li>
+          </ul>
+        <div class="profile-heading" id="friends-heading"></div>
+          <ul>
+           <li>heyitsmario</li>
+          </ul>
+        <div class="profile-heading" id="l2p-heading"></div>
+          <ul>
+          </ul>
+        <div class="profile-heading" id="contact-heading"></div>
+          <ul>
+          </ul>
         </div>
     </aside>
     <!-- End TABS --> 

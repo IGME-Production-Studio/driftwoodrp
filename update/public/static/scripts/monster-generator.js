@@ -44,6 +44,23 @@ function initMonsterGenerator()
 	{
 		$('#monstertitle').html($('#m_name').val());
 	});
+
+	hideTabs();
+	
+	// Set up the tabs
+	$('#tab-chat').click(function(){hideTabs(); $('#chat').show(); console.log("Showing chat");});
+	$('#tab-objects').click(function(){hideTabs(); $('#objects').show(); console.log("Showing objects");}); 
+	$('#tab-monsters').click(function(){hideTabs(); $('#monsters').show(); console.log("Showing monsters");});
+	$('#tab-social').click(function(){hideTabs(); $('#social').show(); console.log("Showing social");});
+
+}
+
+function hideTabs()
+{
+	$('#chat').hide();
+	$('#objects').hide();
+	$('#monsters').hide();
+	$('#social').hide();
 }
 
 //*****************************************
