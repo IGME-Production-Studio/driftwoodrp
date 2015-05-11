@@ -11,6 +11,33 @@ mongoose.connect('mongodb://localhost/driftwoodrp-' + VERSION);
 
 var Schema = mongoose.Schema;
 
+var campaignSchema = new Schema(
+{
+  name: String, /* Nickname for campaign, eg. "Acquisitions, Inc." */
+  gameType: String, /* Name of the game, eg. "Pathfinder" */
+  members: [Object], /* all members, including GMs */ 
+  gameMasters: [Object] /* could be more than one. */
+});
+var campaign = Mongoose.model('Campaign', campaignSchema); 
+
+var meetingSchema = new Schema(
+{
+  day: String, /*for now, just string for weekly day of week*/
+  startTime: Number, /* eg. 1630 = 4:30 PM */
+  endTime: Number, 
+  campaign: Schema.Types.ObjectId, /* mongoose ObjectId type, for easy referencing*/
+});
+var meeting = Mongoose.model('Meeting', meetingSchema); 
+
+var personSchema = new Schema({
+  nickname: String, /* eg. "John" */
+  username: String,  /* eg. xX_noobpwner_Xx */
+  campaigns: [ Schema.Types.ObjectId ], /* campaign ID */
+  friends: [ Schema.Types.ObjectId ] /* person ID */
+});
+var person = Mongoose.model('Person', personSchema); 
+
+
 var strokeSchema = new Schema({
   strokes: [{
     start: {x: Number, y: Number},
