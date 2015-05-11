@@ -971,6 +971,40 @@ select {
   height: 100%;
 }
 
+.game-name
+{/*
+  overflow: auto;
+  zoom: 1;
+  display: block;
+  float: none;*/
+  display: block;
+}
+
+.inline
+{
+  display: block;
+  overflow: auto;
+}
+
+.tablist
+{
+  float: left;
+  display: inline;
+  list-style: none;
+  text-align: right; 
+  margin-left: 0;
+  padding-right: 0;
+}
+.tablist li
+{
+  display: inline;
+  padding: none;
+}
+
+#tab-chat, #tab-objects, #tab-monsters, #tab-social
+{
+  padding: 0;
+}
 /*.panel
 {
 	webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.2);

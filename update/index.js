@@ -85,6 +85,21 @@ io.on('connection', function(socket) {
     });
   });
 
+  // Add campaign to the system. 
+  socket.on('add campaign', function(campaignName, gameType, members, gms, caller){
+
+  });
+
+  // Create a new user, for the first time. For testing right now. 
+  socket.on('add user', function(_username, _nickname, caller){
+    var u = new Person({
+      nickname: _nickname,
+      username: _username, 
+      campaigns: new Array(), 
+      friends: new Array()
+    }); 
+  })
+
   socket.on('move stroke', function(stroke, roomID, caller) {
     Stroke.findOne({strokeID: stroke.strokeID}, function(err, data) {
       if(err) console.log(err);

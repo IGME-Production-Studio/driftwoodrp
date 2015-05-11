@@ -38,7 +38,9 @@
     <script type="text/javascript" src="static/scripts/user.js"></script>
   </head> 
 
+  <!-- Body begins here --> 
   <body class='noselect'>
+
     <aside class="panel">
       <div class="nav">
         <div class="game-info">
@@ -47,17 +49,7 @@
             <small class="muted">by Giga</small>
           </div>
 
-          <div class="dropdown menu lobby-return">
-            <div class="dropdown-toggle icon-caret-down" data-toggle="dropdown" style="font-weight: bold"></div>
-              <ul class="dropdown-menu pull-right">
-                <li>
-                  <a href="/">Return to Lobby</a><a href="/logout">Logout</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-       <ol class="unstyled inline" data-tab-panels=".chat,.objects, .monsters" data-tabs="tabs">
+       <ol class="tablist">
             <li id="tab-chat"><b class="icon-comment"></b>Chat</li>
 
             <li id="tab-objects"><b class="icon-pushpin"></b>Objects</li>
@@ -67,40 +59,18 @@
             <li id="tab-monsters"><b class="icon-cog"></b>Monsters</li>
 
             <li id="tab-social" <b class="icon-cog"></b>Social</li>
-          </ol>
-        </div><!-- Chat-->
+        </ol>
+
+        </div><!-- Chat begins-->
 
         <div class="chat" id="chat">
           <h1> This is chat. </h1>
-           <!--<div class="content">
-             <div class="message-wrapper">
-               <div class="messages" data-spy="scroll"></div>
-             </div>
-
-             <div class="input">
-               <div class="textarea">
-                 <textarea class="input-block-level" data-activate="elastic" data-on="load" placeholder="Chat away..."rows="1"></textarea>
-               </div>
-             </div>
-           </div>
-           <p> CHAT SUPPOSED TO BE HERE </p>-->
-
-
         </div>
-        <!-- Objects-->
 
+
+        <!-- Objects-->
         <div class="objects" id="objects">
           <h1> This is objects. </h1>
-          <div class="content">
-            <div class="tr object-list">
-              <div class="object-wrapper">
-                <ol class="unstyled">
-                  <li class="object">
-                    <p class="tmp"><input class="input-block-level" placeholder="http://" type="text"></p>
-                  </li>
-                </ol>
-              </div>
-            </div>
 
             <div class="tr">
               <div class="upload">
@@ -131,6 +101,7 @@
         </div>
         <!-- Settings-->
 
+        <!--Monsters--> 
         <div class="monsters" id="monsters">
           <h1> Monsters </h1>
                    <!-- Click to add new monster --> 

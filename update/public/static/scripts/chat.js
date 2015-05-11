@@ -9,5 +9,9 @@ function chat() {
 }
 
 chat.prototype.initialize = function() {
-  //console.log("Chat Initialized");
+  console.log("Chat Initialized");
+}
+
+chat.prototype.sendMessage = function(msg){
+	 Socket.emit('sendMessage', msg, RoomID, CallerID);
 }
