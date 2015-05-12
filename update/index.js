@@ -100,6 +100,12 @@ io.on('connection', function(socket) {
     }); 
   })
 
+  //emit chat message to room
+  socket.on('sendMessage', function(_msg, _room, caller)
+  {
+    socket.emit('receiveMessage', message, roomID, caller);
+  });
+
   socket.on('move stroke', function(stroke, roomID, caller) {
     Stroke.findOne({strokeID: stroke.strokeID}, function(err, data) {
       if(err) console.log(err);
