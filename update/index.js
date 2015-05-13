@@ -17,18 +17,20 @@ var campaignSchema = new Schema(
   gameType: String, /* Name of the game, eg. "Pathfinder" */
   members: [Object], /* all members, including GMs */ 
   gameMasters: [Object] /* could be more than one. */
+  reminder: Schema.Types.ObjectId /* hook to a reminder for campaign sessions (weekly) */
 });
 var campaign = Mongoose.model('Campaign', campaignSchema); 
 
-var meetingSchema = new Schema(
+var reminderSchema = new Schema(
 {
   day: String, /*for now, just string for weekly day of week*/
   startTime: Number, /* eg. 1630 = 4:30 PM */
   endTime: Number, 
   campaign: Schema.Types.ObjectId, /* mongoose ObjectId type, for easy referencing*/
 });
-var meeting = Mongoose.model('Meeting', meetingSchema); 
+var reminder = Mongoose.model('Reminder', reminderSchema); 
 
+// For the profile, primarily - will end up relying on old Driftwood login info
 var personSchema = new Schema({
   nickname: String, /* eg. "John" */
   username: String,  /* eg. xX_noobpwner_Xx */

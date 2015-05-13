@@ -51,7 +51,23 @@ function addSocketListeners() {
       Drawing.draw(drawData, true);
     }
   });
+
+  // ======== Chat =============/
+  // Comes in the format message/roomID/caller
+  
+  // if(roomID == this.roomID) // pseudocode for now
+  // add chat to chat thingy
+  Socket.on('receiveMessage', function(message, room, caller)
+  {
+    if ( RoomID == room )
+    {
+      // Proceed
+      Chat.write(message, caller);
+    }
+  });
 }
+
+
 
 function createStroke(stroke) {
   var obj = new object("stroke");

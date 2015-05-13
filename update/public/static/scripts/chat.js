@@ -19,12 +19,11 @@ chat.prototype.sendMessage = function(msg){
 
 chat.prototype.addEventListeners = function()
 {
-	Socket.on('receiveMessage', this.doReceiveMessage(data));
+	
 };
 
-// Comes in the format message/roomID/caller
-chat.prototype.doReceiveMessage = function(data)
+chat.prototype.write = function(message, caller)
 {
-	// if(roomID == this.roomID) // pseudocode for now
-	// add chat to chat thingy
+	// Front end 
+	// caller [ time ] : message 
 }
