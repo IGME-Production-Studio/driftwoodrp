@@ -43,10 +43,10 @@ drawing.prototype.initialize = function() {
 //		Add touch support
 //*************************************************************
 drawing.prototype.addEventListeners = function() {
-	// Adds the basic mouse movement functionality to the drawing
-	window.addEventListener('mousedown', this.onMouseDown.bind(this), false);
-	window.addEventListener('mouseup', this.onMouseUp.bind(this), false);
-	window.addEventListener('mousemove', this.onMouseMove.bind(this), false);
+  // Adds the basic mouse movement functionality to the drawing
+  window.addEventListener('mousedown', this.onMouseDown.bind(this), false);
+  window.addEventListener('mouseup', this.onMouseUp.bind(this), false);
+  window.addEventListener('mousemove', this.onMouseMove.bind(this), false);
 }
 
 //*************************************************************
@@ -60,8 +60,8 @@ drawing.prototype.addEventListeners = function() {
 //      Toggles mouseDown bool to true
 //*************************************************************
 drawing.prototype.onMouseDown = function(event) {
-	if(event.target.nodeName == 'CANVAS')
-		this.mouseDown = true;
+  if(event.target.nodeName == 'CANVAS')
+    this.mouseDown = true;
 }
 
 //*************************************************************
@@ -193,12 +193,12 @@ drawing.prototype.draw = function(drawData, remote) {
 // 		of stroke to save computations when redrawing strokes
 //*************************************************************
 drawing.prototype.redraw = function(drawData) {
-	CanvasManager.currentContext.moveTo(drawData.start.x, drawData.start.y);
-	CanvasManager.currentContext.lineTo(drawData.end.x, drawData.end.y);
-	CanvasManager.currentContext.lineCap = 'round';
-	CanvasManager.currentContext.lineWidth = drawData.width;
-	CanvasManager.currentContext.strokeStyle = drawData.color;
-	this.drawing = true;
+  CanvasManager.currentContext.moveTo(drawData.start.x, drawData.start.y);
+  CanvasManager.currentContext.lineTo(drawData.end.x, drawData.end.y);
+  CanvasManager.currentContext.lineCap = 'round';
+  CanvasManager.currentContext.lineWidth = drawData.width;
+  CanvasManager.currentContext.strokeStyle = drawData.color;
+  this.drawing = true;
 }
 
 //*************************************************************
@@ -210,8 +210,8 @@ drawing.prototype.redraw = function(drawData) {
 //  	an object.
 //*************************************************************
 drawing.prototype.convertDrawToObject = function() {
-	var obj = new object("stroke");
-	obj.initialize();
-	obj.createStrokeObject(this.currentStroke, this.drawMin, this.drawMax, this.startPosition, false);
-	ObjectManager.addObject(obj);
+  var obj = new object("stroke");
+  obj.initialize();
+  obj.createStrokeObject(this.currentStroke, this.drawMin, this.drawMax, this.startPosition, false);
+  ObjectManager.addObject(obj);
 }

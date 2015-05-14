@@ -46,24 +46,55 @@ object.prototype.initialize = function()
 //*************************************************************
 object.prototype.createStrokeObject = function(strokes, min, max, start, remote) 
 {
-	this.strokes = strokes;
-	this.min = jQuery.extend(true, {}, min);
-	this.max = jQuery.extend(true, {}, max);
-	this.start = jQuery.extend(true, {}, start);
+  this.strokes = strokes;
+  this.min = jQuery.extend(true, {}, min);
+  this.max = jQuery.extend(true, {}, max);
+  this.start = jQuery.extend(true, {}, start);
 
-  this.strokeID = new Date().getTime();
+  this.objectID = new Date().getTime();
 
-  this.strokeData = {
+  this.type = "stroke";
+
+  this.objectData = {
     strokes: this.strokes,
     min: this.min,
     max: this.max,
     start: this.start,
     layer: this.layer,
-    strokeID: this.strokeID
+    objectID: this.objectID,
+    objectType: this.type,
+    imageData: ""
   };
 
   if(!remote) 
-    Socket.emit('add stroke', this.strokeData, RoomID, CallerID);
+    Socket.emit('add object', this.objectData, RoomID, CallerID);
+}
+
+object.prototype.createImageObject = function(image, min, max, start, remote) 
+{
+  this.strokes = [];
+  this.imageData = image;
+
+  this.min = jQuery.extend(true, {}, min);
+  this.max = jQuery.extend(true, {}, max);
+  this.start = jQuery.extend(true, {}, start);
+
+  this.objectID = new Date().getTime();
+
+  this.type = "image";
+
+  this.objectData = {
+    strokes: this.strokes,
+    min: this.min,
+    max: this.max,
+    start: this.start,
+    layer: this.layer,
+    objectID: this.objectID,
+    objectType: this.type,
+    imageData: this.imageData
+  };
+
+  //if(!remote)
 }
 
 //*************************************************************
@@ -78,10 +109,10 @@ object.prototype.createStrokeObject = function(strokes, min, max, start, remote)
 //      Determines if the point specified is within the AABB
 //*************************************************************
 object.prototype.checkAABB = function(x, y) {
-	if((x > this.min.x && x < this.max.x) && (y > this.min.y && y < this.max.y)) 
-	{
-		return true;
-	}
+  if((x > this.min.x && x < this.max.x) && (y > this.min.y && y < this.max.y)) 
+  {
+    return true;
+  }
 }
 
 //*************************************************************
@@ -101,12 +132,9 @@ object.prototype.move = function(newPos, remote)
     var dx = newPos.x - ((this.min.x + this.max.x)/2);
     var dy = newPos.y - ((this.min.y + this.max.y)/2);
 
-    for(var i = 0; i < this.strokes.length; i++) 
+    if(this.type == 'stroke') 
     {
-      this.strokes[i].start.x += dx;
-      this.strokes[i].start.y += dy;
-      this.strokes[i].end.x += dx;
-      this.strokes[i].end.y += dy;
+      this.moveStrokes(dx, dy);
     }
 
     this.min.x += dx;
@@ -127,6 +155,17 @@ object.prototype.move = function(newPos, remote)
   }
 }
 
+object.prototype.moveStrokes = function(dx, dy) 
+{
+  for(var i = 0; i < this.strokes.length; i++) 
+  {
+    this.strokes[i].start.x += dx;
+    this.strokes[i].start.y += dy;
+    this.strokes[i].end.x += dx;
+    this.strokes[i].end.y += dy;
+  }
+}
+
 //*************************************************************
 //  Function:
 //      object.render
@@ -139,16 +178,15 @@ object.prototype.render = function()
   if(Driftwood.mode == MODE_MOVE) {
     this.renderBoundingOutline();
   } 
-	CanvasManager.currentContext.beginPath();
-	for(var i = 1; i < this.strokes.length - 1; i++) 
-	{
-		if((this.strokes[i].start.x != -1 && this.strokes[i].start.y != -1 && this.strokes[i].end.x != -1 && this.strokes[i].end.y != -1)) 
-		{
-			Drawing.redraw(this.strokes[i]);
-
-		}
-	}
-	CanvasManager.currentContext.stroke();
+  CanvasManager.currentContext.beginPath();
+  for(var i = 1; i < this.strokes.length - 1; i++) 
+  {
+    if((this.strokes[i].start.x != -1 && this.strokes[i].start.y != -1 && this.strokes[i].end.x != -1 && this.strokes[i].end.y != -1)) 
+    {
+      Drawing.redraw(this.strokes[i]);
+    }
+  }
+  CanvasManager.currentContext.stroke();
 }
 
 //*************************************************************
@@ -161,10 +199,10 @@ object.prototype.render = function()
 //*************************************************************
 object.prototype.renderBoundingOutline = function()
 {
-	var w = this.max.x - this.min.x;
-	var h = this.max.y - this.min.y;
-	CanvasManager.currentContext.strokeStyle = 'rgba(100,100,100,0.5)';
-	CanvasManager.currentContext.lineWidth = 2;
-	CanvasManager.currentContext.rect(this.min.x, this.min.y, w, h);
-	CanvasManager.currentContext.stroke();
+  var w = this.max.x - this.min.x;
+  var h = this.max.y - this.min.y;
+  CanvasManager.currentContext.strokeStyle = 'rgba(100,100,100,0.5)';
+  CanvasManager.currentContext.lineWidth = 2;
+  CanvasManager.currentContext.rect(this.min.x, this.min.y, w, h);
+  CanvasManager.currentContext.stroke();
 }

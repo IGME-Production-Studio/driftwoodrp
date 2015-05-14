@@ -90,7 +90,7 @@ function initialize() {
   Tools.initialize();
   User.initialize();
 
-  Socket.emit('sync strokes', RoomID, CallerID);
+  Socket.emit('sync objects', RoomID, CallerID);
 }
 
 //*************************************************************

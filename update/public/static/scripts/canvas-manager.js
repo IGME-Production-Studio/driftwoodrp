@@ -118,5 +118,5 @@ canvasManager.prototype.changeLayer = function(targetLayer)
 canvasManager.prototype.clear = function() {
   ObjectManager.objects = [];
   this.render();
-  Socket.emit('clear strokes', RoomID, CallerID);
+  Socket.emit('clear objects', RoomID, CallerID);
 }

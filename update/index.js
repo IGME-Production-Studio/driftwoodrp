@@ -4,7 +4,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var mongoose = require('mongoose');
 
-var VERSION = '0009';
+var VERSION = '0013';
 var PORT = 3000;
 
 mongoose.connect('mongodb://localhost/driftwoodrp-' + VERSION);
@@ -26,6 +26,23 @@ var strokeSchema = new Schema({
 });
 var Stroke = mongoose.model('Stroke', strokeSchema);
 
+var objectSchema = new Schema({
+  objectType: String,
+  min: {x: Number, y: Number},
+  max: {x: Number, y: Number},
+  start: {x: Number, y: Number},
+  room: String,
+  objectID: Number,
+  layer: String,
+  imageData: String,
+  strokes: [{
+    start: {x: Number, y: Number},
+    end: {x: Number, y: Number},
+    color: String,
+    width: Number}]
+});
+var Obj = mongoose.model('Object', objectSchema);
+
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
@@ -34,54 +51,59 @@ app.get('/', function(req, res) {
 
 io.on('connection', function(socket) {
 
-  socket.on('sync strokes', function(roomID, caller) {
-    Stroke.find({room: roomID}, function(err, data) {
+  socket.on('sync objects', function(roomID, caller) {
+    
+    Obj.find({room: roomID}, function(err, data) {
       if(err) console.log(err);
-      io.emit('sync strokes', data, roomID, caller);
+      io.emit('sync objects', data, roomID, caller);
     });
   });
 
-  socket.on('add stroke', function(stroke, roomID, caller) {
-    var s = new Stroke({
-      strokes: stroke.strokes,
-      min: stroke.min,
-      max: stroke.max,
-      start: stroke.start,
+  socket.on('add object', function(object, roomID, caller) {
+    var o = new Obj({
+      objectType: object.type,
+      strokes: object.strokes,
+      min: object.min,
+      max: object.max,
+      start: object.start,
       room: roomID,
-      strokeID: stroke.strokeID,
-      layer: stroke.layer
+      objectID: object.objectID,
+      layer: object.layer,
+      imageData: object.imageData
     });
 
-    s.save(function(err, s) {
+    o.save(function(err, o) {
       if(err) console.log(err)
-      io.emit('add stroke', stroke, roomID, caller);
+      io.emit('add object', object, roomID, caller);
     });
   });
 
-  socket.on('move stroke', function(stroke, roomID, caller) {
-    Stroke.findOne({strokeID: stroke.strokeID}, function(err, data) {
+  socket.on('move object', function(object, roomID, caller) {
+    Obj.findOne({objectID: object.objectID}, function(err, data) {
       if(err) console.log(err);
       if(data) {
-        data.strokes = stroke.strokes,
-        data.min = stroke.min,
-        data.max = stroke.max,
-        data.start = stroke.start,
+        data.strokes = object.strokes,
+        data.min = object.min,
+        data.max = object.max,
+        data.start = object.start,
         data.room = data.room,
-        data.strokeID = data.strokeID,
-        data.layer = data.layer
+        data.objectID = data.objectID,
+        data.layer = data.layer,
+        data.imageData = data.imageData,
+        data.objectType = data.objectType
 
         data.save(function(err, data) {
           if(err) console.log(err);
-          io.emit('move stroke', data, roomID, caller);
+          io.emit('move object', data, roomID, caller);
         });
       }
     });
   });
 
-  socket.on('clear strokes', function(roomID, caller) {
-    Stroke.remove({room: roomID}, function(err) {
+  socket.on('clear objects', function(roomID, caller) {
+    Obj.remove({room: roomID}, function(err) {
       if(err) console.log(err);
-      io.emit('clear strokes', roomID, caller);
+      io.emit('clear objects', roomID, caller);
     });
   });
 

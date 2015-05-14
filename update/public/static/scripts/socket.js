@@ -9,24 +9,26 @@ var Socket;
 function addSocketListeners() {
   Socket = new io();
 
-  Socket.on('sync strokes', function(strokes, room, caller) {
+  Socket.on('sync objects', function(objects, room, caller) {
+    console.log(objects);
     if(CallerID == caller) {
-      $.each(strokes, function(key, stroke) {
-        createStroke(stroke);
+      console.log(objects);
+      $.each(objects, function(key, object) {
+        createStroke(object);
       });
       CanvasManager.render();
     }
   });
 
-  Socket.on('add stroke', function(stroke, room, caller) {
+  Socket.on('add object', function(object, room, caller) {
     if(CallerID != caller && RoomID == room) {
-      createStroke(stroke);
+      createStroke(object);
     }
   });
 
-  Socket.on('move stroke', function(stroke, room, caller) {
+  Socket.on('move object', function(object, room, caller) {
     if(CallerID != caller && RoomID == room) {
-      var targetStroke = ObjectManager.findStroke(stroke.strokeID);
+      var targetStroke = ObjectManager.findStroke(object.objectID);
       console.log(targetStroke);
       if(targetStroke != null) {
         targetStroke.strokes = stroke.strokes;
@@ -38,7 +40,7 @@ function addSocketListeners() {
     }
   });
 
-  Socket.on('clear strokes', function(room, caller) {
+  Socket.on('clear objects', function(room, caller) {
     console.log('clear');
     if(CallerID != caller && RoomID == room) {
       ObjectManager.objects = [];
@@ -54,6 +56,7 @@ function addSocketListeners() {
 }
 
 function createStroke(stroke) {
+  console.log(stroke);
   var obj = new object("stroke");
   obj.initialize();
   
@@ -61,16 +64,19 @@ function createStroke(stroke) {
   obj.min = stroke.min;
   obj.max = stroke.max;
   obj.start = stroke.start;
-  obj.strokeID = stroke.strokeID;
+  obj.objectID = stroke.objectID;
   obj.layer = stroke.layer;
+  obj.type = "stroke";
 
-  obj.strokeData = {
+  obj.objectData = {
     strokes: obj.strokes,
     min: obj.min,
     max: obj.max,
     start: obj.start,
     layer: obj.layer,
-    strokeID: obj.strokeID
+    objectID: obj.objectID,
+    objectType: obj.type,
+    imageData: obj.imageData
   };
 
   ObjectManager.addObject(obj);
