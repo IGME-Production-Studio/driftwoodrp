@@ -28,7 +28,7 @@ function addSocketListeners() {
 
   Socket.on('move object', function(object, room, caller) {
     if(CallerID != caller && RoomID == room) {
-      var targetStroke = ObjectManager.findStroke(object.objectID);
+      /*var targetStroke = ObjectManager.findStroke(object.objectID);
       console.log(targetStroke);
       if(targetStroke != null) {
         targetStroke.strokes = stroke.strokes;
@@ -36,7 +36,7 @@ function addSocketListeners() {
         targetStroke.max = stroke.max;
         targetStroke.start = stroke.start;
 	CanvasManager.render();
-      }
+      }*/
     }
   });
 
@@ -59,25 +59,24 @@ function createStroke(stroke) {
   console.log(stroke);
   var obj = new object("stroke");
   obj.initialize();
-  
-  obj.strokes = stroke.strokes;
-  obj.min = stroke.min;
-  obj.max = stroke.max;
-  obj.start = stroke.start;
-  obj.objectID = stroke.objectID;
+ 
+  obj.imageData = stroke.imageData; 
   obj.layer = stroke.layer;
+  obj.max = stroke.max;
+  obj.min = stroke.min;
+  obj.objectID = stroke.objectID;
   obj.type = "stroke";
 
   obj.objectData = {
-    strokes: obj.strokes,
-    min: obj.min,
-    max: obj.max,
-    start: obj.start,
+    imageData: obj.imageData,
     layer: obj.layer,
+    max: obj.max,
+    min: obj.min,
     objectID: obj.objectID,
     objectType: obj.type,
-    imageData: obj.imageData
   };
+
+  obj.createImage();
 
   ObjectManager.addObject(obj);
 }

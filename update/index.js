@@ -4,42 +4,21 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var mongoose = require('mongoose');
 
-var VERSION = '0013';
+var VERSION = '0014';
 var PORT = 3000;
 
 mongoose.connect('mongodb://localhost/driftwoodrp-' + VERSION);
 
 var Schema = mongoose.Schema;
 
-var strokeSchema = new Schema({
-  strokes: [{
-    start: {x: Number, y: Number},
-    end: {x: Number, y: Number},
-    color: String,
-    width: Number}],
-  min: {x: Number, y: Number},
-  max: {x: Number, y: Number},
-  start: {x: Number, y: Number},
-  room: String,
-  strokeID: Number,
-  layer: String
-});
-var Stroke = mongoose.model('Stroke', strokeSchema);
-
 var objectSchema = new Schema({
-  objectType: String,
-  min: {x: Number, y: Number},
-  max: {x: Number, y: Number},
-  start: {x: Number, y: Number},
-  room: String,
-  objectID: Number,
-  layer: String,
   imageData: String,
-  strokes: [{
-    start: {x: Number, y: Number},
-    end: {x: Number, y: Number},
-    color: String,
-    width: Number}]
+  layer: String,
+  max: {x: Number, y: Number},
+  min: {x: Number, y: Number},
+  objectID: Number,
+  objectType: String,
+  room: String
 });
 var Obj = mongoose.model('Object', objectSchema);
 
@@ -61,15 +40,13 @@ io.on('connection', function(socket) {
 
   socket.on('add object', function(object, roomID, caller) {
     var o = new Obj({
-      objectType: object.type,
-      strokes: object.strokes,
-      min: object.min,
-      max: object.max,
-      start: object.start,
-      room: roomID,
-      objectID: object.objectID,
+      imageData: object.imageData,
       layer: object.layer,
-      imageData: object.imageData
+      max: object.max,
+      min: object.min,
+      objectID: object.objectID,
+      objectType: object.type,
+      room: roomID
     });
 
     o.save(function(err, o) {
@@ -82,15 +59,13 @@ io.on('connection', function(socket) {
     Obj.findOne({objectID: object.objectID}, function(err, data) {
       if(err) console.log(err);
       if(data) {
-        data.strokes = object.strokes,
-        data.min = object.min,
-        data.max = object.max,
-        data.start = object.start,
-        data.room = data.room,
-        data.objectID = data.objectID,
-        data.layer = data.layer,
         data.imageData = data.imageData,
-        data.objectType = data.objectType
+        data.layer = data.layer,
+        data.max = object.max,
+        data.min = object.min,
+        data.objectID = data.objectID,
+        data.objectType = data.objectType,
+        data.room = data.room
 
         data.save(function(err, data) {
           if(err) console.log(err);

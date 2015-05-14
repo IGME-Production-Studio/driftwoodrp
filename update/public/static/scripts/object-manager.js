@@ -76,6 +76,22 @@ objectManager.prototype.checkAABBs = function(event) {
   }	
 }
 
+objectManager.prototype.enterMoveMode = function() 
+{
+  for(var i = 0; i < this.objects.length; i++)
+  {
+    this.objects[i].moveMode();
+  }
+}
+
+objectManager.prototype.enterDrawMode = function()
+{
+  for(var i = 0; i < this.objects.length; i++) 
+  {
+    this.objects[i].drawMode();
+  }
+}
+
 //*************************************************************
 //  Function:
 //      objectManager.moveTargets

@@ -115,6 +115,10 @@ canvasManager.prototype.changeLayer = function(targetLayer)
   }
 }
 
+canvasManager.prototype.clearCanvas = function() {
+  this.currentCanvas.widht = this.currentCanvas.width;
+}
+
 canvasManager.prototype.clear = function() {
   ObjectManager.objects = [];
   this.render();

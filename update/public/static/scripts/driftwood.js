@@ -45,7 +45,7 @@ driftwood.prototype.initialize = function()
 //*************************************************************
 driftwood.prototype.addEventListeners = function() 
 {
-	window.addEventListener('keypress', this.handleKeyboard.bind(this), false);
+  window.addEventListener('keypress', this.handleKeyboard.bind(this), false);
 }
 
 //*************************************************************
@@ -60,19 +60,21 @@ driftwood.prototype.addEventListeners = function()
 //*************************************************************
 driftwood.prototype.handleKeyboard = function(event) 
 {
-	var key = String.fromCharCode(event.charCode);
+  var key = String.fromCharCode(event.charCode);
 
-	// Toggles between drawing and moving modes
-	if(key == 'd') 
-	{
-		this.mode = MODE_DRAW;
-		document.getElementById('mode-display').innerHTML = "Current Mode: Draw";
-	}
-	if(key == 'm') 
-	{
-		this.mode = MODE_MOVE;
-		document.getElementById('mode-display').innerHTML = "Current Mode: Move";
-	}
+  // Toggles between drawing and moving modes
+  if(key == 'd') 
+  {
+    this.mode = MODE_DRAW;
+    ObjectManager.enterDrawMode();
+    document.getElementById('mode-display').innerHTML = "Current Mode: Draw";
+  }
+  if(key == 'm') 
+  {
+    this.mode = MODE_MOVE;
+    ObjectManager.enterMoveMode();
+    document.getElementById('mode-display').innerHTML = "Current Mode: Move";
+  }
 
 	// Toggles wether or not bounding volumes are rendered when moving objects
 	if(key == '[') 

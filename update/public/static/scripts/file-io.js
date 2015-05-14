@@ -32,7 +32,7 @@ fileIO.prototype.uploadImage = function() {
     
     var obj = new object("image");
     obj.initialize();
-    obj.createImageObject(img.src, {x:-2, y:-2}, {x:302, y:302}, {x:-2, y:-2}, false);
+    obj.createImageObject(img.src, {x:0, y:0}, {x:300, y:300}, false);
     ObjectManager.addObject(obj);
   };
   reader.readAsDataURL(file);
