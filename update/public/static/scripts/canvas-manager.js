@@ -116,11 +116,18 @@ canvasManager.prototype.changeLayer = function(targetLayer)
 }
 
 canvasManager.prototype.clearCanvas = function() {
-  this.currentCanvas.widht = this.currentCanvas.width;
+  this.currentCanvas.width = this.currentCanvas.width;
 }
 
-canvasManager.prototype.clear = function() {
+canvasManager.prototype.clear = function(remote) {
+  for(var i = 0; i < ObjectManager.objects.length; i++) 
+  {
+    Container.removeChild(ObjectManager.objects[i].container);
+  }
+
   ObjectManager.objects = [];
   this.render();
-  Socket.emit('clear objects', RoomID, CallerID);
+
+  if(!remote)
+    Socket.emit('clear objects', RoomID, CallerID);
 }

@@ -149,7 +149,7 @@ objectManager.prototype.render = function(targetLayer) {
   }
 }
 
-objectManager.prototype.findStroke = function(objectID, index) {
+objectManager.prototype.findObject = function(objectID, index) {
   for(var i = 0; i < this.objects.length; i++) {
     if(this.objects[i].objectID == objectID)
       return this.objects[i];

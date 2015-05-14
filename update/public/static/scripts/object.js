@@ -30,6 +30,8 @@ function object(type)
   this.objectID = -1;
 
   this.objectData = {};
+
+  this.moving = false;
 }
 
 //*************************************************************
@@ -47,6 +49,39 @@ object.prototype.initialize = function()
     'position': 'absolute',
     'z-index': -1
   });
+
+  this.addEventListeners();
+}
+
+object.prototype.addEventListeners = function()
+{
+  this.container.addEventListener('mousedown', this.onMouseDown.bind(this), false);
+  this.container.addEventListener('mouseup', this.onMouseUp.bind(this), false);
+}
+
+object.prototype.onMouseDown = function(event) 
+{
+  if(Driftwood.mode == MODE_MOVE && this.layer == CanvasManager.currentLayer)
+  {
+    console.log('move');
+    this.moving = true;
+  }
+}
+
+object.prototype.onMouseUp = function(event)
+{
+  if(this.moving) 
+  {
+    this.moving = false;
+    console.log(this.container);
+    var position = {
+      x:  $(this.container).position().left,
+      y:  $(this.container).position().top,
+    }
+    console.log(position);
+
+    this.move(position, false);
+  }
 }
 
 //*************************************************************
@@ -56,6 +91,7 @@ object.prototype.initialize = function()
 //	Parameters:
 //		min - the minimum point of the bounding volume
 //		max - the maximum point of the bounding volume
+//		remote - if the call is from a remote source
 //
 //  Description:
 //      Creates an object based on stroke data
@@ -84,6 +120,19 @@ object.prototype.createStrokeObject = function(min, max, remote)
     Socket.emit('add object', this.objectData, RoomID, CallerID);
 }
 
+//*************************************************************
+//  Function:
+//      object.createImageObject
+//
+//	Parameters:
+//		image - the image data to bind to the object
+//		min - the minimum point of the bounding volume
+//		max - the maximum point of the bounding volume
+//		remote - if the call is from a remote source
+//
+//  Description:
+//      Creates an object based on stroke data
+//*************************************************************
 object.prototype.createImageObject = function(image, min, max, remote) 
 {
   this.imageData = image;
@@ -123,6 +172,8 @@ object.prototype.convertStrokesToImg = function() {
   ctx.putImageData(data, 0, 0);
 
   this.imageData = tCanvas.toDataURL();
+
+  CanvasManager.clearCanvas();
 
   this.createImage();  
 }
@@ -190,32 +241,26 @@ object.prototype.checkAABB = function(x, y) {
 //*************************************************************
 object.prototype.move = function(newPos, remote) 
 {
-  if(this.layer == CanvasManager.currentLayer) 
+  var dx = newPos.x - this.min.x;
+  var dy = newPos.y - this.min.y;
+  console.log(dx);
+
+  this.min.x += dx;
+  this.min.y += dy;
+  this.max.x += dx;
+  this.max.y += dy;
+
+  if(!remote)
+    Socket.emit('move object', this.objectData, RoomID, CallerID); 
+
+  // Render the canvas
+  // TODO: RENDER EACH LAYER SEPERATELY TO OPTIMIZE
+  //CanvasManager.render();
+
+  // Draw bounding volume
+  if(Driftwood.displayBoundVolumes)
   {
-    var dx = newPos.x - ((this.min.x + this.max.x)/2);
-    var dy = newPos.y - ((this.min.y + this.max.y)/2);
-    console.log(dx);
-
-    if(this.type == 'stroke') 
-    {
-      this.moveStrokes(dx, dy);
-    }
-
-    this.min.x += dx;
-    this.min.y += dy;
-    this.max.x += dx;
-    this.max.y += dy;
-
-    // Render the canvas
-    // TODO: RENDER EACH LAYER SEPERATELY TO OPTIMIZE
-    CanvasManager.render();
-    this.start = jQuery.extend(true, {}, newPos);
-
-    // Draw bounding volume
-    if(Driftwood.displayBoundVolumes)
-    {
-      this.renderBoundingOutline();
-    }
+    this.renderBoundingOutline();
   }
 }
 

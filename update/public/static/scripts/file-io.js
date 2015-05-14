@@ -20,19 +20,10 @@ fileIO.prototype.uploadImage = function() {
   document.getElementById('image-upload').value = '';
 
   var reader = new FileReader();
-  reader.onload = function(e) {
-    var img = new Image();
-    img.src = e.target.result;
-    img.width = 300;
-    img.height = 300;
-    $(img).css({'position':'absolute', 'z-index': 2});
-    $(img).draggable();
-    Container.appendChild(img);
-
-    
+  reader.onload = function(e) { 
     var obj = new object("image");
     obj.initialize();
-    obj.createImageObject(img.src, {x:0, y:0}, {x:300, y:300}, false);
+    obj.createImageObject(e.target.result, {x:0, y:0}, {x:300, y:300}, false);
     ObjectManager.addObject(obj);
   };
   reader.readAsDataURL(file);

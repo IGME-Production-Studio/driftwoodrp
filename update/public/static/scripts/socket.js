@@ -27,24 +27,25 @@ function addSocketListeners() {
   });
 
   Socket.on('move object', function(object, room, caller) {
+    console.log('move object');
     if(CallerID != caller && RoomID == room) {
-      /*var targetStroke = ObjectManager.findStroke(object.objectID);
-      console.log(targetStroke);
-      if(targetStroke != null) {
-        targetStroke.strokes = stroke.strokes;
-        targetStroke.min = stroke.min;
-        targetStroke.max = stroke.max;
-        targetStroke.start = stroke.start;
-	CanvasManager.render();
-      }*/
+      var targetObj = ObjectManager.findObject(object.objectID);
+      console.log(targetObj);
+      if(targetObj != null) {
+        targetObj.max = object.max;
+        targetObj.min = object.min;
+        $(targetObj.container).css({
+          top: targetObj.min.y,
+          left: targetObj.min.x
+        });
+      }
     }
   });
 
   Socket.on('clear objects', function(room, caller) {
     console.log('clear');
     if(CallerID != caller && RoomID == room) {
-      ObjectManager.objects = [];
-      CanvasManager.render();
+      CanvasManager.clear(true);
     }
   });
 
