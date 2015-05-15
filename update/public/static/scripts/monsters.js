@@ -26,7 +26,7 @@ monsters.prototype.initialize = function()
 	this.addEventListeners();
 	this.doLoadMonster(bestiary[0]);
 	$('#mgentabs').tabs();
-
+	this.hideTabs();
 	this.doExitMgen();
 	console.log("monsters initialized");
 }
@@ -40,52 +40,82 @@ monsters.prototype.initialize = function()
 //		events, functions in the HTML. 
 //*****************************************
 monsters.prototype.addEventListeners = function()
-{
+{/*
 	$('#saveicon').click(function()
 	{
 		doSaveMonster(); 
-	});
+	});*/
+	document.getElementById('saveicon').addEventListener('click', function(){
+		this.doSaveMonster();
+	}.bind(this), false);
 
-	$('#xicon').click(function()
+	/*$('#xicon').click(function()
 	{
 		doExitMgen();
-	});
-	$('#newmonster').click(function()
+	});*/
+	document.getElementById('xicon').addEventListener('click', function(){
+		this.doExitMgen();
+	}.bind(this), false);
+	/*$('#newmonster').click(function()
 	{
 		doNewMgen();
-	});
+	});*/
+	document.getElementById('newmonster').addEventListener('click', function(){
+			this.doNewMgen();
+		}.bind(this), false);
 
 	$('#m_name').keyup(function()
 	{
 		$('#monstertitle').html($('#m_name').val());
 	});
 
+/*
 	$('#tab-chat').click(function()
 	{
 		monsters.hideTabs(); 
 		$('#chat').css('display', 'visible'); 
 		//console.log("Showing chat");
-	});
+	});*/
+
+	document.getElementById('tab-chat').addEventListener('click', function(){
+		this.hideTabs(); 
+		$('#chat').css('display', 'visible'); 
+	}.bind(this), false);
+
 	//window.addEventListener('mousedown', this.onMouseDown.bind(this), false);
-	$('#tab-objects').click(function()
+	/*$('#tab-objects').click(function()
 	{
 		this.hideTabs(); 
 		$('#objects').css('display', 'visible'); 
 		//console.log("Showing objects");
-	}); 
-	$('#tab-monsters').click(function()
+	}); */
+	document.getElementById('tab-objects').addEventListener('click', function(){
+		this.hideTabs(); 
+		$('#objects').css('display', 'visible'); 
+	}.bind(this), false);
+
+	/*$('#tab-monsters').click(function()
 	{
 		this.hideTabs(); 
 		$('#monsters').css('display', 'visible'); 
 		//console.log("Showing monsters");
-	});
+	});*/
+	document.getElementById('tab-monsters').addEventListener('click', function(){
+		this.hideTabs(); 
+		$('#monsters').css('display', 'visible'); 
+	}.bind(this), false);
+	/*
 	$('#tab-social').click(function()
 	{
 		this.hideTabs(); 
 		$('#social').css('display', 'visible'); 
 		//console.log("Showing social");
 	});
-
+	*/
+	document.getElementById('tab-social').addEventListener('click', function(){
+			this.hideTabs(); 
+			$('#social').css('display', 'visible'); 
+		}.bind(this), false);
 }
 //*****************************************
 //	Function:
