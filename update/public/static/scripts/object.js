@@ -183,6 +183,32 @@ object.prototype.createImageObject = function(image, min, max, remote)
     Socket.emit('add object', this.objectData, RoomID, CallerID);
 }
 
+object.prototype.createMonsterObject = function(monster, min, max, remote)
+{
+  this.imageData = monster.image;
+
+  this.min = jQuery.extend(true, {}, min);
+  this.max = jQuery.extend(true, {}, max);
+
+  this.objectID = new Date().getTime();
+
+  this.type = "monster";
+
+  this.objectData = {
+    imageData: this.imageData,
+    layer: this.layer,
+    max: this.max,
+    min: this.min,
+    objectID: this.objectID,
+    objectType: this.type
+  };
+
+  this.createImage();
+
+  if(!remote)
+    Socket.emit('add object', this.objectData, RoomID, CallerID);
+}
+
 object.prototype.convertStrokesToImg = function() {
   var data = CanvasManager.currentContext.getImageData(this.min.x-2, this.min.y-2, this.max.x+2, this.max.y+2);
 

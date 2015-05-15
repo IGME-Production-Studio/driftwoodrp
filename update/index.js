@@ -27,19 +27,19 @@ var campaignSchema = new Schema(
   name: String, /* Nickname for campaign, eg. "Acquisitions, Inc." */
   gameType: String, /* Name of the game, eg. "Pathfinder" */
   members: [Object], /* all members, including GMs */ 
-  gameMasters: [Object] /* could be more than one. */
+  gameMasters: [Object], /* could be more than one. */
   reminder: Schema.Types.ObjectId /* hook to a reminder for campaign sessions (weekly) */
 });
-var campaign = Mongoose.model('Campaign', campaignSchema); 
+var campaign = mongoose.model('Campaign', campaignSchema); 
 
 var reminderSchema = new Schema(
 {
   day: String, /*for now, just string for weekly day of week*/
   startTime: Number, /* eg. 1630 = 4:30 PM */
   endTime: Number, 
-  campaign: Schema.Types.ObjectId, /* mongoose ObjectId type, for easy referencing*/
+  campaign: Schema.Types.ObjectId /* mongoose ObjectId type, for easy referencing*/
 });
-var reminder = Mongoose.model('Reminder', reminderSchema); 
+var reminder = mongoose.model('Reminder', reminderSchema); 
 
 // For the profile, primarily - will end up relying on old Driftwood login info
 var personSchema = new Schema({
@@ -48,7 +48,7 @@ var personSchema = new Schema({
   campaigns: [ Schema.Types.ObjectId ], /* campaign ID */
   friends: [ Schema.Types.ObjectId ] /* person ID */
 });
-var person = Mongoose.model('Person', personSchema); 
+var person = mongoose.model('Person', personSchema); 
 
 app.use(express.static(__dirname + '/public'));
 

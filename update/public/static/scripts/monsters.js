@@ -10,7 +10,7 @@
 
 function monsters()
 {
-
+  this.monsterObjects = [];
 }
 
 //*****************************************
@@ -79,7 +79,7 @@ monsters.prototype.addEventListeners = function()
 
 	document.getElementById('tab-chat').addEventListener('click', function(){
 		this.hideTabs(); 
-		$('#chat').css('display', 'visible'); 
+		$('#chat').css('display', 'block'); 
 	}.bind(this), false);
 
 	//window.addEventListener('mousedown', this.onMouseDown.bind(this), false);
@@ -91,7 +91,7 @@ monsters.prototype.addEventListeners = function()
 	}); */
 	document.getElementById('tab-objects').addEventListener('click', function(){
 		this.hideTabs(); 
-		$('#objects').css('display', 'visible'); 
+		$('#objects').css('display', 'block'); 
 	}.bind(this), false);
 
 	/*$('#tab-monsters').click(function()
@@ -102,7 +102,7 @@ monsters.prototype.addEventListeners = function()
 	});*/
 	document.getElementById('tab-monsters').addEventListener('click', function(){
 		this.hideTabs(); 
-		$('#monsters').css('display', 'visible'); 
+		$('#monsters').css('display', 'block'); 
 	}.bind(this), false);
 	/*
 	$('#tab-social').click(function()
@@ -114,7 +114,7 @@ monsters.prototype.addEventListeners = function()
 	*/
 	document.getElementById('tab-social').addEventListener('click', function(){
 			this.hideTabs(); 
-			$('#social').css('display', 'visible'); 
+			$('#social').css('display', 'block'); 
 		}.bind(this), false);
 }
 //*****************************************
@@ -195,9 +195,15 @@ monsters.prototype.doSaveMonster = function()
 	$(b).addClass('monstericon genericicon');
 	$(a).append(b); 
 	var p = document.createElement('p'); 
+        console.log(blank.name);
 	$(p).html(blank.name);
 	$(a).append(p); 
 	$('#newmonster').before(a);
+
+  var m = new monster(blank, skills, feats, a);
+  m.initialize();
+  this.monsterObjects.push(m);
+  console.log(this.monsterObjects);
 }
 
 //*****************************************
@@ -303,5 +309,16 @@ monsters.prototype.getBlankMonster = function()
 monsters.prototype.doNewMgen = function()
 {
 	$('#monsteredit').slideDown(); 
-	doLoadMonster(getBlankMonster());
+	this.doLoadMonster(this.getBlankMonster());
+}
+
+monsters.prototype.findMonster = function(monsterName)
+{
+  for(var i = 0; i < this.monsterObjects.length; i++)
+  {
+    if(this.monsterObjects[i].data.name == monsterName)
+      return this.monsterObjects[i];
+  }
+
+  return null;
 }
