@@ -79,7 +79,7 @@ monsters.prototype.addEventListeners = function()
 
 	document.getElementById('tab-chat').addEventListener('click', function(){
 		this.hideTabs(); 
-		$('#chat').css('display', 'visible'); 
+		$('#chat').css('display', 'block'); 
 	}.bind(this), false);
 
 	//window.addEventListener('mousedown', this.onMouseDown.bind(this), false);
@@ -91,7 +91,7 @@ monsters.prototype.addEventListeners = function()
 	}); */
 	document.getElementById('tab-objects').addEventListener('click', function(){
 		this.hideTabs(); 
-		$('#objects').css('display', 'visible'); 
+		$('#objects').css('display', 'block'); 
 	}.bind(this), false);
 
 	/*$('#tab-monsters').click(function()
@@ -102,7 +102,7 @@ monsters.prototype.addEventListeners = function()
 	});*/
 	document.getElementById('tab-monsters').addEventListener('click', function(){
 		this.hideTabs(); 
-		$('#monsters').css('display', 'visible'); 
+		$('#monsters').css('display', 'block'); 
 	}.bind(this), false);
 	/*
 	$('#tab-social').click(function()
@@ -114,7 +114,7 @@ monsters.prototype.addEventListeners = function()
 	*/
 	document.getElementById('tab-social').addEventListener('click', function(){
 			this.hideTabs(); 
-			$('#social').css('display', 'visible'); 
+			$('#social').css('display', 'block'); 
 		}.bind(this), false);
 }
 //*****************************************
