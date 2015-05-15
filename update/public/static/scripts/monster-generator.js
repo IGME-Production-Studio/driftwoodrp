@@ -10,6 +10,7 @@
 'use strict'; 
 console.log('script loaded');
 window.onload = initMonsterGenerator;
+var monsters = [];
 
 //*****************************************
 //	Function:
@@ -103,15 +104,15 @@ function doSaveMonster()
 	console.log(blank);
 
 
-	 var a = document.createElement('div'); 
-	 $(a).addClass('iconarea')
-	 var b = document.createElement('div'); 
-	 $(b).addClass('monstericon genericicon');
-	 $(a).append(b); 
-	 var p = document.createElement('p'); 
-	 $(p).html(blank.name);
-	 $(a).append(p); 
-	 $('#newmonster').before(a);
+	var a = document.createElement('div');
+	$(a).addClass('iconarea')
+	var b = document.createElement('div'); 
+	$(b).addClass('monstericon genericicon');
+	$(a).append(b); 
+	var p = document.createElement('p'); 
+	$(p).html(blank.name);
+	$(a).append(p);
+	$('#newmonster').before(a);
 }
 
 //*************************************************************

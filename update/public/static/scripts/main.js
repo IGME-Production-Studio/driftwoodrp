@@ -52,7 +52,6 @@ function construct() {
   CallerID = new Date().getTime();
   RoomID = "default";
   Container = document.getElementById('grapharea');
-  console.log(Container);
 
   Driftwood = new driftwood();
 

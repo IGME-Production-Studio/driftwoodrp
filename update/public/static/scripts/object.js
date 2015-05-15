@@ -223,7 +223,8 @@ object.prototype.createImage = function()
 object.prototype.drawMode = function() {
   $(this.container).css({
     'z-index': -1,
-    'border': '0px'
+    'border': '0px',
+    'resize': 'none'
   });
 
   this.selected = false;
@@ -233,7 +234,8 @@ object.prototype.moveMode = function()
 {
   $(this.container).css({
     'z-index': 2,
-    'border': '2px solid black'
+    'border': '2px solid black',
+    'resize': 'both'
   });
 }
 
