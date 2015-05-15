@@ -27,6 +27,7 @@ monsters.prototype.initialize = function()
 	this.doLoadMonster(bestiary[0]);
 	$('#mgentabs').tabs();
 	this.hideTabs();
+	$('#chat').css('display', 'block'); 
 	this.doExitMgen();
 	console.log("monsters initialized");
 }

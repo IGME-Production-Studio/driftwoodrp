@@ -42,7 +42,7 @@ function sendMessageTest(msg, roomID,  CallerID)
 	console.log("chat test");
 	console.log(msg);
 	 var newp = document.createElement('p'); 
-	 var h = '[' + CallerID + ']' + ': ' + msg;
+	 var h = '[<span class="roomOwner"><strong>' + CallerID + ']</strong></span>' + ': ' + msg;
 	 $(newp).addClass('chatMsg');
 	 $(newp).html(h); 
 	 $('#chatwindow').append(newp);
