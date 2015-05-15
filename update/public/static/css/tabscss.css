@@ -1061,10 +1061,33 @@ h2{ margin: 0; padding: 0;}
 .social ul
 {
   list-style-type: none;
+  padding-top: 2px; padding-bottom: 2px;
+  padding-left: 4px;
+
 }
 
+.social li
+{
+  margin-bottom: 5px;
+  font-size: 120%;
+}
 
+.liimg
+{
+  height: 50px; 
+  width: 50px; 
+  margin-right: 4px;
+}
 
+.roomOwner
+{
+  color: green;
+}
+
+.roomName
+{
+  color: darkgrey;
+}
 
 /*.panel
 {
