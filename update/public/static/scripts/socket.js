@@ -23,6 +23,7 @@ function addSocketListeners() {
   Socket.on('add object', function(object, room, caller) {
     if(CallerID != caller && RoomID == room) {
       createStroke(object);
+      CanvasManager.clearCanvas();
     }
   });
 
@@ -39,6 +40,13 @@ function addSocketListeners() {
           left: targetObj.min.x
         });
       }
+    }
+  });
+
+  Socket.on('delete object', function(object, room, caller) {
+    if(CallerID != caller && RoomID == room)
+    {
+      ObjectManager.deleteObject(object.objectID);
     }
   });
 

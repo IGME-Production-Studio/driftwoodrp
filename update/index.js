@@ -75,6 +75,13 @@ io.on('connection', function(socket) {
     });
   });
 
+  socket.on('delete object', function(object, roomID, caller) {
+    Obj.remove({objectID: object.objectID}, function(err) {
+      if(err) console.log(err);
+      io.emit('delete object', object, roomID, caller);
+    });
+  });
+
   socket.on('clear objects', function(roomID, caller) {
     Obj.remove({room: roomID}, function(err) {
       if(err) console.log(err);

@@ -38,6 +38,7 @@ objectManager.prototype.addEventListeners = function() {
   window.addEventListener('mousedown', this.checkAABBs.bind(this), false);
   window.addEventListener('mouseup', this.releaseTargets.bind(this), false);
   window.addEventListener('mousemove', this.moveTargets.bind(this), false);
+  window.addEventListener('keydown', this.onKeyDown.bind(this), false);
 }
 
 //*************************************************************
@@ -89,6 +90,40 @@ objectManager.prototype.enterDrawMode = function()
   for(var i = 0; i < this.objects.length; i++) 
   {
     this.objects[i].drawMode();
+  }
+}
+
+objectManager.prototype.moveSelected = function(dx, dy, sourceID, remote)
+{
+  for(var i = 0; i < this.objects.length; i++)
+  {
+    if(this.objects[i].selected && this.objects[i].objectID != sourceID)
+    {
+      this.objects[i].moveByDistance(dx, dy, remote);
+    }
+  }
+}
+
+objectManager.prototype.onKeyDown = function(event) 
+{
+  if(event.keyCode == 46)
+  {
+    this.deleteSelected();
+  }
+}
+
+objectManager.prototype.deleteSelected = function()
+{
+  for(var i = 0; i < this.objects.length; i++)
+  {
+    var object = this.objects[i];
+    if(object.selected)
+    {
+      object.callDelete();
+      Container.removeChild(object.container);
+      this.objects.splice(i, 1);
+      i--;
+    }
   }
 }
 
@@ -155,4 +190,15 @@ objectManager.prototype.findObject = function(objectID, index) {
       return this.objects[i];
   }
   return null;
+}
+
+objectManager.prototype.deleteObject = function(objectID) {
+  for(var i = 0; i < this.objects.length; i++) {
+    if(this.objects[i].objectID == objectID)
+    {
+      Container.removeChild(this.objects[i].container);
+      this.objects.splice(i, 1);
+      return;
+    }
+  } 
 }

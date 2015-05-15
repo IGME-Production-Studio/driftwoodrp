@@ -32,6 +32,8 @@ function object(type)
   this.objectData = {};
 
   this.moving = false;
+
+  this.selected = false;
 }
 
 //*************************************************************
@@ -57,6 +59,28 @@ object.prototype.addEventListeners = function()
 {
   this.container.addEventListener('mousedown', this.onMouseDown.bind(this), false);
   this.container.addEventListener('mouseup', this.onMouseUp.bind(this), false);
+  this.container.addEventListener('click', this.onClick.bind(this), false);
+}
+
+object.prototype.onClick = function(event)
+{
+  if(Driftwood.mode == MODE_MOVE && this.layer == CanvasManager.currentLayer && !this.moving)
+  {
+    if(this.selected)
+    {
+      this.selected = false;
+      $(this.container).css({
+        'border': '2px solid black'
+      });
+    }
+    else
+    {
+      this.selected = true;
+      $(this.container).css({
+        'border': '4px solid red'
+      });
+    }
+  }
 }
 
 object.prototype.onMouseDown = function(event) 
@@ -80,7 +104,7 @@ object.prototype.onMouseUp = function(event)
     }
     console.log(position);
 
-    this.move(position, false);
+    this.move(position, false);  
   }
 }
 
@@ -201,6 +225,8 @@ object.prototype.drawMode = function() {
     'z-index': -1,
     'border': '0px'
   });
+
+  this.selected = false;
 }
 
 object.prototype.moveMode = function() 
@@ -253,6 +279,8 @@ object.prototype.move = function(newPos, remote)
   if(!remote)
     Socket.emit('move object', this.objectData, RoomID, CallerID); 
 
+  ObjectManager.moveSelected(dx, dy, this.objectID, remote);
+
   // Render the canvas
   // TODO: RENDER EACH LAYER SEPERATELY TO OPTIMIZE
   //CanvasManager.render();
@@ -262,6 +290,22 @@ object.prototype.move = function(newPos, remote)
   {
     this.renderBoundingOutline();
   }
+}
+
+object.prototype.moveByDistance = function(dx, dy, remote)
+{ 
+  this.min.x += dx;
+  this.min.y += dy;
+  this.max.x += dx;
+  this.max.y += dy;
+
+  $(this.container).css({
+   top: this.min.y - 2,
+   left: this.min.x - 2
+  });
+
+  if(!remote)
+    Socket.emit('move object', this.objectData, RoomID, CallerID); 
 }
 
 object.prototype.moveStrokes = function(dx, dy) 
@@ -321,4 +365,9 @@ object.prototype.renderBoundingOutline = function()
   CanvasManager.currentContext.lineWidth = 2;
   CanvasManager.currentContext.rect(this.min.x, this.min.y, w, h);
   CanvasManager.currentContext.stroke();
+}
+
+object.prototype.callDelete = function()
+{
+  Socket.emit('delete object', this.objectData, RoomID, CallerID);
 }
