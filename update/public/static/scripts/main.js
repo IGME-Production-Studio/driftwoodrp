@@ -18,6 +18,7 @@ var Commands;
 var Drawing;
 var FileIO;
 var Grid;
+var Monsters;
 var ObjectManager;
 var Settings;
 var Tools;
@@ -61,6 +62,7 @@ function construct() {
   Drawing = new drawing();
   FileIO = new fileIO();
   Grid = new grid();
+  Monsters = new monsters();
   ObjectManager = new objectManager();
   Settings = new settings();
   Tools = new tools();
@@ -84,6 +86,7 @@ function initialize() {
   Commands.initialize();
   Drawing.initialize();
   FileIO.initialize();
+  Monsters.initialize();
   ObjectManager.initialize();
   Settings.initialize();
   Tools.initialize();

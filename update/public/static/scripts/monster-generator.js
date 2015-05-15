@@ -10,7 +10,6 @@
 'use strict'; 
 console.log('script loaded');
 window.onload = initMonsterGenerator;
-var monsters = [];
 
 //*****************************************
 //	Function:
@@ -45,6 +44,23 @@ function initMonsterGenerator()
 	{
 		$('#monstertitle').html($('#m_name').val());
 	});
+
+	hideTabs();
+	
+	// Set up the tabs
+	$('#tab-chat').click(function(){hideTabs(); $('#chat').show(); console.log("Showing chat");});
+	$('#tab-objects').click(function(){hideTabs(); $('#objects').show(); console.log("Showing objects");}); 
+	$('#tab-monsters').click(function(){hideTabs(); $('#monsters').show(); console.log("Showing monsters");});
+	$('#tab-social').click(function(){hideTabs(); $('#social').show(); console.log("Showing social");});
+
+}
+
+function hideTabs()
+{
+	$('#chat').hide();
+	$('#objects').hide();
+	$('#monsters').hide();
+	$('#social').hide();
 }
 
 //*****************************************
@@ -104,15 +120,15 @@ function doSaveMonster()
 	console.log(blank);
 
 
-	var a = document.createElement('div');
-	$(a).addClass('iconarea')
-	var b = document.createElement('div'); 
-	$(b).addClass('monstericon genericicon');
-	$(a).append(b); 
-	var p = document.createElement('p'); 
-	$(p).html(blank.name);
-	$(a).append(p);
-	$('#newmonster').before(a);
+	 var a = document.createElement('div'); 
+	 $(a).addClass('iconarea')
+	 var b = document.createElement('div'); 
+	 $(b).addClass('monstericon genericicon');
+	 $(a).append(b); 
+	 var p = document.createElement('p'); 
+	 $(p).html(blank.name);
+	 $(a).append(p); 
+	 $('#newmonster').before(a);
 }
 
 //*************************************************************
