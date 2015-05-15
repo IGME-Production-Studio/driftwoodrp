@@ -41,113 +41,96 @@
   <!-- Body begins here --> 
   <body class='noselect'>
 
-    <aside class="panel">
-      <div class="nav">
-        <div class="game-info">
-          <div class="game-name">
-            <strong>uigrab</strong><br>
-            <small class="muted">by Giga</small>
-          </div>
+<aside class="panel">
+  <div class="nav">
+    <div class="game-info">
+      <!-- Game name & general room info area --> 
+      <div class="game-name">
+        <strong>Sample</strong><br> 
+        <small class="muted">by Giga</small>
+      </div>
 
-       <ol class="tablist">
-            <li id="tab-chat"><b class="icon-comment"></b>Chat</li>
-
-            <li id="tab-objects"><b class="icon-pushpin"></b>Objects</li>
-
-            <!--<li data-target=".settings" data-toggle="tab"><b class="icon-cog"></b>Settings</li>-->
-
-            <li id="tab-monsters"><b class="icon-cog"></b>Monsters</li>
-
-            <li id="tab-social" <b class="icon-cog"></b>Social</li>
-        </ol>
-
-        </div><!-- Chat begins-->
-
-        <div class="chat" id="chat">
-          <h1> This is chat. </h1>
+      <!-- tabs --> 
+      <ol class="tablist">
+        <li id="tab-chat">Chat
+        </li>
+        <li id="tab-objects">Objects
+        </li>
+        <li id="tab-monsters">Monsters
+        </li>
+        <li id="tab-social">Social
+        </li>
+      </ol>
+      <!-- end tabs -->
+    </div> <!-- end game info section --> 
+    <!-- div that holds all the switchable tabs --> 
+    <div id = "tabholder">
+      <div class="chat" id="chat">
+        <!--area where chat messages are displayed --> 
+        <div id="chatwindow">
         </div>
-
-
-        <!-- Objects-->
-        <div class="objects" id="objects">
-          <h1> This is objects. </h1>
-
-            <div class="tr">
-              <div class="upload">
-                <select name="upload-type">
-                  <option value="token">
-                    Token
-                  </option>
-
-                  <option value="map">
-                    Map
-                  </option>
-
-                  <option value="item">
-                    Item
-                  </option>
-                </select><input name="_csrf" type="hidden" value=
-                        "tvgdMLlj-usw3ePVsnw0j_c7spM6DA4o10Q8"><input name=
-                        "uploadUrl" type="hidden" value=
-                        "/uploadToken/gabzilla/uigrab">
-
-                <div class="file-upload select-file btn btn-primary">
-                            Upload<input accept="image/*" id="object-upload"
-                            name="object" type="file">
-                </div>
-              </div>
-            </div>
-          </div>
+        <!-- area where chat messages can be input --> 
+        <div id="chatinput-div">
+          <input id="chatinput-input"></input>
+          <button id="chatinput-send">Send</button>
         </div>
-        <!-- Settings-->
+      </div>
 
-        <!--Monsters--> 
-        <div class="monsters" id="monsters">
-          <h1> Monsters </h1>
-                   <!-- Click to add new monster --> 
-           <div class="iconarea" id="newmonster"><div class="monstericon plusico"></div><p>Add New...</p></div>
-           <!--
-            <div class="content">
-                <div class="tr">
-                    <div class="settings-wrapper">
-                        <div class=
-                        "settings-content control-pane form-horizontal"></div>
-                    </div>
-                </div>
+      <div class="objects" id="objects">
+      </div>
 
-                <div class="tr">
-                    <div class="actions">
-                        <input class=
-                        "save-settings btn btn-success input-block-level" type=
-                        "button" value="Save"><input class=
-                        "cancel-settings btn input-block-level" type="button"
-                        value="Cancel">
-                    </div>
-                </div>
-            </div>-->
+      <div class="monsters" id="monsters">
+        <h1> Monsters </h1>
+        <!-- Click here to add new monster --> 
+        <div class="iconarea" id="newmonster">
+          <div class="monstericon plusico"></div>
+          <p>Add new...</p>
         </div>
+      </div>
 
-        <!-- Social -->
-        <div class="social" id="social">
+      <div class="social" id="social">
         <h2> Room Name by Username </h2>
-        <div class= "profilePic"></div> <!-- #TODO --> 
-        <div class="profile-heading" id="campaign-heading"></div>
-          <ul>
-            <li>Sir Oswick</li>
-            <li>Helena Pierce</li>
-          </ul>
-        <div class="profile-heading" id="friends-heading"></div>
-          <ul>
-           <li>heyitsmario</li>
-          </ul>
-        <div class="profile-heading" id="l2p-heading"></div>
-          <ul>
-          </ul>
-        <div class="profile-heading" id="contact-heading"></div>
-          <ul>
-          </ul>
+        <!-- Profile pic -- #todo --> 
+        <div class="profilePic">
         </div>
-    </aside>
+        <div class="profile-heading" id="campaign-heading">
+          Current Games
+        </div>
+        <!-- list of characters in current campaigns --> 
+        <ul>
+          <li>Sir Oswick</li>
+          <li>Helena Pierce</li>
+          <li>Tesla</li>
+        </ul>
+        <div class="profile-heading" id="friends-heading">
+          Friends
+        </div>
+        <!-- List of friends --> 
+        <ul> 
+          <li>heyitsmario</li>
+          <li>venom</li>
+        </ul>
+        <div class="profile-heading" id="l2p-heading">
+          Looking to Play
+        </div>
+        <!-- list of looking-to-play games --> 
+        <ul> 
+          <li>Dark Heresy</li>
+          <li>FATE Superheroes</li>
+          <li>Game of Thrones RPG</li>
+        </ul>
+        <div class="profile-heading" id="contact-heading">
+          Contact Me
+        </div>
+        <!-- List of ways to contact me --> 
+        <ul>  
+          <li>abc1234@gmail.com</li>
+        </ul>
+        
+      </div><!-- end social tab --> 
+    </div> <!-- end tabholder --> 
+  </div>
+</aside>
     <!-- End TABS --> 
     <!-- area for Jake's drawing stuff / graph -->
     <div id="grapharea">
