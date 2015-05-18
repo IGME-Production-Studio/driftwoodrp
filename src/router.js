@@ -54,6 +54,8 @@ var router = function(app, controllers, mid) {
   app.post('/removeGM/:player/:gameName', mid.requiresAuth, mid.requiresOwnership, mid.attachGame, controllers.Sessions.removeGM);
   app.post('/uploadToken/:player/:gameName', mid.requiresAuth, mid.attachGame, controllers.Sessions.uploadToken);
   app.post('/removeToken/:player/:gameName', mid.requiresAuth, mid.attachGame, controllers.Sessions.removeToken);
+  app.get('/intro', res.render("index"));
+
   //app.get('*', mid.requiresNoAuth, controllers.Players.loginPage);
 };
 
