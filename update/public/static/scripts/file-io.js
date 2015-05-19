@@ -4,14 +4,35 @@
 //  Author: Jake Higgins <jth7036@rit.edu>
 //*************************************************************
 
+//*************************************************************
+//  Function:
+//      fileIO
+//
+//  Description:
+//      Creates a prototype object to manage file loading
+//*************************************************************
 function fileIO() {
   //console.log("File IO Object Created");
 }
 
+//*************************************************************
+//  Function:
+//      fileIO.initialize
+//
+//  Description:
+//      Initializes fileIO
+//*************************************************************
 fileIO.prototype.initialize = function() {
   //console.log("File IO Initialized");
 }
 
+//*************************************************************
+//  Function:
+//      fileIO.uploadImage
+//
+//  Description:
+//      Uploads image and adds it as an object
+//*************************************************************
 fileIO.prototype.uploadImage = function() {
   var file = document.getElementById('image-upload').files[0];
   if(!file)

@@ -115,10 +115,27 @@ canvasManager.prototype.changeLayer = function(targetLayer)
   }
 }
 
+//*************************************************************
+//  Function:
+//      canvasManager.clearCanvas
+//
+//  Description:
+//      Clears the canvas
+//*************************************************************
 canvasManager.prototype.clearCanvas = function() {
   this.currentCanvas.width = this.currentCanvas.width;
 }
 
+//*************************************************************
+//  Function:
+//      canvasManager.clear
+//
+//  Parameters:
+//      remote - if the call is from a remote source
+//
+//  Description:
+//      Clears the canvas and objects
+//*************************************************************
 canvasManager.prototype.clear = function(remote) {
   for(var i = 0; i < ObjectManager.objects.length; i++) 
   {
