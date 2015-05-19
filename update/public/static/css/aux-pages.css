@@ -12,7 +12,7 @@ body
 	transition: background 0.5s ease;
 }
 
-#aboutForm
+#aboutForm, #aboutForm2
 {
 	position: relative;
 	top: 22%;
@@ -37,6 +37,11 @@ body
 	input[type="submit"] {
 	margin-right: 10px;
 	}
+}
+
+#aboutForm2
+{
+	height: 3510px;
 }
 
 .controls
@@ -112,4 +117,9 @@ textarea
 			border: none;
 			resize: none;
 		}
+}
+
+.tutorial-imgs
+{
+	width: 400px;
 }
