@@ -14,3 +14,7 @@
 #mode-display {
   position: absolute;
 }
+
+.over {
+  border: 2px dashed black;
+}

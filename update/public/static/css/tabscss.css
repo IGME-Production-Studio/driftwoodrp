@@ -966,6 +966,129 @@ select {
   width: 100%;
 }
 
+.chat, .objects, .monsters, .social
+{
+  height: 100%;
+}
+
+.game-name
+{/*
+  overflow: auto;
+  zoom: 1;
+  display: block;
+  float: none;*/
+  display: block;
+}
+
+.inline
+{
+  display: block;
+  overflow: auto;
+}
+
+.tablist
+{
+  float: left;
+  display: inline;
+  list-style: none;
+  text-align: right; 
+  margin-left: 0;
+  padding-right: 0;
+}
+.tablist li
+{
+  display: inline;
+  padding: none;
+}
+
+#tab-chat, #tab-objects, #tab-monsters, #tab-social
+{
+  padding: 0;
+}
+
+#tabholder
+{
+  height: 100%;
+  background-color: white;
+  position: relative;
+}
+
+#chat
+{
+  width: 340px;
+  height: 100%;
+}
+
+#chatwindow
+{
+  height: 74%;
+  width: 340px;
+ 
+  min-height: 100px;
+  overflow-y: scroll;
+  display: block;
+}
+
+#chatinput-div
+{
+  height: 40px;
+   width: 340px;
+  display: block;
+}
+#chatinput-input 
+{
+  height: 40px;
+  display: inline-block;
+  width: 80%;
+}
+#chatinput-send
+{
+  height: 40px;
+  display: inline-block; 
+  width: 15%;
+}
+
+
+h2{ margin: 0; padding: 0;}
+
+.profile-heading
+{
+  background-color: grey; 
+  color: white; 
+  font-size: 110%;
+}
+
+.social ul
+{
+  list-style-type: none;
+  padding-top: 2px; padding-bottom: 2px;
+  padding-left: 4px;
+
+}
+
+.social li
+{
+  margin-bottom: 5px;
+  font-size: 120%;
+}
+
+.liimg
+{
+  height: 50px; 
+  width: 50px; 
+  margin-right: 4px;
+}
+
+.roomOwner
+{
+  color: green;
+}
+
+.roomName
+{
+  color: darkgrey;
+}
+
 /*.panel
 {
 	webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.2);

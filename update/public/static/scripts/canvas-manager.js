@@ -115,8 +115,36 @@ canvasManager.prototype.changeLayer = function(targetLayer)
   }
 }
 
-canvasManager.prototype.clear = function() {
+//*************************************************************
+//  Function:
+//      canvasManager.clearCanvas
+//
+//  Description:
+//      Clears the canvas
+//*************************************************************
+canvasManager.prototype.clearCanvas = function() {
+  this.currentCanvas.width = this.currentCanvas.width;
+}
+
+//*************************************************************
+//  Function:
+//      canvasManager.clear
+//
+//  Parameters:
+//      remote - if the call is from a remote source
+//
+//  Description:
+//      Clears the canvas and objects
+//*************************************************************
+canvasManager.prototype.clear = function(remote) {
+  for(var i = 0; i < ObjectManager.objects.length; i++) 
+  {
+    Container.removeChild(ObjectManager.objects[i].container);
+  }
+
   ObjectManager.objects = [];
   this.render();
-  Socket.emit('clear strokes', RoomID, CallerID);
+
+  if(!remote)
+    Socket.emit('clear objects', RoomID, CallerID);
 }

@@ -9,40 +9,51 @@ var Socket;
 function addSocketListeners() {
   Socket = new io();
 
-  Socket.on('sync strokes', function(strokes, room, caller) {
+  Socket.on('sync objects', function(objects, room, caller) {
+    console.log(objects);
     if(CallerID == caller) {
-      $.each(strokes, function(key, stroke) {
-        createStroke(stroke);
+      console.log(objects);
+      $.each(objects, function(key, object) {
+        createStroke(object);
       });
       CanvasManager.render();
     }
   });
 
-  Socket.on('add stroke', function(stroke, room, caller) {
+  Socket.on('add object', function(object, room, caller) {
     if(CallerID != caller && RoomID == room) {
-      createStroke(stroke);
+      createStroke(object);
+      CanvasManager.clearCanvas();
     }
   });
 
-  Socket.on('move stroke', function(stroke, room, caller) {
+  Socket.on('move object', function(object, room, caller) {
+    console.log('move object');
     if(CallerID != caller && RoomID == room) {
-      var targetStroke = ObjectManager.findStroke(stroke.strokeID);
-      console.log(targetStroke);
-      if(targetStroke != null) {
-        targetStroke.strokes = stroke.strokes;
-        targetStroke.min = stroke.min;
-        targetStroke.max = stroke.max;
-        targetStroke.start = stroke.start;
-	CanvasManager.render();
+      var targetObj = ObjectManager.findObject(object.objectID);
+      console.log(targetObj);
+      if(targetObj != null) {
+        targetObj.max = object.max;
+        targetObj.min = object.min;
+        $(targetObj.container).css({
+          top: targetObj.min.y,
+          left: targetObj.min.x
+        });
       }
     }
   });
 
-  Socket.on('clear strokes', function(room, caller) {
+  Socket.on('delete object', function(object, room, caller) {
+    if(CallerID != caller && RoomID == room)
+    {
+      ObjectManager.deleteObject(object.objectID);
+    }
+  });
+
+  Socket.on('clear objects', function(room, caller) {
     console.log('clear');
     if(CallerID != caller && RoomID == room) {
-      ObjectManager.objects = [];
-      CanvasManager.render();
+      CanvasManager.clear(true);
     }
   });
 
@@ -51,27 +62,44 @@ function addSocketListeners() {
       Drawing.draw(drawData, true);
     }
   });
+
+  // ======== Chat =============/
+  // Comes in the format message/roomID/caller
+  
+  // if(roomID == this.roomID) // pseudocode for now
+  // add chat to chat thingy
+  Socket.on('receiveMessage', function(message, room, caller)
+  {
+    if ( RoomID == room )
+    {
+      // Proceed
+      Chat.write(message, caller);
+    }
+  });
 }
 
 function createStroke(stroke) {
+  console.log(stroke);
   var obj = new object("stroke");
   obj.initialize();
-  
-  obj.strokes = stroke.strokes;
-  obj.min = stroke.min;
-  obj.max = stroke.max;
-  obj.start = stroke.start;
-  obj.strokeID = stroke.strokeID;
+ 
+  obj.imageData = stroke.imageData; 
   obj.layer = stroke.layer;
+  obj.max = stroke.max;
+  obj.min = stroke.min;
+  obj.objectID = stroke.objectID;
+  obj.type = "stroke";
 
-  obj.strokeData = {
-    strokes: obj.strokes,
-    min: obj.min,
-    max: obj.max,
-    start: obj.start,
+  obj.objectData = {
+    imageData: obj.imageData,
     layer: obj.layer,
-    strokeID: obj.strokeID
+    max: obj.max,
+    min: obj.min,
+    objectID: obj.objectID,
+    objectType: obj.type,
   };
+
+  obj.createImage();
 
   ObjectManager.addObject(obj);
 }

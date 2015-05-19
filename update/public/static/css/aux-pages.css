@@ -1,3 +1,10 @@
+/*
+  Filename: index.html
+  
+  Authors:
+    Mario Chuman		mxc7819@g.rit.edu
+*/
+
 body
 {	
 	background: white url("../images/driftwoodimage.png") no-repeat top left fixed;
@@ -5,7 +12,7 @@ body
 	transition: background 0.5s ease;
 }
 
-#aboutForm
+#aboutForm, #aboutForm2
 {
 	position: relative;
 	top: 22%;
@@ -30,6 +37,11 @@ body
 	input[type="submit"] {
 	margin-right: 10px;
 	}
+}
+
+#aboutForm2
+{
+	height: 3510px;
 }
 
 .controls
@@ -57,6 +69,13 @@ body
 {
 	color: #ffffff;
 	background: #0044cc;
+}
+
+.driftwoodLink
+{
+	color:white;
+	text-decoration:none;
+	font-size: 14px;
 }
 
 #tutorial
@@ -90,10 +109,17 @@ textarea
 		
 		margin-bottom: 0;
 		
+		cursor: not-allowed;
+		
         textarea
 		{
 			@include box-shadow(none);
 			border: none;
 			resize: none;
 		}
+}
+
+.tutorial-imgs
+{
+	width: 400px;
 }
